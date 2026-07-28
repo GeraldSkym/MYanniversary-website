@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Cristy Limbago & You</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Dedicated styling para sa Typewriter Page */
+        body {
+            background: linear-gradient(135deg, #f9e9ed 0%, #f8dfe5 50%, #f5d8df 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .typewriter-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 20px 50px rgba(151, 80, 96, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            text-align: center;
+            position: relative;
+        }
+
+        .typewriter-text {
+            font-family: "Playfair Display", serif;
+            font-size: 24px;
+            color: #3e3032;
+            line-height: 1.8;
+            min-height: 150px;
+            margin-bottom: 30px;
+        }
+
+        /* Blinking Cursor Effect */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #e36f88;
+            margin-left: 4px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .next-btn {
+            display: none; /* Lalabas lang kapag tapos na ang typewriter */
+            margin: 0 auto;
+            padding: 15px 35px;
+            background: linear-gradient(100deg, #df637d, #eb8298);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-family: "Playfair Display", serif;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(211, 82, 111, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(211, 82, 111, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="typewriter-card">
+        <div style="font-size: 40px; color: #ed8da1; margin-bottom: 20px;">♥</div>
+        
+        <!-- Typewriter Container -->
+        <div class="typewriter-text">
+            <span id="text-container"></span><span class="cursor">&nbsp;</span>
+        </div>
+
+        <!-- Continue Button -->
+        <button id="continueBtn" class="next-btn" onclick="alert('Susunod: Photo Gallery!')">
+            See Our Memories 📸 ♥
+        </button>
+    </main>
+
+    <script>
+        // Mensahe na ita-type nang kusa
+        const message = "Hi Cristy, my love...\n\nEvery single day with you is a gift, but today is extra special. Happy 3rd Anniversary! Thank you for 3 amazing years of love, smiles, and endless memories. Let's look back at our journey together... ♥";
+
+        const textContainer = document.getElementById("text-container");
+        const continueBtn = document.getElementById("continueBtn");
+        let index = 0;
+
+        function typeWriter() {
+            if (index < message.length) {
+                const char = message.charAt(index);
+                if (char === "\n") {
+                    textContainer.innerHTML += "<br>";
+                } else {
+                    textContainer.innerHTML += char;
+                }
+                index++;
+                setTimeout(typeWriter, 55); // Bilis ng pag-type (in milliseconds)
+            } else {
+                // Pagkatapos mag-type, ipapakita ang button
+                continueBtn.style.display = "inline-block";
+            }
+        }
+
+        // Simulan ang typewriter pagka-load ng page
+        window.onload = typeWriter;
+    </script>
+
+</body>
+
+</html>
