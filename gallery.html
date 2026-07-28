@@ -23,9 +23,20 @@
             font-family: 'Great Vibes', cursive;
             color: #4a3b3e;
             font-size: 52px;
-            margin: 10px 0 30px 0;
+            margin: 10px 0 10px 0;
             text-align: center;
             font-weight: normal;
+        }
+
+        /* 💌 MESSAGE BANNER */
+        .message-sub {
+            color: #6d5257;
+            font-size: 16px;
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-style: italic;
         }
 
         .footer-title {
@@ -49,7 +60,7 @@
 
         .polaroid-card {
             background: #fffefb;
-            padding: 12px 12px 25px 12px;
+            padding: 12px;
             border-radius: 4px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
             cursor: pointer;
@@ -79,13 +90,7 @@
             height: 190px;
             object-fit: cover;
             border-radius: 2px;
-        }
-
-        .polaroid-card p {
-            margin: 12px 0 0 0;
-            font-size: 13px;
-            color: #5a4b4e;
-            font-family: 'Georgia', serif;
+            display: block;
         }
 
         /* 🔍 LIGHTBOX MODAL STYLES */
@@ -141,63 +146,48 @@
 
     <h1 class="header-title">Happy 3rd</h1>
 
-    <!-- 📸 PHOTO COLLAGE (MATCHED TO image/photoX.jpg) -->
+    <!-- 💌 ENGLISH MESSAGE BANNER -->
+    <div class="message-sub">
+        "Here are some of our precious memories together over the past three wonderful years. Every moment with you is a treasure I will hold close to my heart forever." ♥
+    </div>
+
+    <!-- 📸 PHOTO COLLAGE (12 Photos Without Captions) -->
     <div class="collage-container">
-        <div class="polaroid-card" onclick="openLightbox('image/photo1.jpg', 'Our First Date ♥')">
+        <div class="polaroid-card" onclick="openLightbox('image/photo1.jpg')">
             <img src="image/photo1.jpg" alt="Memory 1">
-            <p>Our First Date ♥</p>
         </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo2.jpg', 'Unforgettable Smile 😊')">
+        <div class="polaroid-card" onclick="openLightbox('image/photo2.jpg')">
             <img src="image/photo2.jpg" alt="Memory 2">
-            <p>Unforgettable Smile 😊</p>
         </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo3.jpg', 'Sweet Moments ✨')">
+        <div class="polaroid-card" onclick="openLightbox('image/photo3.jpg')">
             <img src="image/photo3.jpg" alt="Memory 3">
-            <p>Sweet Moments ✨</p>
         </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo4.jpg', 'Random Cute Date 🍦')">
+        <div class="polaroid-card" onclick="openLightbox('image/photo4.jpg')">
             <img src="image/photo4.jpg" alt="Memory 4">
-            <p>Random Cute Date 🍦</p>
         </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo5.jpg', 'Favorite Place 🌿')">
+        <div class="polaroid-card" onclick="openLightbox('image/photo5.jpg')">
             <img src="image/photo5.jpg" alt="Memory 5">
-            <p>Favorite Place 🌿</p>
         </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo6.jpg', 'To More Adventures 🥂')">
+        <div class="polaroid-card" onclick="openLightbox('image/photo6.jpg')">
             <img src="image/photo6.jpg" alt="Memory 6">
-            <p>To More Adventures 🥂</p>
         </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo7.jpg', 'Coffee Date ☕')">
+        <div class="polaroid-card" onclick="openLightbox('image/photo7.jpg')">
             <img src="image/photo7.jpg" alt="Memory 7">
-            <p>Coffee Date ☕</p>
         </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo8.jpg', 'Holding Hands ♥')">
+        <div class="polaroid-card" onclick="openLightbox('image/photo8.jpg')">
             <img src="image/photo8.jpg" alt="Memory 8">
-            <p>Holding Hands ♥</p>
         </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo9.jpg', 'Special Moments 🌙')">
+        <div class="polaroid-card" onclick="openLightbox('image/photo9.jpg')">
             <img src="image/photo9.jpg" alt="Memory 9">
-            <p>Special Moments 🌙</p>
         </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo10.jpg', 'Silly & Happy 🤪')">
+        <div class="polaroid-card" onclick="openLightbox('image/photo10.jpg')">
             <img src="image/photo10.jpg" alt="Memory 10">
-            <p>Silly & Happy 🤪</p>
         </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo11.jpg', 'Sunset View 🌅')">
+        <div class="polaroid-card" onclick="openLightbox('image/photo11.jpg')">
             <img src="image/photo11.jpg" alt="Memory 11">
-            <p>Sunset View 🌅</p>
         </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo12.jpg', 'Celebration 🎉')">
+        <div class="polaroid-card" onclick="openLightbox('image/photo12.jpg')">
             <img src="image/photo12.jpg" alt="Memory 12">
-            <p>Celebration 🎉</p>
-        </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo13.jpg', 'My Favorite Person 💖')">
-            <img src="image/photo13.jpg" alt="Memory 13">
-            <p>My Favorite Person 💖</p>
-        </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo14.jpg', 'Forever & Always ♾️')">
-            <img src="image/photo14.jpg" alt="Memory 14">
-            <p>Forever & Always ♾️</p>
         </div>
     </div>
 
@@ -209,13 +199,11 @@
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="close-btn">&times;</span>
         <img id="lightbox-img" src="" alt="Full view">
-        <div id="lightbox-caption" style="color: white; font-size: 18px; margin-top: 15px; font-family: sans-serif;"></div>
     </div>
 
     <script>
-        function openLightbox(src, caption) {
+        function openLightbox(src) {
             document.getElementById("lightbox-img").src = src;
-            document.getElementById("lightbox-caption").textContent = caption;
             document.getElementById("lightbox").style.display = "flex";
         }
 
