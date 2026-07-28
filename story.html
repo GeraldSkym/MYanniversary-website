@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
@@ -214,6 +217,64 @@
             cursor: pointer;
         }
 
+        /* Love Letter Modal */
+        .letter-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .letter-content {
+            background: #fffbfb;
+            border-radius: 25px;
+            padding: 40px 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border: 2px solid #f2d1d9;
+            text-align: left;
+            position: relative;
+        }
+
+        .letter-content h2 {
+            font-family: "Playfair Display", serif;
+            color: #e36f88;
+            font-size: 30px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .letter-content p {
+            font-family: "Playfair Display", serif;
+            font-size: 18px;
+            color: #4a3b3e;
+            line-height: 1.8;
+        }
+
+        .close-letter-btn {
+            display: block;
+            margin: 25px auto 0 auto;
+            padding: 12px 30px;
+            background: #e36f88;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-family: "Poppins", sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
         /* Buttons */
         .story-btn {
             padding: 15px 35px;
@@ -368,7 +429,7 @@
                     </div>
                 </div>
 
-                <button class="story-btn" onclick="alert('Susunod: Love Letter & Heart Confetti Effect! ♥')">
+                <button class="story-btn" onclick="openLoveLetter()">
                     Read My Love Letter 💌
                 </button>
             </section>
@@ -384,14 +445,38 @@
         <caption id="lightbox-caption"></caption>
     </div>
 
+    <!-- LOVE LETTER MODAL -->
+    <div id="letterModal" class="letter-modal">
+        <div class="letter-content">
+            <h2>To My Dearest Cristy, ♥</h2>
+            <p>
+                Happy 3rd Anniversary, my love! 
+            </p>
+            <p>
+                Looking back at all our memories—from our simple dates, late-night talks, to all the random adventures—I am constantly reminded of how lucky I am to have you in my life. You bring so much light, peace, and pure happiness into my world.
+            </p>
+            <p>
+                Thank you for being my strength, my favorite companion, and my best friend. Every single day spent with you is a memory I will treasure forever. I promise to keep loving you, supporting you, and making you laugh through every chapter of our lives.
+            </p>
+            <p>
+                Here is to 3 years of beautiful memories and to a lifetime more of adventures together. I love you so much! ♥
+            </p>
+            <button class="close-letter-btn" onclick="closeLoveLetter()">Close Letter ♥</button>
+        </div>
+    </div>
+
     <script>
-        // TYPEWRITER EFFECT
-        const message = "Hi Cristy, my love...\n\nEvery single day with you is a gift, but today is extra special. Happy 3rd Anniversary! Thank you for 3 amazing years of love, laughter, and endless happiness. Here is a little glimpse of our forever... ♥";
-        const textContainer = document.getElementById("text-container");
-        const showContentBtn = document.getElementById("showContentBtn");
+        // STABLE TYPEWRITER EFFECT (Using Template Literals)
+        const message = `Hi Cristy, my love...\n\nEvery single day with you is a gift, but today is extra special. Happy 3rd Anniversary! Thank you for 3 amazing years of love, laughter, and endless happiness. Here is a little glimpse of our forever... ♥`;
+        
         let index = 0;
 
         function typeWriter() {
+            const textContainer = document.getElementById("text-container");
+            const showContentBtn = document.getElementById("showContentBtn");
+
+            if (!textContainer) return;
+
             if (index < message.length) {
                 const char = message.charAt(index);
                 if (char === "\n") {
@@ -400,21 +485,28 @@
                     textContainer.innerHTML += char;
                 }
                 index++;
-                setTimeout(typeWriter, 50);
+                setTimeout(typeWriter, 45);
             } else {
-                showContentBtn.style.display = "inline-block";
+                if (showContentBtn) {
+                    showContentBtn.style.display = "inline-block";
+                }
             }
         }
 
         function revealStory() {
             const mainContent = document.getElementById("mainStoryContent");
-            showContentBtn.style.display = "none";
-            document.getElementById("cursor").style.display = "none";
+            const showContentBtn = document.getElementById("showContentBtn");
+            const cursor = document.getElementById("cursor");
+
+            if (showContentBtn) showContentBtn.style.display = "none";
+            if (cursor) cursor.style.display = "none";
             
-            mainContent.style.display = "block";
-            setTimeout(() => {
-                mainContent.style.opacity = "1";
-            }, 100);
+            if (mainContent) {
+                mainContent.style.display = "block";
+                setTimeout(() => {
+                    mainContent.style.opacity = "1";
+                }, 100);
+            }
 
             startTimer();
         }
@@ -432,10 +524,10 @@
                 const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-                document.getElementById("days").innerText = days;
-                document.getElementById("hours").innerText = hours;
-                document.getElementById("minutes").innerText = minutes;
-                document.getElementById("seconds").innerText = seconds;
+                if (document.getElementById("days")) document.getElementById("days").innerText = days;
+                if (document.getElementById("hours")) document.getElementById("hours").innerText = hours;
+                if (document.getElementById("minutes")) document.getElementById("minutes").innerText = minutes;
+                if (document.getElementById("seconds")) document.getElementById("seconds").innerText = seconds;
             }, 1000);
         }
 
@@ -445,16 +537,41 @@
             const lightboxImg = document.getElementById("lightbox-img");
             const lightboxCaption = document.getElementById("lightbox-caption");
 
-            lightboxImg.src = imgSrc;
-            lightboxCaption.innerText = captionText;
-            lightbox.style.display = "flex";
+            if (lightboxImg) lightboxImg.src = imgSrc;
+            if (lightboxCaption) lightboxCaption.innerText = captionText;
+            if (lightbox) lightbox.style.display = "flex";
         }
 
         function closeLightbox() {
-            document.getElementById("lightbox").style.display = "none";
+            const lightbox = document.getElementById("lightbox");
+            if (lightbox) lightbox.style.display = "none";
         }
 
-        window.onload = typeWriter;
+        // LOVE LETTER MODAL + HEART CONFETTI
+        function openLoveLetter() {
+            const letterModal = document.getElementById("letterModal");
+            if (letterModal) letterModal.style.display = "flex";
+
+            // Trigger Heart Confetti
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 80,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#e36f88', '#f8dfe5', '#ed8da1', '#ffffff']
+                });
+            }
+        }
+
+        function closeLoveLetter() {
+            const letterModal = document.getElementById("letterModal");
+            if (letterModal) letterModal.style.display = "none";
+        }
+
+        // Run typewriter once DOM is completely loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            typeWriter();
+        });
     </script>
 
 </body>
