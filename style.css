@@ -1,1 +1,637 @@
+/* RESET */
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* BACKGROUND */
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    position: relative;
+
+    font-family: "Poppins", sans-serif;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(255,255,255,.9),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(255,188,205,.35),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #f9e5e9,
+            #f8dce3,
+            #f5d5dd
+        );
+}
+
+
+/* MAIN CARD */
+
+.anniversary-card {
+
+    width: 680px;
+
+    max-width: 90%;
+
+    min-height: 785px;
+
+    padding: 60px 95px 45px;
+
+    position: relative;
+
+    z-index: 10;
+
+    text-align: center;
+
+    border-radius: 35px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.90),
+            rgba(255,255,255,.74)
+        );
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.95);
+
+    box-shadow:
+
+        0 28px 65px
+        rgba(153,77,95,.20);
+
+    backdrop-filter:
+
+        blur(15px);
+}
+
+
+/* HEART */
+
+.main-heart {
+
+    color: #ee8ca1;
+
+    font-size: 58px;
+
+    line-height: 1;
+
+    margin-bottom: 20px;
+
+    animation:
+
+        heartBeat
+        1.7s
+        infinite;
+}
+
+
+/* TITLE */
+
+h1 {
+
+    color: #3e3033;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 73px;
+
+    font-weight: 500;
+
+    line-height: .92;
+
+    letter-spacing: 1px;
+}
+
+
+h1 span {
+
+    display: block;
+
+    margin-top: 18px;
+
+    font-size: 56px;
+
+    font-weight: 400;
+}
+
+
+h1 b {
+
+    color: #e6758e;
+
+    font-weight: 500;
+}
+
+
+/* FIRST DIVIDER */
+
+.divider {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin: 32px 0 27px;
+
+    color: #ee91a5;
+}
+
+
+.divider span {
+
+    width: 70px;
+
+    height: 1px;
+
+    background: #edb8c4;
+}
+
+
+.divider i {
+
+    font-style: normal;
+
+    font-size: 20px;
+}
+
+
+/* LOVE MESSAGE */
+
+.love-message {
+
+    color: #4f4749;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+
+    line-height: 1.5;
+
+    letter-spacing: .3px;
+}
+
+
+.love-message strong {
+
+    color: #df7189;
+
+    font-weight: 600;
+}
+
+
+/* LONG DIVIDER */
+
+.long-divider {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 17px;
+
+    margin: 38px 0 35px;
+
+    color: #f1c1cb;
+}
+
+
+.long-divider span {
+
+    width: 150px;
+
+    height: 1px;
+
+    background: #edc7cf;
+}
+
+
+.long-divider i {
+
+    font-style: normal;
+
+    font-size: 18px;
+}
+
+
+/* FORM */
+
+form {
+
+    width: 100%;
+}
+
+
+label {
+
+    display: block;
+
+    color: #cc7185;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+
+    font-weight: 600;
+
+    text-align: left;
+
+    margin-bottom: 20px;
+}
+
+
+label small {
+
+    color: #ec8ca0;
+
+    font-size: 19px;
+}
+
+
+/* DATE */
+
+.date-container {
+
+    width: 100%;
+
+    margin-bottom: 20px;
+}
+
+
+input[type="date"] {
+
+    width: 100%;
+
+    height: 68px;
+
+    padding: 0 25px;
+
+    border:
+
+        1px solid
+        #e7c3cb;
+
+    border-radius: 16px;
+
+    outline: none;
+
+    background:
+
+        rgba(255,255,255,.55);
+
+    color: #62595b;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 18px;
+
+    text-align: center;
+
+    transition: .25s;
+}
+
+
+input[type="date"]:focus {
+
+    border-color: #e67c94;
+
+    box-shadow:
+
+        0 0 0 4px
+        rgba(230,124,148,.12);
+}
+
+
+/* BUTTON */
+
+button {
+
+    width: 100%;
+
+    height: 69px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 26px;
+
+    letter-spacing: .5px;
+
+    background:
+
+        linear-gradient(
+            100deg,
+            #df667f,
+            #eb8499
+        );
+
+    box-shadow:
+
+        0 12px 23px
+        rgba(212,85,113,.25);
+
+    transition: .25s;
+}
+
+
+button span {
+
+    margin: 0 12px;
+}
+
+
+button:hover {
+
+    transform:
+
+        translateY(-3px);
+
+    box-shadow:
+
+        0 17px 28px
+        rgba(212,85,113,.35);
+}
+
+
+button:active {
+
+    transform:
+
+        scale(.98);
+}
+
+
+/* BOTTOM MESSAGE */
+
+.forever {
+
+    margin-top: 34px;
+
+    color: #60595a;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 19px;
+}
+
+
+/* BACKGROUND FLOWERS */
+
+.flower {
+
+    position: absolute;
+
+    z-index: 1;
+
+    color:
+
+        rgba(215,89,119,.27);
+
+    font-size: 350px;
+
+    font-family: serif;
+
+    user-select: none;
+}
+
+
+.top-flower {
+
+    top: -115px;
+
+    left: -100px;
+
+    transform:
+
+        rotate(-25deg);
+}
+
+
+.bottom-flower {
+
+    right: -110px;
+
+    bottom: -155px;
+
+    transform:
+
+        rotate(30deg);
+}
+
+
+/* FLOATING OBJECTS */
+
+.leaf {
+
+    position: absolute;
+
+    z-index: 2;
+
+    color:
+
+        rgba(224,100,130,.27);
+
+    font-size: 42px;
+
+    animation:
+
+        floating
+        6s
+        ease-in-out
+        infinite;
+}
+
+
+.leaf-1 {
+
+    top: 8%;
+
+    right: 22%;
+}
+
+
+.leaf-2 {
+
+    top: 57%;
+
+    left: 8%;
+
+    animation-delay: 1s;
+}
+
+
+.leaf-3 {
+
+    bottom: 8%;
+
+    left: 35%;
+
+    animation-delay: 2s;
+}
+
+
+.leaf-4 {
+
+    top: 22%;
+
+    right: 7%;
+
+    animation-delay: 3s;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+
+        transform:
+            scale(1.12);
+    }
+}
+
+
+@keyframes floating {
+
+    0%,
+    100% {
+
+        transform:
+
+            translateY(0)
+            rotate(0deg);
+    }
+
+    50% {
+
+        transform:
+
+            translateY(-18px)
+            rotate(10deg);
+    }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    body {
+
+        overflow-y: auto;
+
+        padding: 25px 0;
+    }
+
+
+    .anniversary-card {
+
+        width: 92%;
+
+        min-height: auto;
+
+        padding:
+
+            42px
+            25px;
+    }
+
+
+    h1 {
+
+        font-size: 49px;
+    }
+
+
+    h1 span {
+
+        font-size: 38px;
+    }
+
+
+    .love-message {
+
+        font-size: 20px;
+    }
+
+
+    label {
+
+        font-size: 20px;
+    }
+
+
+    button {
+
+        font-size: 22px;
+    }
+
+
+    .long-divider span {
+
+        width: 75px;
+    }
+
+
+    .flower {
+
+        font-size: 220px;
+    }
+}
