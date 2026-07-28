@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy 3rd Anniversary my love! Cristy Limbago</title>
+    <title>Happy 3rd Anniversary my love!! Cristy Limbago</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -105,13 +105,13 @@
                 errorMessage.style.display = "none";
                 dateInput.style.borderColor = "#e7c6cd";
                 
-                document.body.style.transition = "opacity 1.2s ease";
+                // Smooth fade-out effect papunta sa story page
+                document.body.style.transition = "opacity 1s ease";
                 document.body.style.opacity = "0";
 
                 setTimeout(() => {
-                    alert("✨ Correct date! Unlocking Our Story...");
-                    document.body.style.opacity = "1"; 
-                }, 1200);
+                    window.location.href = "story.html";
+                }, 1000);
 
             } else {
                 // 3. Kapag MALI ang date
