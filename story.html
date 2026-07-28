@@ -49,7 +49,7 @@
         }
 
         .btn {
-            display: none;
+            display: none; /* Nakatago sa simula */
             margin-top: 25px;
             padding: 12px 28px;
             background-color: #e36f88;
@@ -59,7 +59,7 @@
             font-size: 18px;
             cursor: pointer;
             text-decoration: none;
-            transition: 0.3s;
+            transition: background-color 0.3s;
         }
 
         .btn:hover {
@@ -74,7 +74,7 @@
         
         <div class="typewriter-text"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
 
-        <!-- Pupunta na ito sa gallery.html -->
+        <!-- Inayos ang Link Redirection -->
         <a id="openBtn" href="gallery.html" class="btn">Open Our Memories ✨</a>
     </div>
 
@@ -90,15 +90,19 @@
             if (charIndex < textToType.length) {
                 container.textContent += textToType.charAt(charIndex);
                 charIndex++;
-                setTimeout(runTypewriter, 50);
+                setTimeout(runTypewriter, 40); // Mas mabilis nang kaunti para smooth
             } else {
-                if (btn) btn.style.display = "inline-block";
+                // Siguradong lilitaw ang button kapag matapos mag-type
+                if (btn) {
+                    btn.style.display = "inline-block";
+                }
             }
         }
 
-        window.onload = function() {
+        // Tatakbo kaagad pagka-load ng page
+        window.addEventListener('DOMContentLoaded', () => {
             runTypewriter();
-        };
+        });
     </script>
 
 </body>
