@@ -9,7 +9,7 @@
             background-color: #f8dfe5;
             font-family: 'Georgia', serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
             margin: 0;
@@ -25,6 +25,7 @@
             max-width: 600px;
             width: 100%;
             text-align: center;
+            margin-bottom: 30px;
         }
 
         .typewriter-text {
@@ -32,7 +33,7 @@
             color: #4a3b3e;
             line-height: 1.8;
             min-height: 100px;
-            white-space: pre-wrap; /* Para gumana ang line breaks */
+            white-space: pre-wrap;
             text-align: left;
         }
 
@@ -71,24 +72,156 @@
             border-top: 2px dashed #f3d2d9;
             padding-top: 20px;
         }
+
+        /* 📸 PHOTO GALLERY STYLES */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .polaroid-card {
+            background: white;
+            padding: 12px 12px 20px 12px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .polaroid-card:hover {
+            transform: translateY(-8px) rotate(1deg);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+
+        .polaroid-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .polaroid-card p {
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        /* 🔍 LIGHTBOX POPUP STYLES */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
+    <!-- 💌 TYPEWRITER CARD -->
     <div class="card">
         <div style="font-size: 40px; color: #e36f88;">♥</div>
         
-        <!-- Dito lalabas ang typewriter text -->
         <div class="typewriter-text"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
 
-        <!-- Lalabas lang 'to pagkatapos mag-type -->
         <button id="openBtn" class="btn" onclick="showStory()">Open Our Memories ✨</button>
 
-        <!-- Tagong nilalaman -->
         <div id="hiddenStory">
-            <h2 style="color: #e36f88;">Happy 3rd Anniversary!</h2>
-            <p style="color: #666;">Ito ang ating simpleng memory space para sa ating dalawa ni Cristy. ♥</p>
+            <h2 style="color: #e36f88; margin-bottom: 25px;">Happy 3rd Anniversary!</h2>
+            
+            <!-- 📸 PHOTO GALLERY (14 PHOTOS) -->
+            <div class="photo-grid">
+                <div class="polaroid-card" onclick="openLightbox('images/photo1.jpg', 'Our First Date ♥')">
+                    <img src="images/photo1.jpg" alt="Memory 1">
+                    <p>Our First Date ♥</p>
+                </div>
+                <div class="polaroid-card" onclick="openLightbox('images/photo2.jpg', 'Unforgettable Smile 😊')">
+                    <img src="images/photo2.jpg" alt="Memory 2">
+                    <p>Unforgettable Smile 😊</p>
+                </div>
+                <div class="polaroid-card" onclick="openLightbox('images/photo3.jpg', 'Sweet Moments ✨')">
+                    <img src="images/photo3.jpg" alt="Memory 3">
+                    <p>Sweet Moments ✨</p>
+                </div>
+                <div class="polaroid-card" onclick="openLightbox('images/photo4.jpg', 'Random Cute Date 🍦')">
+                    <img src="images/photo4.jpg" alt="Memory 4">
+                    <p>Random Cute Date 🍦</p>
+                </div>
+                <div class="polaroid-card" onclick="openLightbox('images/photo5.jpg', 'Favorite Place 🌿')">
+                    <img src="images/photo5.jpg" alt="Memory 5">
+                    <p>Favorite Place 🌿</p>
+                </div>
+                <div class="polaroid-card" onclick="openLightbox('images/photo6.jpg', 'To More Adventures 🥂')">
+                    <img src="images/photo6.jpg" alt="Memory 6">
+                    <p>To More Adventures 🥂</p>
+                </div>
+                <div class="polaroid-card" onclick="openLightbox('images/photo7.jpg', 'Coffee Date ☕')">
+                    <img src="images/photo7.jpg" alt="Memory 7">
+                    <p>Coffee Date ☕</p>
+                </div>
+                <div class="polaroid-card" onclick="openLightbox('images/photo8.jpg', 'Holding Hands ♥')">
+                    <img src="images/photo8.jpg" alt="Memory 8">
+                    <p>Holding Hands ♥</p>
+                </div>
+                <div class="polaroid-card" onclick="openLightbox('images/photo9.jpg', 'Special Moments 🌙')">
+                    <img src="images/photo9.jpg" alt="Memory 9">
+                    <p>Special Moments 🌙</p>
+                </div>
+                <div class="polaroid-card" onclick="openLightbox('images/photo10.jpg', 'Silly & Happy 🤪')">
+                    <img src="images/photo10.jpg" alt="Memory 10">
+                    <p>Silly & Happy 🤪</p>
+                </div>
+                <div class="polaroid-card" onclick="openLightbox('images/photo11.jpg', 'Sunset View 🌅')">
+                    <img src="images/photo11.jpg" alt="Memory 11">
+                    <p>Sunset View 🌅</p>
+                </div>
+                <div class="polaroid-card" onclick="openLightbox('images/photo12.jpg', 'Celebration 🎉')">
+                    <img src="images/photo12.jpg" alt="Memory 12">
+                    <p>Celebration 🎉</p>
+                </div>
+                <div class="polaroid-card" onclick="openLightbox('images/photo13.jpg', 'My Favorite Person 💖')">
+                    <img src="images/photo13.jpg" alt="Memory 13">
+                    <p>My Favorite Person 💖</p>
+                </div>
+                <div class="polaroid-card" onclick="openLightbox('images/photo14.jpg', 'Forever & Always ♾️')">
+                    <img src="images/photo14.jpg" alt="Memory 14">
+                    <p>Forever & Always ♾️</p>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <!-- 🔍 LIGHTBOX MODAL -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="" alt="Full view">
+        <div id="lightbox-caption" style="color: white; font-size: 18px; margin-top: 12px; font-family: sans-serif;"></div>
     </div>
 
     <script>
@@ -103,7 +236,7 @@
             if (charIndex < textToType.length) {
                 container.textContent += textToType.charAt(charIndex);
                 charIndex++;
-                setTimeout(runTypewriter, 50); // Bilis ng pag-type (ms)
+                setTimeout(runTypewriter, 50);
             } else {
                 if (btn) btn.style.display = "inline-block";
             }
@@ -114,7 +247,16 @@
             document.getElementById("hiddenStory").style.display = "block";
         }
 
-        // Siguradong tatakbo kapag na-load ang screen
+        function openLightbox(src, caption) {
+            document.getElementById("lightbox-img").src = src;
+            document.getElementById("lightbox-caption").textContent = caption;
+            document.getElementById("lightbox").style.display = "flex";
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+
         window.onload = function() {
             runTypewriter();
         };
