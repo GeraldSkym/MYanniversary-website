@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Story ❤️</title>
+    <title>Happy 3rd Anniversary ❤️</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="login-box">
+    <!-- Background Decorations -->
+    <div class="flower flower-top-left">🌸</div>
+    <div class="flower flower-top-right">🌸</div>
+    <div class="flower flower-bottom-left">🌿</div>
+    <div class="flower flower-bottom-right">🌿</div>
 
-        <h1>❤️ Our Story ❤️</h1>
+    <!-- Main Card -->
+    <div class="card">
 
-        <p>This surprise is only for you.</p>
+        <h1>Happy 3rd Anniversary, Love! ❤️</h1>
+
+        <p class="quote">
+            Every love story is beautiful,<br>
+            but ours is my favorite.
+        </p>
+
+        <h3>Enter Our Anniversary Date</h3>
 
         <input
-            type="password"
-            id="password"
-            placeholder="Enter Password">
+            type="date"
+            id="anniversaryDate">
 
-        <button onclick="checkPassword()">
-            Unlock ❤️
+        <button onclick="checkDate()">
+            Unlock Our Story ❤️
         </button>
 
         <p id="message"></p>
 
     </div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
