@@ -55,7 +55,7 @@
             <span></span>
         </div>
 
-        <form id="anniversaryForm" onsubmit="return false;">
+        <form id="anniversaryForm" onsubmit="checkAnniversaryDate(event)">
             <label for="anniversaryDate">
                 <span class="calendar">▣</span>
                 Enter Our Anniversary Date <b>♥</b>
@@ -66,9 +66,9 @@
             </div>
 
             <!-- Error message container -->
-            <p id="errorMessage" style="color: #d9534f; font-size: 15px; margin-bottom: 15px; display: none; font-weight: 500; font-family: 'Poppins', sans-serif;"></p>
+            <p id="errorMessage" style="color: #d9534f; font-size: 15px; margin-top: 10px; margin-bottom: 15px; display: none; font-weight: 500; font-family: 'Poppins', sans-serif;"></p>
 
-            <button type="button" id="unlockBtn">
+            <button type="submit" id="unlockBtn">
                 <span>🔒</span>
                 Unlock Our Story <b>♥</b>
             </button>
@@ -82,8 +82,47 @@
 
     </main>
 
-    <!-- JavaScript -->
-    <script src="script.js?v=4"></script>
+    <!-- Inline Logic Fix -->
+    <script>
+        function checkAnniversaryDate(event) {
+            // Pigilan ang pag-reload ng page
+            event.preventDefault();
+
+            const CORRECT_DATE = "2026-07-30";
+            const dateInput = document.getElementById("anniversaryDate");
+            const errorMessage = document.getElementById("errorMessage");
+            const userSelectedDate = dateInput.value;
+
+            // 1. Kapag walang piniling date
+            if (!userSelectedDate) {
+                errorMessage.textContent = "❌ Please select our anniversary date first ♥";
+                errorMessage.style.display = "block";
+                return false;
+            }
+
+            // 2. Kapag TAMA ang date
+            if (userSelectedDate === CORRECT_DATE) {
+                errorMessage.style.display = "none";
+                dateInput.style.borderColor = "#e7c6cd";
+                
+                document.body.style.transition = "opacity 1.2s ease";
+                document.body.style.opacity = "0";
+
+                setTimeout(() => {
+                    alert("✨ Correct date! Unlocking Our Story...");
+                    document.body.style.opacity = "1"; 
+                }, 1200);
+
+            } else {
+                // 3. Kapag MALI ang date
+                errorMessage.textContent = "❌ Incorrect password, try again my love! ♥";
+                errorMessage.style.display = "block";
+                dateInput.style.borderColor = "#d9534f";
+            }
+
+            return false;
+        }
+    </script>
 
 </body>
 
