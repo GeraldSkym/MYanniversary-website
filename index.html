@@ -1,48 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy 3rd Anniversary ❤️</title>
-
+    <title>Happy 3rd Anniversary Love ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Background Decorations -->
-    <div class="flower flower-top-left">🌸</div>
-    <div class="flower flower-top-right">🌸</div>
-    <div class="flower flower-bottom-left">🌿</div>
-    <div class="flower flower-bottom-right">🌿</div>
+    <!-- Background Floral Design -->
+    <div class="floral floral-top-left"></div>
+    <div class="floral floral-bottom-right"></div>
 
     <!-- Main Card -->
-    <div class="card">
+    <div class="container">
 
-        <h1>Happy 3rd Anniversary, Love! ❤️</h1>
+        <div class="card">
 
-        <p class="quote">
-            Every love story is beautiful,<br>
-            but ours is my favorite.
-        </p>
+            <h1 class="title">
+                Happy 3rd Anniversary,
+                <span>Love!</span> ❤️
+            </h1>
 
-        <h3>Enter Our Anniversary Date</h3>
+            <p class="subtitle">
+                Every love story is beautiful,<br>
+                but ours is my favorite.
+            </p>
 
-        <input
-            type="date"
-            id="anniversaryDate">
+            <div class="divider"></div>
 
-        <button onclick="checkDate()">
-            Unlock Our Story ❤️
-        </button>
+            <label class="input-label">
+                📅 Enter Our Anniversary Date
+            </label>
 
-        <p id="message"></p>
+            <input
+                type="date"
+                id="anniversaryDate"
+                placeholder="MM / DD / YYYY">
+
+            <button class="unlock-btn">
+                ❤️ Unlock Our Story ❤️
+            </button>
+
+            <p class="footer-text">
+                This is just the beginning of our forever ✨
+            </p>
+
+        </div>
 
     </div>
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
