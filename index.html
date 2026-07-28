@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy 3rd Anniversary my love!! Cristy Limbago</title>
+    <title>Happy 3rd anniversary my lovee!! Cristy Limbago</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,16 +47,10 @@
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 26px;
+            font-size: 24px;
             color: #4a3b3e;
             font-weight: 600;
-        }
-
-        h1 span {
-            display: block;
-            font-size: 20px;
-            font-weight: 400;
-            margin-top: 5px;
+            line-height: 1.3;
         }
 
         .message {
@@ -66,7 +60,7 @@
             line-height: 1.5;
         }
 
-        /* 🔒 PASSCODE DISPLAY (DOTS / NUMBERS) */
+        /* 🔒 PASSCODE DISPLAY (DOTS) */
         .passcode-display {
             display: flex;
             justify-content: center;
@@ -149,14 +143,13 @@
     <main class="anniversary-card">
         <div class="top-heart">♥</div>
 
-        <h1>
-            Happy 3rd
-            <span>Anniversary, <strong>Cristy Limbago!</strong> ♥</span>
-        </h1>
+        <!-- 📌 UPDATED HEADER -->
+        <h1>Happy 3rd anniversary my lovee!! cristy limbago</h1>
 
-        <p class="message">Enter our passcode to unlock our story ♥</p>
+        <!-- 📌 UPDATED NOTE -->
+        <p class="message">Enter our anniversary date to unlock our story</p>
 
-        <!-- Passcode Dots (6 Digits) -->
+        <!-- Passcode Dots (6 Digits for 073026) -->
         <div class="passcode-display">
             <div class="dot" id="dot-0"></div>
             <div class="dot" id="dot-1"></div>
@@ -198,7 +191,6 @@
                 updateDots();
                 document.getElementById("errorMessage").textContent = "";
 
-                // Kapag nakapindot na ng 6 digits, automatic nitong ichecheck
                 if (enteredPasscode.length === 6) {
                     setTimeout(checkPasscode, 200);
                 }
@@ -233,7 +225,6 @@
                 errorMsg.style.color = "#d9534f";
                 errorMsg.textContent = "❌ Incorrect passcode, try again my love! ♥";
                 
-                // I-reset pagkatapos magkamali
                 setTimeout(() => {
                     clearPasscode();
                 }, 800);
