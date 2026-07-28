@@ -282,7 +282,7 @@
         </div>
 
 
-        <form id="anniversaryForm">
+        <form id="anniversaryForm" onsubmit="return false;">
 
             <label for="anniversaryDate">
 
@@ -307,11 +307,11 @@
 
             </div>
 
-            <!-- Error Message Box -->
+            <!-- Error message container -->
             <p id="errorMessage" style="color: #d9534f; font-size: 15px; margin-bottom: 15px; display: none; font-weight: 500; font-family: 'Poppins', sans-serif;"></p>
 
 
-            <button type="submit">
+            <button type="button" id="unlockBtn">
 
                 <span>
                     🔒
@@ -341,7 +341,7 @@
 
     <!-- JavaScript -->
 
-    <script src="script.js"></script>
+    <script src="script.js?v=3"></script>
 
 </body>
 
