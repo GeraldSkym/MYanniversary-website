@@ -1,63 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Story - Cristy Limbago & You</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
-    <!-- Canvas Confetti Library -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
+    <title>Our Story - Cristy Limbago</title>
     <style>
         body {
-            background: linear-gradient(135deg, #f9e9ed 0%, #f8dfe5 50%, #f5d8df 100%);
-            min-height: 100vh;
-            margin: 0;
-            padding: 30px 15px;
+            background-color: #f8dfe5;
+            font-family: 'Georgia', serif;
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        .container {
-            max-width: 900px;
+        .card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
             width: 100%;
             text-align: center;
         }
 
-        /* Typewriter Section */
-        .typewriter-card {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(15px);
-            border-radius: 30px;
-            padding: 45px 30px;
-            box-shadow: 0 20px 50px rgba(151, 80, 96, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            margin-bottom: 30px;
-        }
-
         .typewriter-text {
-            font-family: "Playfair Display", serif;
-            font-size: 22px;
-            color: #3e3032;
+            font-size: 20px;
+            color: #4a3b3e;
             line-height: 1.8;
-            min-height: 120px;
+            min-height: 100px;
+            white-space: pre-wrap; /* Para gumana ang line breaks */
+            text-align: left;
         }
 
         .cursor {
             display: inline-block;
             width: 3px;
             background-color: #e36f88;
-            margin-left: 4px;
             animation: blink 0.7s infinite;
         }
 
@@ -66,514 +48,77 @@
             50% { opacity: 0; }
         }
 
-        /* Main Story Content (Hidden at first) */
-        #mainStoryContent {
+        .btn {
             display: none;
-            opacity: 0;
-            transition: opacity 1.2s ease-in-out;
-        }
-
-        /* Relationship Timer */
-        .timer-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 30px 20px;
-            box-shadow: 0 15px 35px rgba(151, 80, 96, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            margin-bottom: 35px;
-        }
-
-        .timer-card h2 {
-            font-family: "Playfair Display", serif;
-            color: #e36f88;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .timer-grid {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .timer-box {
-            background: #fcf3f5;
-            border-radius: 15px;
-            padding: 15px;
-            min-width: 90px;
-            border: 1px solid #f3d2d9;
-        }
-
-        .timer-box .number {
-            font-size: 26px;
-            font-weight: 600;
-            color: #3e3032;
-            display: block;
-        }
-
-        .timer-box .label {
-            font-size: 13px;
-            color: #8c7176;
-            text-transform: uppercase;
-        }
-
-        /* Photo Gallery Styling */
-        .gallery-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 35px 20px;
-            box-shadow: 0 15px 35px rgba(151, 80, 96, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            margin-bottom: 35px;
-        }
-
-        .gallery-card h2 {
-            font-family: "Playfair Display", serif;
-            color: #3e3032;
-            font-size: 28px;
-            margin-bottom: 25px;
-        }
-
-        /* Responsive Grid para sa 14 Photos */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 18px;
-            margin-bottom: 25px;
-        }
-
-        .polaroid-card {
-            background: white;
-            padding: 10px 10px 16px 10px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid #f0d8df;
-        }
-
-        .polaroid-card:hover {
-            transform: translateY(-6px) rotate(1deg);
-            box-shadow: 0 12px 25px rgba(227, 111, 136, 0.25);
-        }
-
-        .polaroid-card img {
-            width: 100%;
-            height: 170px;
-            object-fit: cover;
-            border-radius: 10px;
-            display: block;
-        }
-
-        .polaroid-card p {
-            font-family: "Playfair Display", serif;
-            font-size: 14px;
-            color: #55484a;
-            margin-top: 10px;
-            margin-bottom: 0;
-            font-style: italic;
-        }
-
-        /* Lightbox Viewer */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            padding: 20px;
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 75vh;
-            border-radius: 15px;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
-        }
-
-        .lightbox caption {
+            margin-top: 25px;
+            padding: 12px 28px;
+            background-color: #e36f88;
             color: white;
-            font-family: "Playfair Display", serif;
-            font-size: 20px;
-            margin-top: 15px;
-            display: block;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 35px;
-            cursor: pointer;
-        }
-
-        /* Love Letter Modal */
-        .letter-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            z-index: 200;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .letter-content {
-            background: #fffbfb;
+            border: none;
             border-radius: 25px;
-            padding: 40px 30px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            border: 2px solid #f2d1d9;
-            text-align: left;
-            position: relative;
-        }
-
-        .letter-content h2 {
-            font-family: "Playfair Display", serif;
-            color: #e36f88;
-            font-size: 30px;
-            margin-top: 0;
-            text-align: center;
-        }
-
-        .letter-content p {
-            font-family: "Playfair Display", serif;
             font-size: 18px;
-            color: #4a3b3e;
-            line-height: 1.8;
-        }
-
-        .close-letter-btn {
-            display: block;
-            margin: 25px auto 0 auto;
-            padding: 12px 30px;
-            background: #e36f88;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            font-family: "Poppins", sans-serif;
-            font-size: 16px;
             cursor: pointer;
+            transition: 0.3s;
         }
 
-        /* Buttons */
-        .story-btn {
-            padding: 15px 35px;
-            background: linear-gradient(100deg, #df637d, #eb8298);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            font-family: "Playfair Display", serif;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(211, 82, 111, 0.2);
-            transition: all 0.3s ease;
-            margin-top: 10px;
+        .btn:hover {
+            background-color: #d15671;
         }
 
-        .story-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(211, 82, 111, 0.3);
+        #hiddenStory {
+            display: none;
+            margin-top: 30px;
+            border-top: 2px dashed #f3d2d9;
+            padding-top: 20px;
         }
     </style>
 </head>
-
 <body>
 
-    <div class="container">
+    <div class="card">
+        <div style="font-size: 40px; color: #e36f88;">♥</div>
+        
+        <!-- Dito lalabas ang typewriter text -->
+        <div class="typewriter-text"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
 
-        <!-- TYPEWRITER CARD -->
-        <main class="typewriter-card">
-            <div style="font-size: 40px; color: #ed8da1; margin-bottom: 15px;">♥</div>
-            <div class="typewriter-text">
-                <span id="text-container"></span><span class="cursor" id="cursor">&nbsp;</span>
-            </div>
-            
-            <button id="showContentBtn" class="story-btn" style="display: none;" onclick="revealStory()">
-                Open Our Story ✨ ♥
-            </button>
-        </main>
+        <!-- Lalabas lang 'to pagkatapos mag-type -->
+        <button id="openBtn" class="btn" onclick="showStory()">Open Our Memories ✨</button>
 
-        <!-- MAIN ELEGANT CONTENT -->
-        <div id="mainStoryContent">
-
-            <!-- ⏳ LIVE RELATIONSHIP TIMER -->
-            <section class="timer-card">
-                <h2>Loving You For... ♥</h2>
-                <div class="timer-grid">
-                    <div class="timer-box">
-                        <span class="number" id="days">0</span>
-                        <span class="label">Days</span>
-                    </div>
-                    <div class="timer-box">
-                        <span class="number" id="hours">0</span>
-                        <span class="label">Hours</span>
-                    </div>
-                    <div class="timer-box">
-                        <span class="number" id="minutes">0</span>
-                        <span class="label">Minutes</span>
-                    </div>
-                    <div class="timer-box">
-                        <span class="number" id="seconds">0</span>
-                        <span class="label">Seconds</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 📸 PHOTO GALLERY (14 PHOTOS) -->
-            <section class="gallery-card">
-                <h2>Our Favorite Memories 📸 ♥</h2>
-                
-                <div class="photo-grid">
-                    <!-- Photo 1 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo1.jpg', 'Our First Date ♥')">
-                        <img src="images/photo1.jpg" alt="Memory 1" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+1'">
-                        <p>Our First Date ♥</p>
-                    </div>
-
-                    <!-- Photo 2 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo2.jpg', 'Unforgettable Smile 😊')">
-                        <img src="images/photo2.jpg" alt="Memory 2" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+2'">
-                        <p>Unforgettable Smile 😊</p>
-                    </div>
-
-                    <!-- Photo 3 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo3.jpg', 'Sweet Moments Together ✨')">
-                        <img src="images/photo3.jpg" alt="Memory 3" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+3'">
-                        <p>Sweet Moments ✨</p>
-                    </div>
-
-                    <!-- Photo 4 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo4.jpg', 'Random Cute Date 🍦')">
-                        <img src="images/photo4.jpg" alt="Memory 4" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+4'">
-                        <p>Random Cute Date 🍦</p>
-                    </div>
-
-                    <!-- Photo 5 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo5.jpg', 'Favorite Place With You 🌿')">
-                        <img src="images/photo5.jpg" alt="Memory 5" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+5'">
-                        <p>Favorite Place 🌿</p>
-                    </div>
-
-                    <!-- Photo 6 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo6.jpg', 'To More Adventures 🥂')">
-                        <img src="images/photo6.jpg" alt="Memory 6" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+6'">
-                        <p>To More Adventures 🥂</p>
-                    </div>
-
-                    <!-- Photo 7 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo7.jpg', 'Coffee Date Memories ☕')">
-                        <img src="images/photo7.jpg" alt="Memory 7" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+7'">
-                        <p>Coffee Date ☕</p>
-                    </div>
-
-                    <!-- Photo 8 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo8.jpg', 'Holding Hands ♥')">
-                        <img src="images/photo8.jpg" alt="Memory 8" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+8'">
-                        <p>Holding Hands ♥</p>
-                    </div>
-
-                    <!-- Photo 9 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo9.jpg', 'Late Night Talk Memories 🌙')">
-                        <img src="images/photo9.jpg" alt="Memory 9" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+9'">
-                        <p>Special Moments 🌙</p>
-                    </div>
-
-                    <!-- Photo 10 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo10.jpg', 'Silly & Happy Times 🤪')">
-                        <img src="images/photo10.jpg" alt="Memory 10" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+10'">
-                        <p>Silly & Happy 🤪</p>
-                    </div>
-
-                    <!-- Photo 11 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo11.jpg', 'Sunset View With You 🌅')">
-                        <img src="images/photo11.jpg" alt="Memory 11" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+11'">
-                        <p>Sunset View 🌅</p>
-                    </div>
-
-                    <!-- Photo 12 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo12.jpg', 'Celebration Day 🎉')">
-                        <img src="images/photo12.jpg" alt="Memory 12" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+12'">
-                        <p>Celebration 🎉</p>
-                    </div>
-
-                    <!-- Photo 13 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo13.jpg', 'My Favorite Person 💖')">
-                        <img src="images/photo13.jpg" alt="Memory 13" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+13'">
-                        <p>My Favorite Person 💖</p>
-                    </div>
-
-                    <!-- Photo 14 -->
-                    <div class="polaroid-card" onclick="openLightbox('images/photo14.jpg', 'Forever & Always ♾️')">
-                        <img src="images/photo14.jpg" alt="Memory 14" onerror="this.src='https://via.placeholder.com/300x300/f8dfe5/3e3032?text=Photo+14'">
-                        <p>Forever & Always ♾️</p>
-                    </div>
-                </div>
-
-                <button class="story-btn" onclick="openLoveLetter()">
-                    Read My Love Letter 💌
-                </button>
-            </section>
-
-        </div>
-
-    </div>
-
-    <!-- LIGHTBOX MODAL -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close-btn">&times;</span>
-        <img id="lightbox-img" src="" alt="Full view">
-        <caption id="lightbox-caption"></caption>
-    </div>
-
-    <!-- LOVE LETTER MODAL -->
-    <div id="letterModal" class="letter-modal">
-        <div class="letter-content">
-            <h2>To My Dearest Cristy, ♥</h2>
-            <p>
-                Happy 3rd Anniversary, my love! 
-            </p>
-            <p>
-                Looking back at all our memories—from our simple dates, late-night talks, to all the random adventures—I am constantly reminded of how lucky I am to have you in my life. You bring so much light, peace, and pure happiness into my world.
-            </p>
-            <p>
-                Thank you for being my strength, my favorite companion, and my best friend. Every single day spent with you is a memory I will treasure forever. I promise to keep loving you, supporting you, and making you laugh through every chapter of our lives.
-            </p>
-            <p>
-                Here is to 3 years of beautiful memories and to a lifetime more of adventures together. I love you so much! ♥
-            </p>
-            <button class="close-letter-btn" onclick="closeLoveLetter()">Close Letter ♥</button>
+        <!-- Tagong nilalaman -->
+        <div id="hiddenStory">
+            <h2 style="color: #e36f88;">Happy 3rd Anniversary!</h2>
+            <p style="color: #666;">Ito ang ating simpleng memory space para sa ating dalawa ni Cristy. ♥</p>
         </div>
     </div>
 
     <script>
-        // STABLE TYPEWRITER EFFECT (Using Template Literals)
-        const message = `Hi Cristy, my love...\n\nEvery single day with you is a gift, but today is extra special. Happy 3rd Anniversary! Thank you for 3 amazing years of love, laughter, and endless happiness. Here is a little glimpse of our forever... ♥`;
+        const textToType = "Hi Cristy, my love...\n\nEvery single day with you is a gift, but today is extra special. Happy 3rd Anniversary! Thank you for 3 amazing years of love, laughter, and endless happiness. Here is a little glimpse of our forever... ♥";
         
-        let index = 0;
+        let charIndex = 0;
 
-        function typeWriter() {
-            const textContainer = document.getElementById("text-container");
-            const showContentBtn = document.getElementById("showContentBtn");
+        function runTypewriter() {
+            const container = document.getElementById("typed");
+            const btn = document.getElementById("openBtn");
 
-            if (!textContainer) return;
-
-            if (index < message.length) {
-                const char = message.charAt(index);
-                if (char === "\n") {
-                    textContainer.innerHTML += "<br>";
-                } else {
-                    textContainer.innerHTML += char;
-                }
-                index++;
-                setTimeout(typeWriter, 45);
+            if (charIndex < textToType.length) {
+                container.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(runTypewriter, 50); // Bilis ng pag-type (ms)
             } else {
-                if (showContentBtn) {
-                    showContentBtn.style.display = "inline-block";
-                }
+                if (btn) btn.style.display = "inline-block";
             }
         }
 
-        function revealStory() {
-            const mainContent = document.getElementById("mainStoryContent");
-            const showContentBtn = document.getElementById("showContentBtn");
-            const cursor = document.getElementById("cursor");
-
-            if (showContentBtn) showContentBtn.style.display = "none";
-            if (cursor) cursor.style.display = "none";
-            
-            if (mainContent) {
-                mainContent.style.display = "block";
-                setTimeout(() => {
-                    mainContent.style.opacity = "1";
-                }, 100);
-            }
-
-            startTimer();
+        function showStory() {
+            document.getElementById("openBtn").style.display = "none";
+            document.getElementById("hiddenStory").style.display = "block";
         }
 
-        // LIVE RELATIONSHIP TIMER (July 30, 2023)
-        const startDate = new Date("2023-07-30T00:00:00").getTime();
-
-        function startTimer() {
-            setInterval(function () {
-                const now = new Date().getTime();
-                const difference = now - startDate;
-
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                if (document.getElementById("days")) document.getElementById("days").innerText = days;
-                if (document.getElementById("hours")) document.getElementById("hours").innerText = hours;
-                if (document.getElementById("minutes")) document.getElementById("minutes").innerText = minutes;
-                if (document.getElementById("seconds")) document.getElementById("seconds").innerText = seconds;
-            }, 1000);
-        }
-
-        // LIGHTBOX FUNCTIONALITY
-        function openLightbox(imgSrc, captionText) {
-            const lightbox = document.getElementById("lightbox");
-            const lightboxImg = document.getElementById("lightbox-img");
-            const lightboxCaption = document.getElementById("lightbox-caption");
-
-            if (lightboxImg) lightboxImg.src = imgSrc;
-            if (lightboxCaption) lightboxCaption.innerText = captionText;
-            if (lightbox) lightbox.style.display = "flex";
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById("lightbox");
-            if (lightbox) lightbox.style.display = "none";
-        }
-
-        // LOVE LETTER MODAL + HEART CONFETTI
-        function openLoveLetter() {
-            const letterModal = document.getElementById("letterModal");
-            if (letterModal) letterModal.style.display = "flex";
-
-            // Trigger Heart Confetti
-            if (typeof confetti === 'function') {
-                confetti({
-                    particleCount: 80,
-                    spread: 70,
-                    origin: { y: 0.6 },
-                    colors: ['#e36f88', '#f8dfe5', '#ed8da1', '#ffffff']
-                });
-            }
-        }
-
-        function closeLoveLetter() {
-            const letterModal = document.getElementById("letterModal");
-            if (letterModal) letterModal.style.display = "none";
-        }
-
-        // Run typewriter once DOM is completely loaded
-        document.addEventListener("DOMContentLoaded", function () {
-            typeWriter();
-        });
+        // Siguradong tatakbo kapag na-load ang screen
+        window.onload = function() {
+            runTypewriter();
+        };
     </script>
 
 </body>
-
 </html>
