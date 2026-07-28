@@ -3,16 +3,7 @@ const CORRECT_DATE = "2026-07-30";
 
 const form = document.getElementById("anniversaryForm");
 const dateInput = document.getElementById("anniversaryDate");
-
-// Error message element para sa maling date
-const errorMessage = document.createElement("p");
-errorMessage.style.color = "#d9534f";
-errorMessage.style.fontSize = "15px";
-errorMessage.style.marginTop = "14px";
-errorMessage.style.display = "none";
-errorMessage.style.fontWeight = "500";
-errorMessage.style.fontFamily = "'Poppins', sans-serif";
-form.appendChild(errorMessage);
+const errorMessage = document.getElementById("errorMessage");
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
