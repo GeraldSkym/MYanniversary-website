@@ -1,1 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Happy Anniversary, Love!</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="script.css">
+</head>
+
+<body>
+
+    <!-- Background decorations -->
+    <div class="flower flower-top-left">🌸</div>
+    <div class="flower flower-bottom-right">🌸</div>
+
+    <div class="petal petal-one">🌸</div>
+    <div class="petal petal-two">♡</div>
+    <div class="petal petal-three">✦</div>
+    <div class="petal petal-four">♡</div>
+
+    <!-- Main anniversary card -->
+    <main class="anniversary-card">
+
+        <div class="top-heart">♥</div>
+
+        <h1>
+            Happy 3rd<br>
+            <span>Anniversary, <strong>Love!</strong> ♥</span>
+        </h1>
+
+        <div class="heart-divider">
+            <span></span>
+            ♥
+            <span></span>
+        </div>
+
+        <p class="message">
+            Every love story is beautiful,<br>
+            but ours is my <b>favorite.</b> ♥
+        </p>
+
+        <div class="small-divider">
+            <span></span>
+            ♥
+            <span></span>
+        </div>
+
+        <!-- Date form -->
+        <form id="anniversaryForm">
+
+            <label for="anniversaryDate">
+                📅 Enter Our Anniversary Date ♥
+            </label>
+
+            <div class="date-box">
+
+                <input
+                    type="date"
+                    id="anniversaryDate"
+                    required
+                >
+
+            </div>
+
+            <button type="submit">
+                🔒 Unlock Our Story ♥
+            </button>
+
+        </form>
+
+        <p class="bottom-message">
+            ✦ This is just the beginning of our forever ✦
+        </p>
+
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+
+        const form = document.getElementById("anniversaryForm");
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const selectedDate =
+                document.getElementById("anniversaryDate").value;
+
+            /*
+            PALITAN ANG LINK SA IBABA.
+
+            Halimbawa:
+
+            window.location.href = "story.html";
+
+            Kung may ginawa kang story.html,
+            doon mapupunta ang user.
+            */
+
+            if (selectedDate === "") {
+
+                alert("Please enter our anniversary date ♥");
+
+            } else {
+
+                alert(
+                    "Our story is unlocked! ♥\n\n" +
+                    "Happy Anniversary, Love!"
+                );
+
+                // Palitan ito kapag may story page ka na:
+                // window.location.href = "story.html";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
