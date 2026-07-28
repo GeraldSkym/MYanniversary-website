@@ -11,116 +11,245 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fce4ec;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .anniversary-card {
+            background: #ffffff;
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            position: relative;
+        }
+
+        .top-heart {
+            color: #e36f88;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: #4a3b3e;
+            font-weight: 600;
+        }
+
+        h1 span {
+            display: block;
+            font-size: 20px;
+            font-weight: 400;
+            margin-top: 5px;
+        }
+
+        .message {
+            font-size: 14px;
+            color: #6d5257;
+            margin: 15px 0 25px 0;
+            line-height: 1.5;
+        }
+
+        /* 🔒 PASSCODE DISPLAY (DOTS / NUMBERS) */
+        .passcode-display {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid #e36f88;
+            background-color: transparent;
+            transition: all 0.2s ease;
+        }
+
+        .dot.active {
+            background-color: #e36f88;
+        }
+
+        .error-message {
+            color: #d9534f;
+            font-size: 13px;
+            margin-bottom: 15px;
+            min-height: 20px;
+            font-weight: 500;
+        }
+
+        /* 🔢 KEYPAD GRID */
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        .key-btn {
+            background: #fff0f3;
+            border: 1px solid #f8bbd0;
+            color: #4a3b3e;
+            font-size: 20px;
+            font-weight: 500;
+            padding: 14px 0;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+        }
+
+        .key-btn:active {
+            background: #e36f88;
+            color: white;
+            transform: scale(0.95);
+        }
+
+        .clear-btn {
+            font-size: 14px;
+            background: transparent;
+            border: none;
+            color: #888;
+        }
+
+        .forever {
+            font-size: 12px;
+            color: #888;
+            margin-top: 25px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- Floating petals -->
-    <div class="petal petal-1">❀</div>
-    <div class="petal petal-2">❀</div>
-    <div class="petal petal-3">❀</div>
-    <div class="petal petal-4">✦</div>
-    <div class="petal petal-5">✦</div>
-
-    <!-- Main white card -->
     <main class="anniversary-card">
-
         <div class="top-heart">♥</div>
 
         <h1>
             Happy 3rd
-            <span>
-                Anniversary,
-                <strong>Cristy Limbago!</strong>
-                <b>♥</b>
-            </span>
+            <span>Anniversary, <strong>Cristy Limbago!</strong> ♥</span>
         </h1>
 
-        <div class="short-divider">
-            <span></span>
-            <i>♥</i>
-            <span></span>
+        <p class="message">Enter our passcode to unlock our story ♥</p>
+
+        <!-- Passcode Dots (6 Digits) -->
+        <div class="passcode-display">
+            <div class="dot" id="dot-0"></div>
+            <div class="dot" id="dot-1"></div>
+            <div class="dot" id="dot-2"></div>
+            <div class="dot" id="dot-3"></div>
+            <div class="dot" id="dot-4"></div>
+            <div class="dot" id="dot-5"></div>
         </div>
 
-        <p class="message">
-            Every love story is beautiful,<br>
-            but ours is my <strong>favorite.</strong> <b>♥</b>
-        </p>
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage"></div>
 
-        <div class="long-divider">
-            <span></span>
-            <i>♥</i>
-            <span></span>
+        <!-- 0-9 Keypad -->
+        <div class="keypad">
+            <button class="key-btn" onclick="pressKey('1')">1</button>
+            <button class="key-btn" onclick="pressKey('2')">2</button>
+            <button class="key-btn" onclick="pressKey('3')">3</button>
+            <button class="key-btn" onclick="pressKey('4')">4</button>
+            <button class="key-btn" onclick="pressKey('5')">5</button>
+            <button class="key-btn" onclick="pressKey('6')">6</button>
+            <button class="key-btn" onclick="pressKey('7')">7</button>
+            <button class="key-btn" onclick="pressKey('8')">8</button>
+            <button class="key-btn" onclick="pressKey('9')">9</button>
+            <button class="key-btn clear-btn" onclick="clearPasscode()">Clear</button>
+            <button class="key-btn" onclick="pressKey('0')">0</button>
+            <button class="key-btn clear-btn" onclick="deleteLastDigit()">⌫</button>
         </div>
 
-        <form id="anniversaryForm" onsubmit="checkAnniversaryDate(event)">
-            <label for="anniversaryDate">
-                <span class="calendar">▣</span>
-                Enter Our Anniversary Date <b>♥</b>
-            </label>
-
-            <div class="input-wrapper">
-                <input type="date" id="anniversaryDate" required>
-            </div>
-
-            <!-- Error message container -->
-            <p id="errorMessage" style="color: #d9534f; font-size: 15px; margin-top: 10px; margin-bottom: 15px; display: none; font-weight: 500; font-family: 'Poppins', sans-serif;"></p>
-
-            <button type="submit" id="unlockBtn">
-                <span>🔒</span>
-                Unlock Our Story <b>♥</b>
-            </button>
-        </form>
-
-        <p class="forever">
-            <span>✦</span>
-            This is just the beginning of our forever
-            <span>✦</span>
-        </p>
-
+        <p class="forever">✦ This is just the beginning of our forever ✦</p>
     </main>
 
-    <!-- Inline Logic Fix -->
     <script>
-        function checkAnniversaryDate(event) {
-            // Pigilan ang pag-reload ng page
-            event.preventDefault();
+        const CORRECT_PASSCODE = "073026";
+        let enteredPasscode = "";
 
-            const CORRECT_DATE = "2026-07-30";
-            const dateInput = document.getElementById("anniversaryDate");
-            const errorMessage = document.getElementById("errorMessage");
-            const userSelectedDate = dateInput.value;
+        function pressKey(num) {
+            if (enteredPasscode.length < 6) {
+                enteredPasscode += num;
+                updateDots();
+                document.getElementById("errorMessage").textContent = "";
 
-            // 1. Kapag walang piniling date
-            if (!userSelectedDate) {
-                errorMessage.textContent = "❌ Please select our anniversary date first ♥";
-                errorMessage.style.display = "block";
-                return false;
+                // Kapag nakapindot na ng 6 digits, automatic nitong ichecheck
+                if (enteredPasscode.length === 6) {
+                    setTimeout(checkPasscode, 200);
+                }
             }
+        }
 
-            // 2. Kapag TAMA ang date
-            if (userSelectedDate === CORRECT_DATE) {
-                errorMessage.style.display = "none";
-                dateInput.style.borderColor = "#e7c6cd";
-                
-                // Smooth fade-out effect papunta sa story page
+        function updateDots() {
+            for (let i = 0; i < 6; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if (i < enteredPasscode.length) {
+                    dot.classList.add("active");
+                } else {
+                    dot.classList.remove("active");
+                }
+            }
+        }
+
+        function checkPasscode() {
+            const errorMsg = document.getElementById("errorMessage");
+
+            if (enteredPasscode === CORRECT_PASSCODE) {
+                errorMsg.style.color = "#4caf50";
+                errorMsg.textContent = "✔ Correct! Unlocking... ♥";
+
                 document.body.style.transition = "opacity 1s ease";
                 document.body.style.opacity = "0";
 
                 setTimeout(() => {
                     window.location.href = "story.html";
                 }, 1000);
-
             } else {
-                // 3. Kapag MALI ang date
-                errorMessage.textContent = "❌ Incorrect password, try again my love! ♥";
-                errorMessage.style.display = "block";
-                dateInput.style.borderColor = "#d9534f";
+                errorMsg.style.color = "#d9534f";
+                errorMsg.textContent = "❌ Incorrect passcode, try again my love! ♥";
+                
+                // I-reset pagkatapos magkamali
+                setTimeout(() => {
+                    clearPasscode();
+                }, 800);
             }
+        }
 
-            return false;
+        function clearPasscode() {
+            enteredPasscode = "";
+            updateDots();
+        }
+
+        function deleteLastDigit() {
+            if (enteredPasscode.length > 0) {
+                enteredPasscode = enteredPasscode.slice(0, -1);
+                updateDots();
+            }
         }
     </script>
 
