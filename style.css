@@ -1,1 +1,144 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#fff7f8,#ffecef);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    position:relative;
+}
+
+/* Floral decorations */
+.floral{
+    position:absolute;
+    width:280px;
+    height:280px;
+    background-size:contain;
+    background-repeat:no-repeat;
+    opacity:.18;
+}
+
+.floral-top-left{
+    top:0;
+    left:0;
+    background-image:url("https://i.imgur.com/Lg4Qm4H.png");
+}
+
+.floral-bottom-right{
+    bottom:0;
+    right:0;
+    transform:rotate(180deg);
+    background-image:url("https://i.imgur.com/Lg4Qm4H.png");
+}
+
+/* Center Card */
+.container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    padding:20px;
+}
+
+.card{
+    width:420px;
+    max-width:95%;
+    background:#ffffff;
+    border-radius:30px;
+    padding:45px 35px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.title{
+    font-size:42px;
+    color:#4b3a3a;
+    line-height:1.2;
+}
+
+.title span{
+    color:#ff6b98;
+}
+
+.subtitle{
+    margin-top:20px;
+    color:#666;
+    line-height:1.8;
+    font-size:18px;
+}
+
+.divider{
+    width:120px;
+    height:2px;
+    background:#ffd1dc;
+    margin:30px auto;
+}
+
+.input-label{
+    display:block;
+    margin-bottom:15px;
+    color:#d85b84;
+    font-weight:600;
+    font-size:20px;
+}
+
+input{
+    width:100%;
+    padding:16px;
+    border-radius:14px;
+    border:2px solid #ffd6df;
+    outline:none;
+    font-size:18px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.unlock-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:#f56b97;
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.unlock-btn:hover{
+    background:#ea4d82;
+    transform:translateY(-2px);
+}
+
+.footer-text{
+    margin-top:25px;
+    color:#777;
+    font-size:15px;
+}
+
+@media(max-width:600px){
+
+.title{
+    font-size:32px;
+}
+
+.card{
+    padding:35px 25px;
+}
+
+.floral{
+    width:180px;
+    height:180px;
+}
+
+}
