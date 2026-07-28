@@ -1,1 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Gallery - Cristy Limbago</title>
+    <!-- Cursive font para sa title -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fce4ec; /* Light Pink aesthetic background */
+            font-family: 'Georgia', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 30px 15px;
+            box-sizing: border-box;
+        }
 
+        .header-title {
+            font-family: 'Great Vibes', cursive;
+            color: #4a3b3e;
+            font-size: 52px;
+            margin: 10px 0 30px 0;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        .footer-title {
+            font-family: 'Great Vibes', cursive;
+            color: #4a3b3e;
+            font-size: 58px;
+            margin: 40px 0 20px 0;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        /* 📸 COLLAGE GRID STYLES */
+        .collage-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 900px;
+            padding: 10px;
+        }
+
+        .polaroid-card {
+            background: #fffefb; /* Cream/white polaroid frame */
+            padding: 12px 12px 25px 12px;
+            border-radius: 4px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        /* Pag-tilt ng polaroid photos para mukhang totoong photo collage */
+        .polaroid-card:nth-child(odd) {
+            transform: rotate(-2deg);
+        }
+        .polaroid-card:nth-child(even) {
+            transform: rotate(2deg);
+        }
+        .polaroid-card:nth-child(3n) {
+            transform: rotate(-1deg);
+        }
+
+        .polaroid-card:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        .polaroid-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .polaroid-card p {
+            margin: 12px 0 0 0;
+            font-size: 13px;
+            color: #5a4b4e;
+            font-family: 'Georgia', serif;
+        }
+
+        /* 🔍 LIGHTBOX MODAL STYLES */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 24px;
+            background-color: transparent;
+            color: #e36f88;
+            border: 2px solid #e36f88;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #e36f88;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="header-title">Happy 3rd</h1>
+
+    <!-- 📸 PHOTO COLLAGE (14 PHOTOS) -->
+    <div class="collage-container">
+        <div class="polaroid-card" onclick="openLightbox('images/photo1.jpg', 'Our First Date ♥')">
+            <img src="images/photo1.jpg" alt="Memory 1">
+            <p>Our First Date ♥</p>
+        </div>
+        <div class="polaroid-card" onclick="openLightbox('images/photo2.jpg', 'Unforgettable Smile 😊')">
+            <img src="images/photo2.jpg" alt="Memory 2">
+            <p>Unforgettable Smile 😊</p>
+        </div>
+        <div class="polaroid-card" onclick="openLightbox('images/photo3.jpg', 'Sweet Moments ✨')">
+            <img src="images/photo3.jpg" alt="Memory 3">
+            <p>Sweet Moments ✨</p>
+        </div>
+        <div class="polaroid-card" onclick="openLightbox('images/photo4.jpg', 'Random Cute Date 🍦')">
+            <img src="images/photo4.jpg" alt="Memory 4">
+            <p>Random Cute Date 🍦</p>
+        </div>
+        <div class="polaroid-card" onclick="openLightbox('images/photo5.jpg', 'Favorite Place 🌿')">
+            <img src="images/photo5.jpg" alt="Memory 5">
+            <p>Favorite Place 🌿</p>
+        </div>
+        <div class="polaroid-card" onclick="openLightbox('images/photo6.jpg', 'To More Adventures 🥂')">
+            <img src="images/photo6.jpg" alt="Memory 6">
+            <p>To More Adventures 🥂</p>
+        </div>
+        <div class="polaroid-card" onclick="openLightbox('images/photo7.jpg', 'Coffee Date ☕')">
+            <img src="images/photo7.jpg" alt="Memory 7">
+            <p>Coffee Date ☕</p>
+        </div>
+        <div class="polaroid-card" onclick="openLightbox('images/photo8.jpg', 'Holding Hands ♥')">
+            <img src="images/photo8.jpg" alt="Memory 8">
+            <p>Holding Hands ♥</p>
+        </div>
+        <div class="polaroid-card" onclick="openLightbox('images/photo9.jpg', 'Special Moments 🌙')">
+            <img src="images/photo9.jpg" alt="Memory 9">
+            <p>Special Moments 🌙</p>
+        </div>
+        <div class="polaroid-card" onclick="openLightbox('images/photo10.jpg', 'Silly & Happy 🤪')">
+            <img src="images/photo10.jpg" alt="Memory 10">
+            <p>Silly & Happy 🤪</p>
+        </div>
+        <div class="polaroid-card" onclick="openLightbox('images/photo11.jpg', 'Sunset View 🌅')">
+            <img src="images/photo11.jpg" alt="Memory 11">
+            <p>Sunset View 🌅</p>
+        </div>
+        <div class="polaroid-card" onclick="openLightbox('images/photo12.jpg', 'Celebration 🎉')">
+            <img src="images/photo12.jpg" alt="Memory 12">
+            <p>Celebration 🎉</p>
+        </div>
+        <div class="polaroid-card" onclick="openLightbox('images/photo13.jpg', 'My Favorite Person 💖')">
+            <img src="images/photo13.jpg" alt="Memory 13">
+            <p>My Favorite Person 💖</p>
+        </div>
+        <div class="polaroid-card" onclick="openLightbox('images/photo14.jpg', 'Forever & Always ♾️')">
+            <img src="images/photo14.jpg" alt="Memory 14">
+            <p>Forever & Always ♾️</p>
+        </div>
+    </div>
+
+    <h1 class="footer-title">Anniversary!</h1>
+
+    <a href="story.html" class="back-btn">⬅ Back to Story</a>
+
+    <!-- 🔍 LIGHTBOX MODAL -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="" alt="Full view">
+        <div id="lightbox-caption" style="color: white; font-size: 18px; margin-top: 15px; font-family: sans-serif;"></div>
+    </div>
+
+    <script>
+        function openLightbox(src, caption) {
+            document.getElementById("lightbox-img").src = src;
+            document.getElementById("lightbox-caption").textContent = caption;
+            document.getElementById("lightbox").style.display = "flex";
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
