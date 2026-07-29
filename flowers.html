@@ -136,8 +136,10 @@
             color: #4a3b3e;
             padding: 30px 20px;
             border-radius: 18px;
-            max-width: 380px;
+            max-width: 420px;
             width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
             text-align: center;
             position: relative;
             transform: translateY(30px) scale(0.9);
@@ -187,6 +189,18 @@
             color: #5d4037;
         }
 
+        .modal-message {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #5d4037;
+            text-align: left;
+            background: #fdf2f4;
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 3px solid #880e4f;
+            margin-bottom: 15px;
+        }
+
         /* 🎬 YOUTUBE EMBED CONTAINER */
         .youtube-container {
             position: relative;
@@ -195,7 +209,7 @@
             height: 0;
             overflow: hidden;
             border-radius: 12px;
-            margin-top: 15px;
+            margin-top: 10px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             background: #000;
         }
@@ -363,12 +377,19 @@
         </div>
     </div>
 
-    <!-- MODAL 3: A SONG FOR YOU (YouTube Player Embed + Direct Link) -->
+    <!-- MODAL 3: A SONG FOR YOU (Message + YouTube Player Embed) -->
     <div class="modal-overlay" id="modalSong" onclick="closeModal(event, 'modalSong')">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModalDirect('modalSong'); stopYtVideo();">&times;</span>
             <h3 class="modal-title">A Song For You</h3>
-            <p class="modal-text">"Tahanan" by El Manu — Dedicated just for you. ❤️</p>
+            
+            <!-- Custom Message Before Song -->
+            <div class="modal-message">
+                <p><strong>Tahanan</strong></p><br>
+                <p>I chose this song because it perfectly reflects how I feel about you. Every lyric reminds me of our journey together and the love we've built over the past three years.</p><br>
+                <p>To me, the word "Tahanan" is not a place—it's you. Thank you for being my comfort, my peace, and the person I always want to be.</p><br>
+                <p>Happy 3rd Anniversary, my love. Thank you for being my home. I love you always. ❤️</p>
+            </div>
             
             <!-- Embedded YouTube Player -->
             <div class="youtube-container">
@@ -380,7 +401,7 @@
                 </iframe>
             </div>
 
-            <!-- Direct YouTube Play Button to guarantee viewing if iframe blocks it -->
+            <!-- Direct Link Button -->
             <a href="https://youtu.be/PLrd-rILKtc?si=oLzpAVYnpXSJMGha" target="_blank" class="yt-fallback-btn">
                 ▶ Pindutin dito kung ayaw mag-play sa loob
             </a>
