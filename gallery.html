@@ -4,65 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Gallery - Cristy Limbago</title>
-    <!-- Cursive font para sa title -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts: Montserrat para sa minimalist feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             background-color: #fce4ec; /* Light Pink background */
-            font-family: 'Georgia', serif;
+            font-family: 'Poppins', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
             padding: 30px 15px;
-            box-sizing: border-box;
         }
 
         .header-title {
-            font-family: 'Great Vibes', cursive;
+            font-family: 'Montserrat', sans-serif;
             color: #4a3b3e;
-            font-size: 52px;
-            margin: 10px 0 10px 0;
+            font-size: 28px;
+            font-weight: 600;
+            margin: 15px 0 10px 0;
             text-align: center;
-            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
         /* 💌 MESSAGE BANNER */
         .message-sub {
             color: #6d5257;
-            font-size: 16px;
+            font-size: 14px;
             max-width: 600px;
             text-align: center;
             line-height: 1.6;
             margin-bottom: 30px;
-            font-style: italic;
+            letter-spacing: 0.5px;
         }
 
         .footer-title {
-            font-family: 'Great Vibes', cursive;
+            font-family: 'Montserrat', sans-serif;
             color: #4a3b3e;
-            font-size: 58px;
+            font-size: 24px;
+            font-weight: 600;
             margin: 40px 0 20px 0;
             text-align: center;
-            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
         /* 📸 COLLAGE GRID STYLES */
         .collage-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
             padding: 10px;
         }
 
         .polaroid-card {
             background: #fffefb;
-            padding: 12px;
-            border-radius: 4px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
@@ -70,10 +82,10 @@
 
         /* Pag-tilt ng polaroid photos */
         .polaroid-card:nth-child(odd) {
-            transform: rotate(-2deg);
+            transform: rotate(-1.5deg);
         }
         .polaroid-card:nth-child(even) {
-            transform: rotate(2deg);
+            transform: rotate(1.5deg);
         }
         .polaroid-card:nth-child(3n) {
             transform: rotate(-1deg);
@@ -81,15 +93,15 @@
 
         .polaroid-card:hover {
             transform: scale(1.05) rotate(0deg) !important;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
             z-index: 10;
         }
 
         .polaroid-card img {
             width: 100%;
-            height: 190px;
+            height: 180px;
             object-fit: cover;
-            border-radius: 2px;
+            border-radius: 3px;
             display: block;
         }
 
@@ -102,7 +114,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(0, 0, 0, 0.88);
             justify-content: center;
             align-items: center;
             flex-direction: column;
@@ -122,18 +134,21 @@
             color: white;
             font-size: 40px;
             cursor: pointer;
+            user-select: none;
         }
 
         .back-btn {
             margin-top: 20px;
-            padding: 10px 24px;
+            padding: 12px 28px;
             background-color: transparent;
             color: #e36f88;
             border: 2px solid #e36f88;
             border-radius: 25px;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
+            font-weight: 500;
             transition: 0.3s;
+            letter-spacing: 1px;
         }
 
         .back-btn:hover {
@@ -144,54 +159,19 @@
 </head>
 <body>
 
-    <h1 class="header-title">Happy 3rd</h1>
+    <h1 class="header-title">OUR MEMORIES ♥</h1>
 
-    <!-- 💌 ENGLISH MESSAGE BANNER -->
+    <!-- 💌 MESSAGE BANNER -->
     <div class="message-sub">
-        "Here are some of our precious memories together over the past three wonderful years. Every moment with you is a treasure I will hold close to my heart forever." ♥
+        "Here are some of our precious memories together over the past three wonderful years. Every moment with you is a treasure I will hold close to my heart forever."
     </div>
 
-    <!-- 📸 PHOTO COLLAGE (12 Photos Without Captions) -->
-    <div class="collage-container">
-        <div class="polaroid-card" onclick="openLightbox('image/photo1.jpg')">
-            <img src="image/photo1.jpg" alt="Memory 1">
-        </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo2.jpg')">
-            <img src="image/photo2.jpg" alt="Memory 2">
-        </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo3.jpg')">
-            <img src="image/photo3.jpg" alt="Memory 3">
-        </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo4.jpg')">
-            <img src="image/photo4.jpg" alt="Memory 4">
-        </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo5.jpg')">
-            <img src="image/photo5.jpg" alt="Memory 5">
-        </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo6.jpg')">
-            <img src="image/photo6.jpg" alt="Memory 6">
-        </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo7.jpg')">
-            <img src="image/photo7.jpg" alt="Memory 7">
-        </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo8.jpg')">
-            <img src="image/photo8.jpg" alt="Memory 8">
-        </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo9.jpg')">
-            <img src="image/photo9.jpg" alt="Memory 9">
-        </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo10.jpg')">
-            <img src="image/photo10.jpg" alt="Memory 10">
-        </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo11.jpg')">
-            <img src="image/photo11.jpg" alt="Memory 11">
-        </div>
-        <div class="polaroid-card" onclick="openLightbox('image/photo12.jpg')">
-            <img src="image/photo12.jpg" alt="Memory 12">
-        </div>
+    <!-- 📸 PHOTO COLLAGE (43 Photos Dynamic Grid) -->
+    <div class="collage-container" id="galleryGrid">
+        <!-- Kusang ilalagay ng JavaScript ang photo1.jpg hanggang photo43.jpg dito -->
     </div>
 
-    <h1 class="footer-title">Anniversary!</h1>
+    <h1 class="footer-title">HAPPY 3RD ANNIVERSARY!</h1>
 
     <a href="story.html" class="back-btn">⬅ Back to Story</a>
 
@@ -202,6 +182,28 @@
     </div>
 
     <script>
+        // Automatic na gagawa ng 43 polaroid cards
+        const galleryContainer = document.getElementById('galleryGrid');
+        const totalPhotos = 43;
+
+        for (let i = 1; i <= totalPhotos; i++) {
+            const card = document.createElement('div');
+            card.className = 'polaroid-card';
+            card.setAttribute('onclick', `openLightbox('image/photo${i}.jpg')`);
+
+            const img = document.createElement('img');
+            img.src = `image/photo${i}.jpg`;
+            img.alt = `Memory ${i}`;
+            
+            // Sakaling magka-error sa file extension (halimbawa .jpeg pala)
+            img.onerror = function() {
+                this.src = `image/photo${i}.jpeg`;
+            };
+
+            card.appendChild(img);
+            galleryContainer.appendChild(card);
+        }
+
         function openLightbox(src) {
             document.getElementById("lightbox-img").src = src;
             document.getElementById("lightbox").style.display = "flex";
