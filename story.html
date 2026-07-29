@@ -28,9 +28,45 @@
             
             /* Background Photo with Transparent Maroon Overlay */
             background: 
-                linear-gradient(rgba(55, 10, 18, 0.75), rgba(55, 10, 18, 0.75)), 
+                linear-gradient(rgba(45, 8, 15, 0.80), rgba(45, 8, 15, 0.80)), 
                 url('image/photo8.jpg.jpg') no-repeat center center fixed;
             background-size: cover;
+        }
+
+        /* Realistic Floral Background Overlays */
+        .flower-corner {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.65; /* Balanced blend for dark romantic vibe */
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
+        }
+
+        .flower-top-left {
+            top: -20px;
+            left: -20px;
+            width: 280px;
+            transform-origin: top left;
+            animation: swayLeft 6s ease-in-out infinite alternate;
+        }
+
+        .flower-bottom-right {
+            bottom: -20px;
+            right: -20px;
+            width: 300px;
+            transform-origin: bottom right;
+            animation: swayRight 7s ease-in-out infinite alternate;
+        }
+
+        /* Subtle swaying animation para buhay na buhay ang mga bulaklak */
+        @keyframes swayLeft {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(2deg) scale(1.03); }
+        }
+
+        @keyframes swayRight {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(-2deg) scale(1.03); }
         }
 
         /* Direct Container Without Card Background */
@@ -57,10 +93,10 @@
             50% { transform: scale(1.1); }
         }
 
-        /* Typewriter Text - Refined Smaller Style */
+        /* Typewriter Text */
         .typewriter-text {
             font-family: 'Playfair Display', serif;
-            font-size: 18px; /* Binabaan mula 22px papuntang 18px */
+            font-size: 18px;
             font-weight: 400;
             color: #ffffff;
             line-height: 1.75;
@@ -68,7 +104,7 @@
             white-space: pre-wrap;
             text-align: left;
             letter-spacing: 0.3px;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
         .cursor {
@@ -97,7 +133,7 @@
             border: none;
             border-radius: 30px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 13px; /* Ginawang mas maliit at refined din */
+            font-size: 13px;
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -113,9 +149,19 @@
             color: #370a12;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
         }
+
+        /* Adjustment para sa mobile screen */
+        @media (max-width: 600px) {
+            .flower-top-left { width: 180px; }
+            .flower-bottom-right { width: 200px; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Realistic Transparent Floral Overlays -->
+    <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=600&auto=format&fit=crop" class="flower-corner flower-top-left" alt="Floral Accent Top">
+    <img src="https://images.unsplash.com/photo-1508615070457-7baeba4003ab?q=80&w=600&auto=format&fit=crop" class="flower-corner flower-bottom-right" alt="Floral Accent Bottom">
 
     <!-- Main Container -->
     <div class="content-container">
