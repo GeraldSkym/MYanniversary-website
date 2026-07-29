@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Last Gift - For Cristy</title>
+
+    <!-- Google Fonts: Great Vibes (Romantic) + Cormorant Garamond (Elegant) + Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* 🌙 Scene: Medyo dumidilim nang bahagya ang background */
+            background: linear-gradient(135deg, #2b111e 0%, #1a0812 50%, #12030a 100%);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            color: #ffffff;
+        }
+
+        /* Ambient background canvas para sa petals, hearts, at confetti */
+        canvas#ambientCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 20px;
+            max-width: 650px;
+            width: 90%;
+        }
+
+        /* 🌙 Scene Text */
+        .intro-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 52px;
+            color: #f7cad0;
+            text-shadow: 0 0 15px rgba(247, 202, 208, 0.4);
+            margin-bottom: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .intro-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 22px;
+            color: #d8b4e2;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        /* 🎀 ELEGANT GIFT BOX STYLES */
+        .gift-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .gift-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .gift-box {
+            position: relative;
+            width: 140px;
+            height: 120px;
+            background: linear-gradient(135deg, #d81b60, #880e4f);
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(216, 27, 96, 0.4);
+            margin: 0 auto;
+        }
+
+        /* Ribbon Vertical */
+        .gift-box::before {
+            content: '';
+            position: absolute;
+            width: 26px;
+            height: 100%;
+            background: linear-gradient(135deg, #ffd700, #ffb300);
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Ribbon Horizontal */
+        .gift-box::after {
+            content: '';
+            position: absolute;
+            height: 26px;
+            width: 100%;
+            background: linear-gradient(135deg, #ffd700, #ffb300);
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Gift Lid (Takip) */
+        .gift-lid {
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            width: 160px;
+            height: 30px;
+            background: linear-gradient(135deg, #e91e63, #ad1457);
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.8s ease;
+        }
+
+        .gift-lid::before {
+            content: '';
+            position: absolute;
+            width: 26px;
+            height: 100%;
+            background: linear-gradient(135deg, #ffd700, #ffb300);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Ribbon Bow (Sintas sa ibabaw) */
+        .gift-bow {
+            position: absolute;
+            top: -42px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 25px;
+            z-index: 3;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+        }
+
+        .gift-bow::before, .gift-bow::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border: 4px solid #ffd700;
+            border-radius: 50% 50% 0 50%;
+            transform: rotate(45deg);
+        }
+
+        .gift-bow::after {
+            left: 20px;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+        }
+
+        .click-hint {
+            font-size: 13px;
+            color: #f8bbd0;
+            margin-top: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: pulse 1.8s infinite;
+        }
+
+        /* ❤️ FINAL MESSAGE CARD */
+        .final-card {
+            display: none;
+            opacity: 0;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(247, 202, 208, 0.2);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(247, 202, 208, 0.1);
+            margin-top: 20px;
+            transform: translateY(20px);
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+
+        .final-card.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .final-card h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 44px;
+            color: #ff80ab;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 128, 171, 0.3);
+        }
+
+        .final-card p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 21px;
+            line-height: 1.7;
+            color: #f3e5f5;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .final-card .love-signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 32px;
+            color: #ea80fc;
+        }
+
+        /* ↺ RELIVE OUR JOURNEY BUTTON */
+        .relive-btn {
+            display: none;
+            opacity: 0;
+            margin-top: 35px;
+            padding: 12px 30px;
+            background: transparent;
+            color: #f7cad0;
+            border: 2px solid #f7cad0;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(247, 202, 208, 0.2);
+        }
+
+        .relive-btn.show {
+            display: inline-block;
+            opacity: 1;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .relive-btn:hover {
+            background: #f7cad0;
+            color: #1a0812;
+            box-shadow: 0 0 25px rgba(247, 202, 208, 0.6);
+            transform: translateY(-3deg);
+        }
+
+        /* Keyframes Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Animation class para sa pagbukas ng regalo */
+        .opened .gift-lid {
+            transform: translateY(-80px) rotate(-20deg);
+            opacity: 0;
+        }
+
+        .opened .gift-bow {
+            transform: translateX(-50%) translateY(-100px) scale(0.5);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Canvas Background -->
+    <canvas id="ambientCanvas"></canvas>
+
+    <div class="container">
+        <!-- Header Text -->
+        <div id="introGroup">
+            <h1 class="intro-title">One Last Gift...</h1>
+            <p class="intro-subtitle">"Thank you for taking this journey with me."</p>
+        </div>
+
+        <!-- 🎀 Gift Box Container -->
+        <div class="gift-wrapper" id="giftWrapper" onclick="openGift()">
+            <div class="gift-bow" id="giftBow"></div>
+            <div class="gift-lid" id="giftLid"></div>
+            <div class="gift-box"></div>
+            <p class="click-hint" id="clickHint">✦ Click to Open ✦</p>
+        </div>
+
+        <!-- ❤️ Final Message Card -->
+        <div class="final-card" id="finalCard">
+            <h2>Happy 3rd Anniversary, My Love.</h2>
+            <p>
+                Three years, countless memories, and a lifetime more to go. No matter where life takes us, my favorite place will always be by your side.
+            </p>
+            <div class="love-signature">I love you, always. ♥</div>
+        </div>
+
+        <!-- ↺ Relive Button -->
+        <div>
+            <a href="index.html" class="relive-btn" id="reliveBtn">↺ Relive Our Journey</a>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('ambientCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        // Particle System
+        let particles = [];
+        let giftOpened = false;
+
+        // Visual states: 'petals_slow' -> 'burst' -> 'celebration'
+        let mode = 'petals_slow';
+
+        class Particle {
+            constructor(type) {
+                this.type = type; // 'petal', 'heart', 'confetti', 'sparkle'
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height - height;
+                this.size = Math.random() * 8 + 4;
+                this.speedY = Math.random() * 1.5 + 0.8;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.opacity = Math.random() * 0.7 + 0.3;
+                this.rotation = Math.random() * 360;
+                this.rotSpeed = Math.random() * 2 - 1;
+
+                if (this.type === 'confetti') {
+                    const colors = ['#f7cad0', '#ff80ab', '#ffd700', '#ea80fc', '#ffffff'];
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                    this.speedY = Math.random() * 3 + 2;
+                } else if (this.type === 'heart') {
+                    this.color = '#ff4081';
+                    this.size = Math.random() * 10 + 8;
+                } else if (this.type === 'petal') {
+                    this.color = '#ffb74d';
+                } else if (this.type === 'sparkle') {
+                    this.color = '#ffffff';
+                    this.size = Math.random() * 3 + 1;
+                    this.speedY = Math.random() * 0.5 + 0.2;
+                }
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += Math.sin(this.y * 0.01) + this.speedX;
+                this.rotation += this.rotSpeed;
+
+                // Unti-unting tumitigil ang mga lumang petals bago i-click ang gift
+                if (mode === 'petals_slow' && this.type === 'petal') {
+                    this.speedY *= 0.995; 
+                }
+
+                if (this.y > height + 20) {
+                    if (mode === 'celebration') {
+                        this.reset();
+                        this.y = -10;
+                    } else {
+                        this.opacity -= 0.01;
+                    }
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.globalAlpha = Math.max(0, this.opacity);
+
+                if (this.type === 'heart') {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(-this.size/4, -this.size/4, this.size/4, 0, Math.PI, true);
+                    ctx.arc(this.size/4, -this.size/4, this.size/4, 0, Math.PI, true);
+                    ctx.lineTo(0, this.size/2);
+                    ctx.closePath();
+                    ctx.fill();
+                } else if (this.type === 'confetti') {
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size/2);
+                } else if (this.type === 'sparkle') {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    // Petals
+                    ctx.fillStyle = '#f8bbd0';
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, this.size, this.size/2, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                ctx.restore();
+            }
+        }
+
+        // Initialize slow initial petals & sparkles
+        for (let i = 0; i < 30; i++) {
+            particles.push(new Particle('petal'));
+            particles.push(new Particle('sparkle'));
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // 🎀 CLICK EVENT FOR GIFT BOX
+        function openGift() {
+            if (giftOpened) return;
+            giftOpened = true;
+
+            const giftWrapper = document.getElementById('giftWrapper');
+            const clickHint = document.getElementById('clickHint');
+            const introGroup = document.getElementById('introGroup');
+            const finalCard = document.getElementById('finalCard');
+            const reliveBtn = document.getElementById('reliveBtn');
+
+            // 1. Trigger Gift opening visual animation
+            giftWrapper.classList.add('opened');
+            clickHint.style.display = 'none';
+
+            // 2. Mode transition: Burst of Confetti, Hearts & Sparkles
+            mode = 'celebration';
+            for (let i = 0; i < 60; i++) {
+                let pHeart = new Particle('heart');
+                pHeart.y = height / 2 + (Math.random() * 100 - 50);
+                pHeart.x = width / 2 + (Math.random() * 100 - 50);
+                pHeart.speedY = Math.random() * -5 - 2; // Explosive upward movement
+                particles.push(pHeart);
+
+                let pConfetti = new Particle('confetti');
+                pConfetti.y = height / 2;
+                pConfetti.x = width / 2;
+                pConfetti.speedY = Math.random() * -6 - 2;
+                particles.push(pConfetti);
+            }
+
+            // 3. Fade out Gift Box & Intro Text gently
+            setTimeout(() => {
+                giftWrapper.style.transition = 'opacity 1s ease, transform 1s ease';
+                giftWrapper.style.opacity = '0';
+                giftWrapper.style.transform = 'scale(0.8)';
+                
+                introGroup.style.transition = 'opacity 1s ease';
+                introGroup.style.opacity = '0';
+
+                setTimeout(() => {
+                    giftWrapper.style.display = 'none';
+                    introGroup.style.display = 'none';
+
+                    // 4. Fade in Final Message
+                    finalCard.classList.add('show');
+
+                    // 5. Pagkatapos ng ilang segundo, lalabas ang "↺ Relive Our Journey" button
+                    setTimeout(() => {
+                        reliveBtn.classList.add('show');
+                    }, 2500);
+
+                }, 1000);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
