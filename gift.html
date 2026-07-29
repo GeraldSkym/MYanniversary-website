@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Last Gift - For Cristy</title>
 
-    <!-- Google Fonts: Inter (Clean Minimalist) + Great Vibes (Elegant Cursive Accent) -->
+    <!-- Google Fonts: Inter + Great Vibes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -18,8 +18,8 @@
         }
 
         body {
-            /* Minimalist Dark Rose/Wine Aesthetic */
-            background: #180a11;
+            /* Soft Pink Aesthetic matching reference photo */
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #f48fb1 100%);
             min-height: 100vh;
             font-family: 'Inter', sans-serif;
             display: flex;
@@ -27,10 +27,10 @@
             align-items: center;
             overflow-x: hidden;
             position: relative;
-            color: #ffffff;
+            color: #5d4037;
         }
 
-        /* Ambient Canvas para sa Subtle Soft Particles */
+        /* Ambient Canvas */
         canvas#ambientCanvas {
             position: absolute;
             top: 0;
@@ -53,7 +53,7 @@
             align-items: center;
         }
 
-        /* Minimalist Header */
+        /* Header Styles */
         .intro-group {
             transition: opacity 0.8s ease, transform 0.8s ease;
             margin-bottom: 30px;
@@ -61,16 +61,17 @@
 
         .intro-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 48px;
-            color: #f7cad0;
+            font-size: 52px;
+            color: #8e244d;
             font-weight: 400;
             margin-bottom: 6px;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.6);
         }
 
         .intro-subtitle {
             font-size: 13px;
-            font-weight: 300;
-            color: #d8b4e2;
+            font-weight: 400;
+            color: #8c5b6b;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -87,10 +88,11 @@
             position: relative;
             width: 280px;
             height: 180px;
-            background: #2a121f;
+            /* Soft dusty blush pink envelope body */
+            background: #f3c2c7;
             border-radius: 8px;
-            border: 1px solid rgba(247, 202, 208, 0.2);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 15px 35px rgba(186, 104, 129, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -99,7 +101,7 @@
 
         .envelope-wrapper:hover .envelope {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(247, 202, 208, 0.15);
+            box-shadow: 0 20px 40px rgba(186, 104, 129, 0.4);
         }
 
         /* Envelope Top Flap */
@@ -111,7 +113,8 @@
             height: 0;
             border-left: 140px solid transparent;
             border-right: 140px solid transparent;
-            border-top: 100px solid #3b192c;
+            /* Inner/Flap color matches photo's soft rose tint */
+            border-top: 100px solid #eab0b7;
             transform-origin: top;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 4;
@@ -124,23 +127,23 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 140px solid #230d19;
-            border-right: 140px solid #230d19;
-            border-bottom: 95px solid #2e1423;
+            border-left: 140px solid #e2a8b0;
+            border-right: 140px solid #e2a8b0;
+            border-bottom: 95px solid #ebb4bc;
             border-radius: 0 0 8px 8px;
             z-index: 3;
         }
 
-        /* Wax Seal Accent */
+        /* Rose Gold / Dusty Pink Wax Seal */
         .wax-seal {
             position: absolute;
             top: 80px;
             left: 50%;
             transform: translateX(-50%);
-            width: 36px;
-            height: 36px;
-            background: #880e4f;
-            border: 1.5px solid #ff80ab;
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #d48b97 0%, #b86271 100%);
+            border: 2px solid #fce4ec;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -148,30 +151,31 @@
             color: #ffffff;
             font-size: 16px;
             z-index: 5;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(136, 14, 79, 0.25);
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
-        /* Letter Inside Envelope */
+        /* Letter Inside Envelope (Cream / Off-white card style) */
         .letter-preview {
             position: absolute;
             bottom: 10px;
             width: 240px;
             height: 140px;
-            background: #fffefb;
+            background: #fffcf8;
+            border: 1px solid #f3d8d6;
             border-radius: 6px;
             z-index: 2;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .click-hint {
             font-size: 11px;
-            color: #f7cad0;
+            color: #8e244d;
             margin-top: 20px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            font-weight: 300;
+            font-weight: 500;
             animation: pulse 2s infinite;
         }
 
@@ -195,12 +199,12 @@
         .final-card {
             display: none;
             opacity: 0;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(247, 202, 208, 0.15);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
             padding: 40px 30px;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(186, 104, 129, 0.25);
             margin-top: 10px;
             transform: translateY(20px);
             transition: opacity 1.2s ease, transform 1.2s ease;
@@ -215,8 +219,8 @@
 
         .final-card h2 {
             font-family: 'Great Vibes', cursive;
-            font-size: 42px;
-            color: #ff80ab;
+            font-size: 44px;
+            color: #8e244d;
             font-weight: 400;
             margin-bottom: 20px;
         }
@@ -224,16 +228,16 @@
         .final-card p {
             font-size: 14px;
             line-height: 1.8;
-            color: #e0d0cc;
-            font-weight: 300;
+            color: #6a4a53;
+            font-weight: 400;
             letter-spacing: 0.3px;
             margin-bottom: 25px;
         }
 
         .final-card .love-signature {
             font-family: 'Great Vibes', cursive;
-            font-size: 28px;
-            color: #f7cad0;
+            font-size: 32px;
+            color: #b86271;
         }
 
         /* ↺ RELIVE OUR JOURNEY BUTTON */
@@ -241,19 +245,20 @@
             display: none;
             opacity: 0;
             margin-top: 30px;
-            padding: 10px 26px;
-            background: transparent;
-            color: #f7cad0;
-            border: 1px solid rgba(247, 202, 208, 0.4);
+            padding: 12px 28px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #8e244d;
+            border: 1px solid #d48b97;
             border-radius: 25px;
             font-family: 'Inter', sans-serif;
             font-size: 12px;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(186, 104, 129, 0.15);
         }
 
         .relive-btn.show {
@@ -263,10 +268,10 @@
         }
 
         .relive-btn:hover {
-            background: #f7cad0;
-            color: #180a11;
-            border-color: #f7cad0;
-            box-shadow: 0 0 15px rgba(247, 202, 208, 0.3);
+            background: #8e244d;
+            color: #ffffff;
+            border-color: #8e244d;
+            box-shadow: 0 6px 20px rgba(142, 36, 77, 0.3);
         }
 
         /* Animations */
@@ -276,8 +281,8 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.9; }
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
     </style>
 </head>
@@ -322,7 +327,7 @@
     </div>
 
     <script>
-        // Minimal Background Particles
+        // Minimal Background Particles adjusted for light pink theme
         const canvas = document.getElementById('ambientCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -349,18 +354,18 @@
                 this.size = Math.random() * 3 + 1;
                 this.speedY = Math.random() * 0.8 + 0.3;
                 this.speedX = Math.random() * 0.4 - 0.2;
-                this.opacity = Math.random() * 0.5 + 0.2;
+                this.opacity = Math.random() * 0.6 + 0.2;
 
                 if (this.type === 'heart') {
                     this.size = Math.random() * 6 + 4;
-                    this.color = '#ff80ab';
+                    this.color = '#c25975';
                 } else if (this.type === 'confetti') {
                     this.size = Math.random() * 5 + 3;
-                    const colors = ['#f7cad0', '#ff80ab', '#ffffff'];
+                    const colors = ['#ffffff', '#f8bbd0', '#d48b97', '#8e244d'];
                     this.color = colors[Math.floor(Math.random() * colors.length)];
                     this.speedY = Math.random() * 2 + 1;
                 } else {
-                    this.color = '#f7cad0';
+                    this.color = '#ffffff';
                 }
             }
 
@@ -429,7 +434,7 @@
             clickHint.style.opacity = '0';
 
             // 2. Add soft celebration particles
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 35; i++) {
                 let pHeart = new Particle('heart');
                 pHeart.y = height / 2;
                 pHeart.x = width / 2 + (Math.random() * 100 - 50);
