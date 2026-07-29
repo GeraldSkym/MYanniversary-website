@@ -9,7 +9,6 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Montserrat para sa minimalist title, Poppins para sa iba -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
@@ -21,8 +20,8 @@
 
         body {
             background-color: #fce4ec;
-            /* 🌸 Bumabasa sa Parehong Lowercase (.jpg) at Uppercase (.JPG) File Extensions */
-            background-image: url('flower-bg.JPG'), url('flower-bg.jpg'), url('flower-bg.JPEG'), url('flower-bg.jpeg');
+            /* 🌸 Online Image URL para sigurado at 100% na lalabas ang background */
+            background-image: url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -36,7 +35,7 @@
         }
 
         .anniversary-card {
-            background: rgba(255, 255, 255, 0.90); /* Transparent white para litaw ang background */
+            background: rgba(255, 255, 255, 0.90);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             padding: 35px 25px;
@@ -54,7 +53,6 @@
             margin-bottom: 12px;
         }
 
-        /* ✨ MINIMALIST & ALL CAPS HEADER */
         h1 {
             font-family: 'Montserrat', sans-serif;
             font-size: 20px;
@@ -74,7 +72,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* 🔒 PASSCODE DISPLAY (DOTS) */
         .passcode-display {
             display: flex;
             justify-content: center;
@@ -103,7 +100,6 @@
             font-weight: 500;
         }
 
-        /* 🔢 KEYPAD GRID */
         .keypad {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -159,12 +155,10 @@
     <main class="anniversary-card">
         <div class="top-heart">♥</div>
 
-        <!-- 📌 MINIMALIST ALL CAPS HEADER -->
         <h1>Happy 3rd anniversary my lovee!! cristy limbago</h1>
 
         <p class="message">Enter our anniversary date to unlock our story</p>
 
-        <!-- Passcode Dots (6 Digits para sa 073026) -->
         <div class="passcode-display">
             <div class="dot" id="dot-0"></div>
             <div class="dot" id="dot-1"></div>
@@ -174,10 +168,8 @@
             <div class="dot" id="dot-5"></div>
         </div>
 
-        <!-- Error Message -->
         <div class="error-message" id="errorMessage"></div>
 
-        <!-- 0-9 Keypad -->
         <div class="keypad">
             <button class="key-btn" onclick="pressKey('1')">1</button>
             <button class="key-btn" onclick="pressKey('2')">2</button>
