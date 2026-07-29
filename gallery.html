@@ -168,7 +168,7 @@
 
     <!-- 📸 PHOTO COLLAGE (43 Photos Dynamic Grid) -->
     <div class="collage-container" id="galleryGrid">
-        <!-- Kusang ilalagay ng JavaScript ang photo1.jpg hanggang photo43.jpg dito -->
+        <!-- Kusang ilalagay ng JavaScript ang photo1 hanggang photo43 dito -->
     </div>
 
     <h1 class="footer-title">HAPPY 3RD ANNIVERSARY!</h1>
@@ -182,22 +182,34 @@
     </div>
 
     <script>
-        // Automatic na gagawa ng 43 polaroid cards
         const galleryContainer = document.getElementById('galleryGrid');
         const totalPhotos = 43;
 
         for (let i = 1; i <= totalPhotos; i++) {
             const card = document.createElement('div');
             card.className = 'polaroid-card';
-            card.setAttribute('onclick', `openLightbox('image/photo${i}.jpg')`);
 
             const img = document.createElement('img');
-            img.src = `image/photo${i}.jpg`;
-            img.alt = `Memory ${i}`;
             
-            // Sakaling magka-error sa file extension (halimbawa .jpeg pala)
+            // Subukan muna ang .jpg.jpeg format
+            const initialSrc = `image/photo${i}.jpg.jpeg`;
+            img.src = initialSrc;
+            img.alt = `Memory ${i}`;
+
+            // Kapag kinlick, bubuksan ang kasalukuyang active image source sa Lightbox
+            card.onclick = function() {
+                openLightbox(img.src);
+            };
+
+            // Kapag nag-error, i-try ang iba pang posibleng extensions
             img.onerror = function() {
-                this.src = `image/photo${i}.jpeg`;
+                if (this.src.endsWith('.jpg.jpeg')) {
+                    this.src = `image/photo${i}.jpg`;
+                } else if (this.src.endsWith('.jpg')) {
+                    this.src = `image/photo${i}.jpeg`;
+                } else if (this.src.endsWith('.jpeg')) {
+                    this.src = `image/photo${i}.PNG`;
+                }
             };
 
             card.appendChild(img);
