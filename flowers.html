@@ -115,7 +115,7 @@
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.82);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(6px);
             display: flex;
             align-items: center;
@@ -134,9 +134,9 @@
         .modal-content {
             background: #fffefb;
             color: #4a3b3e;
-            padding: 30px 25px;
+            padding: 30px 20px;
             border-radius: 18px;
-            max-width: 360px;
+            max-width: 380px;
             width: 90%;
             text-align: center;
             position: relative;
@@ -158,6 +158,7 @@
             color: #880e4f;
             cursor: pointer;
             transition: transform 0.3s ease;
+            z-index: 10;
         }
 
         .close-btn:hover {
@@ -186,46 +187,26 @@
             color: #5d4037;
         }
 
-        /* 🎵 MUSIC PLAYER CARD STYLES */
-        .player-card {
-            background: #fce4ec;
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 10px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
+        /* 🎬 YOUTUBE EMBED CONTAINER */
+        .youtube-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-top: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            background: #000;
         }
 
-        .song-title {
-            font-weight: 600;
-            color: #880e4f;
-            font-size: 16px;
-        }
-
-        .song-artist {
-            font-size: 12px;
-            color: #ad1457;
-            margin-bottom: 15px;
-        }
-
-        .play-btn {
-            background-color: #d81b60;
-            color: white;
-            border: none;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 15px rgba(216, 27, 96, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .play-btn:hover {
-            transform: scale(1.08);
-            background-color: #c2185b;
+        .youtube-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* 🔘 CONTINUE BUTTON */
@@ -267,11 +248,6 @@
 </head>
 <body>
 
-    <!-- 🎵 SONG AUDIO FILE -->
-    <audio id="dedicatedSong" loop>
-        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-view-1033.mp3" type="audio/mp3">
-    </audio>
-
     <!-- 📌 HEADER -->
     <div class="title-wrapper">
         <h1 class="title">Happy Anniversary, My Love!</h1>
@@ -288,7 +264,6 @@
                 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M30 65 L50 95 L70 65 Z" fill="#e1bee7" stroke="#ce93d8" stroke-width="2"/>
                     <path d="M25 50 Q50 60 75 50 L65 70 Q50 80 35 70 Z" fill="#f8bbd0"/>
-                    <!-- Flowers -->
                     <circle cx="35" cy="40" r="12" fill="#ff80ab"/>
                     <circle cx="35" cy="40" r="5" fill="#ffd54f"/>
                     <circle cx="65" cy="40" r="12" fill="#ff80ab"/>
@@ -310,7 +285,6 @@
                     <path d="M15 30 L50 58 L85 30" stroke="#fbc02d" stroke-width="2.5" fill="#fff59d"/>
                     <path d="M15 80 L40 52" stroke="#fbc02d" stroke-width="2"/>
                     <path d="M85 80 L60 52" stroke="#fbc02d" stroke-width="2"/>
-                    <!-- Heart Seal -->
                     <path d="M50 56 C45 50 38 55 50 64 C62 55 55 50 50 56 Z" fill="#e91e63"/>
                 </svg>
             </div>
@@ -322,21 +296,16 @@
             <div class="option-icon-wrap">
                 <!-- SVG Bear Illustration -->
                 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Ears -->
                     <circle cx="28" cy="28" r="10" fill="#d7ccc8"/>
                     <circle cx="28" cy="28" r="5" fill="#bcaaa4"/>
                     <circle cx="72" cy="28" r="10" fill="#d7ccc8"/>
                     <circle cx="72" cy="28" r="5" fill="#bcaaa4"/>
-                    <!-- Head & Body -->
                     <circle cx="50" cy="65" r="24" fill="#d7ccc8"/>
                     <circle cx="50" cy="40" r="20" fill="#d7ccc8"/>
-                    <!-- Snout -->
                     <ellipse cx="50" cy="44" rx="8" ry="6" fill="#efebe9"/>
                     <ellipse cx="50" cy="42" rx="3" ry="2" fill="#4e342e"/>
-                    <!-- Eyes -->
                     <circle cx="42" cy="36" r="2.5" fill="#3e2723"/>
                     <circle cx="58" cy="36" r="2.5" fill="#3e2723"/>
-                    <!-- Bowtie -->
                     <path d="M44 54 L56 60 L56 48 Z" fill="#e53935"/>
                     <path d="M56 54 L44 60 L44 48 Z" fill="#e53935"/>
                     <circle cx="50" cy="54" r="2.5" fill="#c62828"/>
@@ -376,17 +345,21 @@
         </div>
     </div>
 
-    <!-- MODAL 3: A SONG FOR YOU (Interactive Player) -->
+    <!-- MODAL 3: A SONG FOR YOU (YouTube Player Embed) -->
     <div class="modal-overlay" id="modalSong" onclick="closeModal(event, 'modalSong')">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModalDirect('modalSong'); stopSong();">&times;</span>
+            <span class="close-btn" onclick="closeModalDirect('modalSong'); stopYtVideo();">&times;</span>
             <h3 class="modal-title">A Song For You</h3>
-            <p class="modal-text" style="margin-bottom: 15px;">I picked this song just for you. Press play and enjoy our special track! 🎵</p>
+            <p class="modal-text">"Tahanan" — Dedicated just for you. ❤️</p>
             
-            <div class="player-card">
-                <div class="song-title">Our Special Melody</div>
-                <div class="song-artist">Dedicated to Cristy ❤️</div>
-                <button class="play-btn" id="playToggleBtn" onclick="toggleSong()">▶</button>
+            <!-- Embedded YouTube Player for Tahanan -->
+            <div class="youtube-container">
+                <iframe id="ytPlayer" 
+                        src="https://www.youtube.com/embed/3aG11eQ3Otw?enablejsapi=1" 
+                        title="Tahanan" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
             </div>
         </div>
     </div>
@@ -416,51 +389,31 @@
         // 3. Modal Control Logic
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
-            if (modalId === 'modalSong') {
-                playSong();
-            }
         }
 
         function closeModalDirect(modalId) {
             document.getElementById(modalId).classList.remove('active');
+            if (modalId === 'modalSong') {
+                stopYtVideo();
+            }
         }
 
         function closeModal(event, modalId) {
             if (event.target.id === modalId) {
                 document.getElementById(modalId).classList.remove('active');
                 if (modalId === 'modalSong') {
-                    stopSong();
+                    stopYtVideo();
                 }
             }
         }
 
-        // 4. Song Player Controls
-        const song = document.getElementById('dedicatedSong');
-        const playBtn = document.getElementById('playToggleBtn');
-
-        function toggleSong() {
-            if (song.paused) {
-                playSong();
-            } else {
-                pauseSong();
+        // 4. Function para tumigil ang YouTube audio kapag isinarat/isinara ang modal
+        function stopYtVideo() {
+            const iframe = document.getElementById('ytPlayer');
+            if (iframe) {
+                const iframeSrc = iframe.src;
+                iframe.src = iframeSrc; // Reset src to pause playback
             }
-        }
-
-        function playSong() {
-            song.play().then(() => {
-                playBtn.innerText = '❚❚';
-            }).catch(() => {});
-        }
-
-        function pauseSong() {
-            song.pause();
-            playBtn.innerText = '▶';
-        }
-
-        function stopSong() {
-            song.pause();
-            song.currentTime = 0;
-            playBtn.innerText = '▶';
         }
     </script>
 
