@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Gallery - Cristy Limbago</title>
     
-    <!-- Google Fonts: Montserrat para sa minimalist feel -->
+    <!-- Google Fonts: Great Vibes (Romantic) + Cormorant Garamond (Elegant Minimalist) + Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Great+Vibes&family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -28,27 +28,30 @@
             padding: 30px 15px;
         }
 
+        /* 🌸 Romantic & Elegant Header Title */
         .header-title {
-            font-family: 'Montserrat', sans-serif;
-            color: #4a3b3e;
-            font-size: 28px;
-            font-weight: 600;
-            margin: 15px 0 10px 0;
+            font-family: 'Great Vibes', cursive;
+            color: #4a0d18;
+            font-size: 48px;
+            font-weight: 400;
+            margin: 10px 0 5px 0;
             text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
         }
 
-        /* 💌 MESSAGE BANNER */
+        /* 💌 Elegant Minimalist Message Banner */
         .message-sub {
-            color: #5c4348;
-            font-size: 14px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: #5c1221;
+            font-size: 19px;
+            font-weight: 600;
             max-width: 600px;
             text-align: center;
-            line-height: 1.6;
+            line-height: 1.5;
             margin-bottom: 30px;
             letter-spacing: 0.5px;
-            font-weight: 500;
         }
 
         .footer-title {
@@ -191,16 +194,16 @@
 </head>
 <body>
 
-    <h1 class="header-title">OUR MEMORIES ♥</h1>
+    <h1 class="header-title">Our Memories ♥</h1>
 
     <!-- 💌 MESSAGE BANNER -->
     <div class="message-sub">
         "Here are some of our precious memories together over the past three wonderful years. Every moment with you is a treasure I will hold close to my heart forever."
     </div>
 
-    <!-- 📸 PHOTO COLLAGE (43 Photos Dynamic Grid) -->
+    <!-- 📸 PHOTO COLLAGE (Skipping photo 8) -->
     <div class="collage-container" id="galleryGrid">
-        <!-- Kusang ilalagay ng JavaScript ang photo1 hanggang photo43 dito -->
+        <!-- Kusang ilalagay ng JavaScript ang mga litrato maliban sa photo8 -->
     </div>
 
     <h1 class="footer-title">HAPPY 3RD ANNIVERSARY!</h1>
@@ -222,6 +225,9 @@
         const totalPhotos = 43;
 
         for (let i = 1; i <= totalPhotos; i++) {
+            // 🚫 Nilalaktawan ang Memory 8 (photo8)
+            if (i === 8) continue;
+
             const card = document.createElement('div');
             card.className = 'polaroid-card';
 
