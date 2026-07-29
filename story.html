@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Story - Cristy Limbago</title>
+    <!-- Google Fonts: Playfair Display & Cormorant Garamond -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
     <style>
         body {
             background-color: #f8dfe5;
-            font-family: 'Georgia', serif;
+            font-family: 'Cormorant Garamond', serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,26 +24,29 @@
 
         .card {
             background: #ffffff;
-            padding: 40px 30px;
+            padding: 45px 35px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             max-width: 600px;
             width: 100%;
             text-align: center;
         }
 
         .typewriter-text {
-            font-size: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 500;
             color: #4a3b3e;
             line-height: 1.8;
             min-height: 100px;
             white-space: pre-wrap;
             text-align: left;
+            letter-spacing: 0.3px;
         }
 
         .cursor {
             display: inline-block;
-            width: 3px;
+            width: 2px;
             background-color: #e36f88;
             animation: blink 0.7s infinite;
         }
@@ -50,36 +58,81 @@
 
         .btn {
             display: none; /* Nakatago sa simula */
-            margin-top: 25px;
-            padding: 12px 28px;
+            margin-top: 30px;
+            padding: 14px 32px;
             background-color: #e36f88;
             color: white;
             border: none;
-            border-radius: 25px;
-            font-size: 18px;
+            border-radius: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            letter-spacing: 1px;
             cursor: pointer;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(227, 111, 136, 0.3);
         }
 
         .btn:hover {
             background-color: #d15671;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(227, 111, 136, 0.4);
         }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <div style="font-size: 40px; color: #e36f88;">♥</div>
+        <div style="font-size: 36px; color: #e36f88; margin-bottom: 10px;">♥</div>
         
         <div class="typewriter-text"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
 
-        <!-- Inayos ang Link Redirection -->
+        <!-- Link Redirection -->
         <a id="openBtn" href="gallery.html" class="btn">Open Our Memories ✨</a>
     </div>
 
     <script>
-        const textToType = "Hi Cristy, my loveee...\n\nEvery single day with you is a gift, but today is extra special. Happy 3rd Anniversary! Thank you for 3 amazing years of love, laughter, and happiness. Here is a little glimpse of our memories... ♥";
+        const textToType = `Hi, Cristy... Mi amor. ♡
+
+If you're reading this, then you've already found the little surprise I've been keeping just for you.
+
+Before anything else...
+Happy 3rd Anniversary, my love. ♥️
+
+Three years ago, we started writing a story that neither of us knew would become one of the most beautiful chapters of our lives.
+
+Since then, every smile, every late-night conversation, every adventure, every challenge, every hug, and every "I love you" became pieces of a love that continues to grow stronger with time.
+
+People often say that time flies...
+But somehow, with you, every moment is worth remembering.
+
+Every single day you remind me how lucky I am to have someone as kind, beautiful, caring, and genuine as you. Thank you for loving me, believing in me, staying beside me, and choosing me through every season.
+
+This website isn't just a collection of pictures.
+It's a collection of little moments...
+moments that made us laugh,
+made us stronger,
+and slowly turned "you and me"
+into us.
+
+Some memories are loud.
+Some are quiet.
+But every single one of them has one thing in common...
+You.
+
+So before we continue creating new memories together, I'd like you to take a little walk through the ones that brought us here.
+
+Take your time.
+Smile.
+Laugh.
+Maybe even cry a little.
+
+Because every photo you're about to see holds a heartbeat of our story.
+
+And this...
+is only the beginning.
+
+Welcome to our little world. ♡`;
         
         let charIndex = 0;
 
@@ -90,16 +143,14 @@
             if (charIndex < textToType.length) {
                 container.textContent += textToType.charAt(charIndex);
                 charIndex++;
-                setTimeout(runTypewriter, 40); // Mas mabilis nang kaunti para smooth
+                setTimeout(runTypewriter, 30);
             } else {
-                // Siguradong lilitaw ang button kapag matapos mag-type
                 if (btn) {
                     btn.style.display = "inline-block";
                 }
             }
         }
 
-        // Tatakbo kaagad pagka-load ng page
         window.addEventListener('DOMContentLoaded', () => {
             runTypewriter();
         });
