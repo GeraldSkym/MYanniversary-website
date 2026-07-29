@@ -20,8 +20,13 @@
 
         body {
             background-color: #fce4ec;
-            /* 🌸 PATH SA LOOB NG "image" FOLDER (may fallback para sa .jpg at .JPG) */
-            background-image: url('image/flower-bg.jpg'), url('image/flower-bg.JPG'), url('image/flower-bg.jpeg'), url('image/flower-bg.png');
+            /* 🌸 Soft white overlay (0.20 opacity) para malinaw ang kulay pero hindi masyadong matapang */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.20)),
+                url('image/flower-bg.png'),
+                url('image/flower-bg.jpg'),
+                url('image/flower-bg.JPG'),
+                url('image/flower-bg.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -35,9 +40,9 @@
         }
 
         .anniversary-card {
-            background: rgba(255, 255, 255, 0.90);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             padding: 35px 25px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
@@ -233,7 +238,7 @@
             } else {
                 errorMsg.style.color = "#d9534f";
                 errorMsg.textContent = "❌ Incorrect passcode, try again my love! ♥";
-                
+
                 setTimeout(() => {
                     clearPasscode();
                 }, 800);
