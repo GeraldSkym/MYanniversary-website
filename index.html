@@ -20,10 +20,12 @@
         }
 
         body {
-            background-color: #fce4ec;
-            /* 🌸 SVG Floral Pattern Background (totoong hugis-bulaklak) */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%23f48fb1' fill-opacity='0.35'%3E%3Ccircle cx='30' cy='30' r='3' fill='%23f8bbd0'/%3E%3Ccircle cx='30' cy='23' r='4'/%3E%3Ccircle cx='30' cy='37' r='4'/%3E%3Ccircle cx='23' cy='30' r='4'/%3E%3Ccircle cx='37' cy='30' r='4'/%3E%3Ccircle cx='25' cy='25' r='3.5'/%3E%3Ccircle cx='35' cy='35' r='3.5'/%3E%3Ccircle cx='25' cy='35' r='3.5'/%3E%3Ccircle cx='35' cy='25' r='3.5'/%3E%3C/g%3E%3C/svg%3E");
-            background-size: 60px 60px;
+            /* 🌸 GAMIT ANG INILAGAY MONG BULAKLAK NA BACKGROUND IMAGE */
+            background-image: url('flower-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
@@ -33,10 +35,11 @@
         }
 
         .anniversary-card {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.92); /* Soft white card para maging malinaw ang text */
+            backdrop-filter: blur(4px); /* Subtle blur effect para sa aesthetic look */
             padding: 35px 25px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
             width: 100%;
             max-width: 380px;
             text-align: center;
