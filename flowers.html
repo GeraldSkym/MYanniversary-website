@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Gift - Cristy Limbago</title>
+    <title>Happy Anniversary - Cristy Limbago</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -34,24 +34,40 @@
         }
 
         /* ✍️ CURSIVE HEADER TITLE */
+        .title-wrapper {
+            margin-bottom: 40px;
+            z-index: 2;
+        }
+
         .title {
             font-family: 'Great Vibes', cursive;
             color: #ffffff;
-            font-size: 70px;
+            font-size: 68px;
             font-weight: 400;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            margin-bottom: 50px;
-            letter-spacing: 2px;
+            text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6);
+            letter-spacing: 1px;
+            line-height: 1.1;
         }
 
-        /* 🗂️ 3 OPTIONS CONTAINER */
+        .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            color: #f3d0d7;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* 🗂️ 3 CLICKABLE OPTIONS CONTAINER */
         .options-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 45px;
             justify-content: center;
             align-items: flex-end;
             z-index: 5;
+            margin-bottom: 20px;
         }
 
         .option-box {
@@ -61,40 +77,46 @@
             cursor: pointer;
             transition: all 0.4s ease;
             animation: floatSway 4s ease-in-out infinite alternate;
+            user-select: none;
         }
 
-        /* Iba-ibang delay para hindi sabay-sabay gumalaw */
-        .option-box:nth-child(2) { animation-delay: 1s; }
-        .option-box:nth-child(3) { animation-delay: 2s; }
+        .option-box:nth-child(2) { animation-delay: 1.2s; }
+        .option-box:nth-child(3) { animation-delay: 2.4s; }
 
         .option-box:hover {
             transform: scale(1.15) translateY(-10px);
             filter: drop-shadow(0 15px 25px rgba(255, 182, 193, 0.4));
         }
 
-        .option-img {
-            width: 130px;
-            height: 130px;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
-            pointer-events: none; /* Prevents dragging */
+        .option-icon-wrap {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+        }
+
+        .option-icon-wrap svg {
+            width: 100%;
+            height: 100%;
         }
 
         .option-label {
             font-family: 'Montserrat', sans-serif;
             margin-top: 15px;
             font-size: 15px;
-            font-weight: 500;
+            font-weight: 400;
             color: #fce4ec;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
         }
 
         /* 🖼️ POPUP MODAL STYLES */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.82);
+            backdrop-filter: blur(6px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -112,15 +134,15 @@
         .modal-content {
             background: #fffefb;
             color: #4a3b3e;
-            padding: 30px;
-            border-radius: 15px;
-            max-width: 350px;
+            padding: 30px 25px;
+            border-radius: 18px;
+            max-width: 360px;
             width: 90%;
             text-align: center;
             position: relative;
             transform: translateY(30px) scale(0.9);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
         }
 
         .modal-overlay.active .modal-content {
@@ -129,11 +151,11 @@
 
         .close-btn {
             position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #d81b60;
+            top: 12px;
+            right: 18px;
+            font-size: 26px;
+            font-weight: 300;
+            color: #880e4f;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
@@ -142,40 +164,82 @@
             transform: rotate(90deg) scale(1.2);
         }
 
-        /* Modal Specific Contents */
+        .modal-title {
+            color: #880e4f;
+            font-family: 'Great Vibes', cursive;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
         .modal-photo img {
             width: 100%;
             height: 250px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 12px;
             margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
         }
 
         .modal-text {
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.6;
+            color: #5d4037;
+        }
+
+        /* 🎵 MUSIC PLAYER CARD STYLES */
+        .player-card {
+            background: #fce4ec;
+            border-radius: 15px;
+            padding: 20px;
             margin-top: 10px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
         }
 
-        /* ANIMATIONS */
-        @keyframes floatSway {
-            0% { transform: translateY(0) rotate(-2deg); }
-            100% { transform: translateY(-8px) rotate(2deg); }
+        .song-title {
+            font-weight: 600;
+            color: #880e4f;
+            font-size: 16px;
         }
 
-        /* 🔘 CONTINUE BUTTON (Hidden initially) */
+        .song-artist {
+            font-size: 12px;
+            color: #ad1457;
+            margin-bottom: 15px;
+        }
+
+        .play-btn {
+            background-color: #d81b60;
+            color: white;
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 15px rgba(216, 27, 96, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.08);
+            background-color: #c2185b;
+        }
+
+        /* 🔘 CONTINUE BUTTON */
         .next-btn {
             display: inline-block;
-            margin-top: 50px;
-            padding: 13px 32px;
+            margin-top: 40px;
+            padding: 13px 36px;
             background-color: transparent;
             color: white;
-            border: 2px solid white;
+            border: 1.5px solid rgba(255, 255, 255, 0.8);
             border-radius: 30px;
             text-decoration: none;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 1px;
             transition: all 0.4s ease;
             z-index: 10;
@@ -185,46 +249,99 @@
             background-color: white;
             color: #4a1923;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255,255,255,0.2);
+            box-shadow: 0 10px 20px rgba(255,255,255,0.25);
+        }
+
+        /* ANIMATIONS */
+        @keyframes floatSway {
+            0% { transform: translateY(0) rotate(-2deg); }
+            100% { transform: translateY(-8px) rotate(2deg); }
         }
 
         @media (max-width: 600px) {
-            .option-img { width: 100px; height: 100px; }
-            .title { font-size: 55px; }
-            .options-container { gap: 20px; }
+            .option-icon-wrap { width: 95px; height: 95px; }
+            .title { font-size: 50px; }
+            .options-container { gap: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 🎵 BACKGROUND MUSIC -->
-    <audio id="bgMusic" loop>
+    <!-- 🎵 SONG AUDIO FILE -->
+    <audio id="dedicatedSong" loop>
         <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-view-1033.mp3" type="audio/mp3">
     </audio>
 
-    <h1 class="title">Happy Monthsary</h1>
+    <!-- 📌 HEADER -->
+    <div class="title-wrapper">
+        <h1 class="title">Happy Anniversary, My Love!</h1>
+        <p class="subtitle">Another Year Down, A Lifetime to Go</p>
+    </div>
 
     <!-- 🗂️ 3 CLICKABLE OPTIONS -->
     <div class="options-container">
         
         <!-- Option 1: Flowers -->
         <div class="option-box" onclick="openModal('modalFlowers')">
-            <!-- Palitan ang src kung may sarili ka nang bouquet.png sa image folder -->
-            <img src="https://cdn3d.iconscout.com/3d/premium/thumb/flower-bouquet-6869408-5626296.png" alt="Bouquet" class="option-img">
+            <div class="option-icon-wrap">
+                <!-- SVG Bouquet Illustration -->
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30 65 L50 95 L70 65 Z" fill="#e1bee7" stroke="#ce93d8" stroke-width="2"/>
+                    <path d="M25 50 Q50 60 75 50 L65 70 Q50 80 35 70 Z" fill="#f8bbd0"/>
+                    <!-- Flowers -->
+                    <circle cx="35" cy="40" r="12" fill="#ff80ab"/>
+                    <circle cx="35" cy="40" r="5" fill="#ffd54f"/>
+                    <circle cx="65" cy="40" r="12" fill="#ff80ab"/>
+                    <circle cx="65" cy="40" r="5" fill="#ffd54f"/>
+                    <circle cx="50" cy="30" r="15" fill="#ff4081"/>
+                    <circle cx="50" cy="30" r="6" fill="#ffe082"/>
+                    <path d="M42 68 Q50 72 58 68" stroke="#d81b60" stroke-width="3" fill="none"/>
+                </svg>
+            </div>
             <div class="option-label">Flowers for you</div>
         </div>
 
         <!-- Option 2: Love Letter -->
         <div class="option-box" onclick="openModal('modalLetter')">
-            <!-- Palitan ang src kung may sarili ka nang letter.png -->
-            <img src="https://cdn3d.iconscout.com/3d/premium/thumb/love-letter-4994273-4161042.png" alt="Letter" class="option-img">
+            <div class="option-icon-wrap">
+                <!-- SVG Envelope Illustration -->
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="15" y="30" width="70" height="50" rx="6" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+                    <path d="M15 30 L50 58 L85 30" stroke="#fbc02d" stroke-width="2.5" fill="#fff59d"/>
+                    <path d="M15 80 L40 52" stroke="#fbc02d" stroke-width="2"/>
+                    <path d="M85 80 L60 52" stroke="#fbc02d" stroke-width="2"/>
+                    <!-- Heart Seal -->
+                    <path d="M50 56 C45 50 38 55 50 64 C62 55 55 50 50 56 Z" fill="#e91e63"/>
+                </svg>
+            </div>
             <div class="option-label">My love letter</div>
         </div>
 
         <!-- Option 3: Teddy Bear / Song -->
         <div class="option-box" onclick="openModal('modalSong')">
-            <!-- Palitan ang src kung may sarili ka nang bear.png -->
-            <img src="https://cdn3d.iconscout.com/3d/premium/thumb/teddy-bear-4835414-4032039.png" alt="Bear" class="option-img">
+            <div class="option-icon-wrap">
+                <!-- SVG Bear Illustration -->
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Ears -->
+                    <circle cx="28" cy="28" r="10" fill="#d7ccc8"/>
+                    <circle cx="28" cy="28" r="5" fill="#bcaaa4"/>
+                    <circle cx="72" cy="28" r="10" fill="#d7ccc8"/>
+                    <circle cx="72" cy="28" r="5" fill="#bcaaa4"/>
+                    <!-- Head & Body -->
+                    <circle cx="50" cy="65" r="24" fill="#d7ccc8"/>
+                    <circle cx="50" cy="40" r="20" fill="#d7ccc8"/>
+                    <!-- Snout -->
+                    <ellipse cx="50" cy="44" rx="8" ry="6" fill="#efebe9"/>
+                    <ellipse cx="50" cy="42" rx="3" ry="2" fill="#4e342e"/>
+                    <!-- Eyes -->
+                    <circle cx="42" cy="36" r="2.5" fill="#3e2723"/>
+                    <circle cx="58" cy="36" r="2.5" fill="#3e2723"/>
+                    <!-- Bowtie -->
+                    <path d="M44 54 L56 60 L56 48 Z" fill="#e53935"/>
+                    <path d="M56 54 L44 60 L44 48 Z" fill="#e53935"/>
+                    <circle cx="50" cy="54" r="2.5" fill="#c62828"/>
+                </svg>
+            </div>
             <div class="option-label">A song for you</div>
         </div>
 
@@ -239,52 +356,44 @@
     <!-- MODAL 1: FLOWERS (Photo Reveal) -->
     <div class="modal-overlay" id="modalFlowers" onclick="closeModal(event, 'modalFlowers')">
         <div class="modal-content">
-            <span class="close-btn" onclick="document.getElementById('modalFlowers').classList.remove('active')">&times;</span>
+            <span class="close-btn" onclick="closeModalDirect('modalFlowers')">&times;</span>
             <div class="modal-photo">
-                <!-- Gumagamit din ng JS fallback mamaya -->
                 <img id="revealPhoto" src="image/photo43.jpg.jpeg" alt="Our Picture">
             </div>
-            <h3 style="color: #d81b60; font-family: 'Great Vibes', cursive; font-size: 30px;">For You</h3>
-            <p class="modal-text">These flowers represent how my love for you blooms every single day. I love you! 🌸</p>
+            <h3 class="modal-title">Flowers For You</h3>
+            <p class="modal-text">These flowers are a small reminder of how beautiful you make my life every single day. Happy Anniversary! 🌸❤️</p>
         </div>
     </div>
 
     <!-- MODAL 2: LOVE LETTER -->
     <div class="modal-overlay" id="modalLetter" onclick="closeModal(event, 'modalLetter')">
         <div class="modal-content">
-            <span class="close-btn" onclick="document.getElementById('modalLetter').classList.remove('active')">&times;</span>
-            <h3 style="color: #d81b60; font-family: 'Great Vibes', cursive; font-size: 35px; margin-bottom: 10px;">My Dearest,</h3>
-            <p class="modal-text" style="text-align: justify;">
-                Happy Monthsary! Thank you for being the most amazing person in my life. Every moment with you is a treasure. I am so lucky to have you, and I promise to always be here to support you, make you smile, and love you endlessly. ❤️
+            <span class="close-btn" onclick="closeModalDirect('modalLetter')">&times;</span>
+            <h3 class="modal-title">My Dearest,</h3>
+            <p class="modal-text" style="text-align: justify; margin-top: 10px;">
+                Happy Anniversary! Thank you for all the laughter, the love, and the unforgettable memories we've shared. Being with you is my absolute favorite place to be. Here's to us and to many more amazing years together! ❤️
             </p>
         </div>
     </div>
 
-    <!-- MODAL 3: A SONG FOR YOU (Guitar/Music touch) -->
+    <!-- MODAL 3: A SONG FOR YOU (Interactive Player) -->
     <div class="modal-overlay" id="modalSong" onclick="closeModal(event, 'modalSong')">
         <div class="modal-content">
-            <span class="close-btn" onclick="document.getElementById('modalSong').classList.remove('active')">&times;</span>
-            <h3 style="color: #d81b60; font-family: 'Great Vibes', cursive; font-size: 35px; margin-bottom: 10px;">Our Melody</h3>
-            <p class="modal-text">
-                Just like how I love playing my guitar, you are my favorite melody. <br><br>
-                <i>(The background music playing is for you!)</i> 🎶🎸
-            </p>
+            <span class="close-btn" onclick="closeModalDirect('modalSong'); stopSong();">&times;</span>
+            <h3 class="modal-title">A Song For You</h3>
+            <p class="modal-text" style="margin-bottom: 15px;">I picked this song just for you. Press play and enjoy our special track! 🎵</p>
+            
+            <div class="player-card">
+                <div class="song-title">Our Special Melody</div>
+                <div class="song-artist">Dedicated to Cristy ❤️</div>
+                <button class="play-btn" id="playToggleBtn" onclick="toggleSong()">▶</button>
+            </div>
         </div>
     </div>
 
 
     <script>
-        // 1. Play Music Logic
-        let musicStarted = false;
-        function playMusic() {
-            if (!musicStarted) {
-                document.getElementById('bgMusic').play().catch(() => {});
-                musicStarted = true;
-            }
-        }
-        window.addEventListener('click', playMusic);
-
-        // 2. JS Fallback for background image
+        // 1. Background Image Extension Fallback
         const body = document.body;
         const testImg = new Image();
         testImg.src = 'image/photo43.jpg.jpeg';
@@ -292,7 +401,7 @@
             body.style.backgroundImage = "linear-gradient(rgba(74, 25, 35, 0.85), rgba(60, 20, 28, 0.90)), url('image/photo43.jpg')";
         };
 
-        // 3. JS Fallback for Modal Photo Extension
+        // 2. Modal Photo Extension Fallback
         const photoImg = document.getElementById('revealPhoto');
         photoImg.onerror = function() {
             if (this.src.endsWith('.jpg.jpeg')) {
@@ -304,16 +413,54 @@
             }
         };
 
-        // 4. Modal Logic
+        // 3. Modal Control Logic
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
+            if (modalId === 'modalSong') {
+                playSong();
+            }
         }
 
-        // Close modal when clicking OUTSIDE the white box
+        function closeModalDirect(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
         function closeModal(event, modalId) {
             if (event.target.id === modalId) {
                 document.getElementById(modalId).classList.remove('active');
+                if (modalId === 'modalSong') {
+                    stopSong();
+                }
             }
+        }
+
+        // 4. Song Player Controls
+        const song = document.getElementById('dedicatedSong');
+        const playBtn = document.getElementById('playToggleBtn');
+
+        function toggleSong() {
+            if (song.paused) {
+                playSong();
+            } else {
+                pauseSong();
+            }
+        }
+
+        function playSong() {
+            song.play().then(() => {
+                playBtn.innerText = '❚❚';
+            }).catch(() => {});
+        }
+
+        function pauseSong() {
+            song.pause();
+            playBtn.innerText = '▶';
+        }
+
+        function stopSong() {
+            song.pause();
+            song.currentTime = 0;
+            playBtn.innerText = '▶';
         }
     </script>
 
