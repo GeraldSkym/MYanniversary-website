@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -63,7 +63,7 @@
         .title {
             font-family: 'Montserrat', sans-serif;
             color: #4a3b3e;
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 600;
             text-align: center;
             text-transform: uppercase;
@@ -77,7 +77,7 @@
             font-size: 15px;
             text-align: center;
             max-width: 500px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             letter-spacing: 0.5px;
             z-index: 2;
         }
@@ -87,16 +87,27 @@
             position: relative;
             z-index: 5;
             cursor: pointer;
-            margin: 20px 0;
-            /* Fade in & Sway animations */
-            animation: fadeIn 2s ease-in-out, sway 4s ease-in-out infinite alternate;
-            transition: filter 0.3s ease, transform 0.3s ease;
+            margin: 10px 0;
+            animation: sway 4s ease-in-out infinite alternate;
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Glow effect kapag hinover */
         .bouquet-wrapper:hover {
             filter: drop-shadow(0 0 25px rgba(255, 105, 180, 0.8));
-            transform: scale(1.05);
+            transform: scale(1.08);
+        }
+
+        /* Zoom in + Opening animation kapag kinlick */
+        .bouquet-wrapper.zoom-open {
+            transform: scale(1.4) translateY(-10px) !important;
+            animation: none !important;
+            filter: drop-shadow(0 0 35px rgba(255, 105, 180, 0.9));
+        }
+
+        .bouquet-wrapper.fade-out {
+            opacity: 0;
+            transform: scale(0.2) !important;
+            pointer-events: none;
         }
 
         .bouquet-icon {
@@ -111,62 +122,84 @@
             color: #d81b60;
             font-size: 13px;
             font-weight: 500;
-            margin-top: -10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             animation: pulse 1.5s infinite alternate;
             z-index: 2;
         }
 
-        /* 🌹 UNPACKED FLOWERS CONTAINER */
-        .flowers-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-            max-width: 450px;
-            z-index: 5;
-            margin-top: 10px;
-        }
-
-        .flower-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(5px);
-            padding: 15px 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        /* 🎁 GIFT BOX STYLES */
+        .gift-wrapper {
+            display: none;
+            z-index: 6;
+            cursor: pointer;
+            margin: 20px 0;
+            text-align: center;
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale(0.5);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .flower-card.show {
+        .gift-wrapper.show {
+            display: block;
             opacity: 1;
-            transform: translateY(0);
+            transform: scale(1);
+            animation: bounce 2s infinite;
         }
 
-        .flower-card .emoji {
-            font-size: 30px;
+        .gift-icon {
+            font-size: 90px;
+            display: block;
+            user-select: none;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
         }
 
-        .flower-card .message {
-            color: #4a3b3e;
+        /* 📸 REVEALED FIRST PHOTO CONTAINER */
+        .photo-card {
+            display: none;
+            background: #fffefb;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            max-width: 320px;
+            text-align: center;
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .photo-card.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .photo-caption {
+            color: #d81b60;
             font-size: 15px;
-            font-weight: 500;
+            font-weight: 600;
+            margin-top: 15px;
+            line-height: 1.4;
         }
 
         /* 🔘 CONTINUE BUTTON */
         .next-btn {
             display: inline-block;
-            margin-top: 35px;
-            padding: 14px 32px;
+            margin-top: 25px;
+            padding: 13px 30px;
             background-color: #e36f88;
             color: white;
             border-radius: 30px;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: 1px;
             box-shadow: 0 8px 20px rgba(227, 111, 136, 0.4);
@@ -189,12 +222,7 @@
             box-shadow: 0 12px 25px rgba(216, 27, 96, 0.5);
         }
 
-        /* ANIMATIONS */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        /* KEYFRAME ANIMATIONS */
         @keyframes sway {
             0% { transform: rotate(-3deg); }
             100% { transform: rotate(3deg); }
@@ -204,13 +232,18 @@
             0% { opacity: 0.5; }
             100% { opacity: 1; }
         }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
     </style>
 </head>
 <body>
 
     <!-- 🎵 BACKGROUND MUSIC -->
     <audio id="bgMusic" loop>
-        <!-- Pwede mong palitan ang audio link na ito ng kahit anong romantic music file -->
         <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-view-1033.mp3" type="audio/mp3">
     </audio>
 
@@ -219,39 +252,32 @@
 
     <!-- 📌 HEADER -->
     <h1 class="title">Flowers For You 🌸</h1>
-    <p class="subtitle">"These flowers are a small reminder of how much you mean to me." 💗</p>
+    <p class="subtitle" id="subText">"These flowers are a small reminder of how much you mean to me." 💗</p>
 
     <!-- 💐 INTERACTIVE BOUQUET -->
-    <div class="bouquet-wrapper" id="bouquetWrapper" onclick="openBouquet()">
+    <div class="bouquet-wrapper" id="bouquetWrapper" onclick="clickBouquet()">
         <span class="bouquet-icon">💐</span>
     </div>
-    <div class="click-hint" id="clickHint">(Click the bouquet to open 💌)</div>
+    <div class="click-hint" id="bouquetHint">(Click the bouquet to open 💌)</div>
 
-    <!-- 🌹 REVEALED FLOWERS -->
-    <div class="flowers-container">
-        <div class="flower-card" id="flower1">
-            <span class="emoji">🌹</span>
-            <span class="message">"You make every day brighter."</span>
-        </div>
-        <div class="flower-card" id="flower2">
-            <span class="emoji">🌷</span>
-            <span class="message">"Thank you for staying."</span>
-        </div>
-        <div class="flower-card" id="flower3">
-            <span class="emoji">🌸</span>
-            <span class="message">"I'm proud of you."</span>
-        </div>
-        <div class="flower-card" id="flower4">
-            <span class="emoji">💖</span>
-            <span class="message">"I love you more than yesterday."</span>
-        </div>
+    <!-- 🎁 GIFT BOX -->
+    <div class="gift-wrapper" id="giftWrapper" onclick="clickGift()">
+        <span class="gift-icon">🎁</span>
+        <div class="click-hint" style="margin-top: 10px;">(Click the gift box to open ✨)</div>
+    </div>
+
+    <!-- 📸 REVEALED FIRST PHOTO -->
+    <div class="photo-card" id="photoCard">
+        <!-- Automatic nitong gagamitin ang photo1.jpg mula sa image folder -->
+        <img id="firstPhoto" src="image/photo1.jpg.jpeg" alt="Our First Photo">
+        <div class="photo-caption">"This is where our beautiful story began." ❤️</div>
     </div>
 
     <!-- 🔘 CONTINUE BUTTON -->
     <a href="story.html" class="next-btn" id="nextBtn">Continue Our Journey →</a>
 
     <script>
-        // 1. Play Background Music on First Interaction
+        // 1. Play Music sa unang click
         let musicStarted = false;
         function playMusic() {
             if (!musicStarted) {
@@ -261,48 +287,85 @@
         }
         window.addEventListener('click', playMusic);
 
-        // 2. Generate Falling Cherry Blossom Petals & Sparkles
+        // 2. Generate Floating Petals & Sparkles
         const effectsContainer = document.getElementById('effects');
-        const items = ['🌸', '✨', '💖', '🌺', '✨'];
+        const items = ['🌸', '✨', '💖', '🌺', '🍃'];
 
-        for (let i = 0; i < 30; i++) {
-            const el = document.createElement('div');
-            el.className = Math.random() > 0.5 ? 'petal' : 'sparkle';
-            el.innerText = items[Math.floor(Math.random() * items.length)];
-            el.style.left = Math.random() * 100 + 'vw';
-            el.style.animationDuration = (Math.random() * 3 + 4) + 's';
-            el.style.animationDelay = (Math.random() * 5) + 's';
-            el.style.fontSize = (Math.random() * 10 + 15) + 'px';
-            effectsContainer.appendChild(el);
+        function createPetals(count) {
+            for (let i = 0; i < count; i++) {
+                const el = document.createElement('div');
+                el.className = 'petal';
+                el.innerText = items[Math.floor(Math.random() * items.length)];
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                el.style.animationDelay = (Math.random() * 2) + 's';
+                el.style.fontSize = (Math.random() * 12 + 16) + 'px';
+                effectsContainer.appendChild(el);
+            }
+        }
+        createPetals(20);
+
+        // Fallback check para sa Image Extension ng Photo 1
+        const photoImg = document.getElementById('firstPhoto');
+        photoImg.onerror = function() {
+            if (this.src.endsWith('.jpg.jpeg')) {
+                this.src = 'image/photo1.jpg';
+            } else if (this.src.endsWith('.jpg')) {
+                this.src = 'image/photo1.jpeg';
+            }
+        };
+
+        // 3. STEP 1: Click Bouquet
+        let bouquetClicked = false;
+        function clickBouquet() {
+            if (bouquetClicked) return;
+            bouquetClicked = true;
+
+            const bouquet = document.getElementById('bouquetWrapper');
+            const hint = document.getElementById('bouquetHint');
+
+            hint.style.display = 'none';
+
+            // Animation 1: Zoom in at lalakas ang laglag ng petals
+            bouquet.classList.add('zoom-open');
+            createPetals(30); // Extra burst of petals!
+
+            // Animation 2: Pagkatapos mag-zoom, magfa-fade out ang bouquet at lalabas ang Gift Box
+            setTimeout(() => {
+                bouquet.classList.add('fade-out');
+                setTimeout(() => {
+                    bouquet.style.display = 'none';
+                    const gift = document.getElementById('giftWrapper');
+                    gift.classList.add('show');
+                }, 600);
+            }, 1200);
         }
 
-        // 3. Bouquet Click Event - Reveal Flowers One by One
-        let isOpen = false;
-        function openBouquet() {
-            if (isOpen) return;
-            isOpen = true;
+        // 4. STEP 2: Click Gift Box
+        let giftClicked = false;
+        function clickGift() {
+            if (giftClicked) return;
+            giftClicked = true;
 
-            // Itago ang hint text
-            document.getElementById('clickHint').style.display = 'none';
-
-            // Isa-isang lalabas ang mga bulaklak na may interval
-            const flowers = [
-                document.getElementById('flower1'),
-                document.getElementById('flower2'),
-                document.getElementById('flower3'),
-                document.getElementById('flower4')
-            ];
-
-            flowers.forEach((flower, index) => {
-                setTimeout(() => {
-                    flower.classList.add('show');
-                }, (index + 1) * 700); // 0.7 second interval bawat bulaklak
-            });
-
-            // Pagkatapos lumabas ng lahat ng bulaklak, lalabas ang Continue Button
+            const gift = document.getElementById('giftWrapper');
+            gift.style.opacity = '0';
+            gift.style.transform = 'scale(0.2)';
+            
             setTimeout(() => {
-                document.getElementById('nextBtn').classList.add('show');
-            }, (flowers.length + 1) * 700);
+                gift.style.display = 'none';
+
+                // Reveal Photo Card
+                const photoCard = document.getElementById('photoCard');
+                photoCard.classList.add('show');
+
+                // Burst ng Sparkles
+                createPetals(25);
+
+                // Reveal Next Button
+                setTimeout(() => {
+                    document.getElementById('nextBtn').classList.add('show');
+                }, 1000);
+            }, 500);
         }
     </script>
 
