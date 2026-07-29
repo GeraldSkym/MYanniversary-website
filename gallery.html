@@ -137,8 +137,15 @@
             user-select: none;
         }
 
-        .back-btn {
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
             margin-top: 20px;
+        }
+
+        .back-btn {
             padding: 12px 28px;
             background-color: transparent;
             color: #e36f88;
@@ -149,11 +156,34 @@
             font-weight: 500;
             transition: 0.3s;
             letter-spacing: 1px;
+            display: inline-block;
         }
 
         .back-btn:hover {
             background-color: #e36f88;
             color: white;
+        }
+
+        .next-btn {
+            padding: 12px 28px;
+            background-color: #e36f88;
+            color: white;
+            border: 2px solid #e36f88;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+            letter-spacing: 1px;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(227, 111, 136, 0.3);
+        }
+
+        .next-btn:hover {
+            background-color: #d81b60;
+            border-color: #d81b60;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(216, 27, 96, 0.4);
         }
     </style>
 </head>
@@ -173,7 +203,11 @@
 
     <h1 class="footer-title">HAPPY 3RD ANNIVERSARY!</h1>
 
-    <a href="story.html" class="back-btn">⬅ Back to Story</a>
+    <!-- 🔘 NAVIGATION BUTTONS -->
+    <div class="btn-container">
+        <a href="story.html" class="back-btn">⬅ Back to Story</a>
+        <a href="flowers.html" class="next-btn">Flowers For You 🌸 →</a>
+    </div>
 
     <!-- 🔍 LIGHTBOX MODAL -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
