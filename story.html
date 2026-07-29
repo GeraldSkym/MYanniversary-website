@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Story - Cristy Limbago</title>
-    <!-- Google Fonts: Playfair Display & Montserrat -->
+    <title>Read Me First - Cristy Limbago</title>
+    <!-- Google Fonts: Great Vibes (Title) & Playfair Display / Montserrat (Text & Button) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -21,19 +21,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 25px 20px;
+            padding: 30px 20px;
             font-family: 'Playfair Display', serif;
             position: relative;
             overflow-x: hidden;
             
             /* Background Photo with Soft Vignette Maroon Blend */
             background: 
-                radial-gradient(circle at center, rgba(65, 12, 22, 0.65) 0%, rgba(30, 5, 10, 0.88) 100%), 
+                radial-gradient(circle at center, rgba(65, 12, 22, 0.70) 0%, rgba(30, 5, 10, 0.90) 100%), 
                 url('image/photo8.jpg.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 
-        /* Ambient Glow Effect in Background (Pure Lighting, No Stickers) */
+        /* Ambient Glow Effect */
         .ambient-light {
             position: fixed;
             top: 50%;
@@ -46,48 +46,44 @@
             z-index: 1;
         }
 
-        /* Direct Container Without Any Card */
+        /* Main Container */
         .content-container {
             position: relative;
             z-index: 2;
-            max-width: 580px;
+            max-width: 540px;
             width: 100%;
             text-align: center;
         }
 
-        /* Minimalist Heart Accent */
-        .heart-icon {
-            font-size: 26px;
+        /* Romantic Aesthetic Title */
+        .main-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 48px;
             color: #ffffff;
-            margin-bottom: 20px;
-            display: inline-block;
-            animation: pulse 2s infinite ease-in-out;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            margin-bottom: 25px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        /* Typewriter Text */
+        /* Typewriter Text - Mas maliit ang font size para mas malinis */
         .typewriter-text {
             font-family: 'Playfair Display', serif;
-            font-size: 18px;
+            font-size: 15.5px; /* Slightly smaller font size */
             font-weight: 400;
             color: #ffffff;
-            line-height: 1.75;
-            min-height: 100px;
+            line-height: 1.8;
+            min-height: 120px;
             white-space: pre-wrap;
             text-align: left;
             letter-spacing: 0.3px;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
         }
 
         .cursor {
             display: inline-block;
             width: 2px;
-            height: 18px;
+            height: 16px;
             background-color: #ffffff;
             animation: blink 0.7s infinite;
             vertical-align: middle;
@@ -103,14 +99,14 @@
         /* Aesthetic Minimalist White Button */
         .btn {
             display: none;
-            margin-top: 32px;
-            padding: 12px 30px;
+            margin-top: 35px;
+            padding: 12px 28px;
             background-color: #ffffff;
             color: #4a0e18;
             border: none;
             border-radius: 30px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -135,11 +131,13 @@
 
     <!-- Main Container -->
     <div class="content-container">
-        <div class="heart-icon">♥</div>
+        <!-- Title -->
+        <h1 class="main-title">Read Me First</h1>
         
+        <!-- Letter Body -->
         <div class="typewriter-text"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
 
-        <!-- Link Redirection Button -->
+        <!-- Redirection Button -->
         <a id="openBtn" href="gallery.html" class="btn">Open Our Memories ✨</a>
     </div>
 
