@@ -7,7 +7,7 @@
     <!-- Google Fonts: Playfair Display & Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -21,12 +21,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 30px 20px;
+            padding: 25px 20px;
             font-family: 'Playfair Display', serif;
             position: relative;
             overflow-x: hidden;
             
-            /* Path papunta sa image folder */
+            /* Background Photo with Transparent Maroon Overlay */
             background: 
                 linear-gradient(rgba(55, 10, 18, 0.75), rgba(55, 10, 18, 0.75)), 
                 url('image/photo8.jpg.jpg') no-repeat center center fixed;
@@ -37,16 +37,16 @@
         .content-container {
             position: relative;
             z-index: 2;
-            max-width: 650px;
+            max-width: 580px;
             width: 100%;
             text-align: center;
         }
 
         /* Minimalist Heart Accent */
         .heart-icon {
-            font-size: 34px;
+            font-size: 26px;
             color: #ffffff;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: inline-block;
             animation: pulse 2s infinite ease-in-out;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -57,24 +57,24 @@
             50% { transform: scale(1.1); }
         }
 
-        /* Typewriter Text - Clean White Style */
+        /* Typewriter Text - Refined Smaller Style */
         .typewriter-text {
             font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            font-weight: 500;
+            font-size: 18px; /* Binabaan mula 22px papuntang 18px */
+            font-weight: 400;
             color: #ffffff;
-            line-height: 1.8;
-            min-height: 120px;
+            line-height: 1.75;
+            min-height: 100px;
             white-space: pre-wrap;
             text-align: left;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.3px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
         }
 
         .cursor {
             display: inline-block;
             width: 2px;
-            height: 22px;
+            height: 18px;
             background-color: #ffffff;
             animation: blink 0.7s infinite;
             vertical-align: middle;
@@ -87,31 +87,31 @@
             50% { opacity: 0; }
         }
 
-        /* Aesthetic Minimalist White & Maroon Button */
+        /* Aesthetic Minimalist White Button */
         .btn {
             display: none;
-            margin-top: 40px;
-            padding: 14px 38px;
+            margin-top: 32px;
+            padding: 12px 30px;
             background-color: #ffffff;
             color: #4a0e18;
             border: none;
             border-radius: 30px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 15px;
+            font-size: 13px; /* Ginawang mas maliit at refined din */
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.4s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .btn:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             background-color: #f8dfe5;
             color: #370a12;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
         }
     </style>
 </head>
