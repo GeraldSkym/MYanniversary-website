@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Gallery - Cristy Limbago</title>
     
-    <!-- Google Fonts: Great Vibes (Romantic) + Cormorant Garamond (Elegant Minimalist) + Montserrat -->
+    <!-- Google Fonts: Great Vibes (Romantic) + Cormorant Garamond (Elegant Minimalist) + Montserrat + Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Great+Vibes&family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
@@ -18,68 +18,72 @@
         }
 
         body {
-            /* Soft Light Pink background */
-            background-color: #f8bbd0; 
+            /* Warm Soft Maroon / Deep Burgundy Background */
+            background: linear-gradient(135deg, #3b1119 0%, #2e0d14 100%);
+            background-attachment: fixed;
             font-family: 'Poppins', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 30px 15px;
+            padding: 40px 15px;
+            color: #ffffff;
         }
 
         /* 🌸 Romantic & Elegant Header Title */
         .header-title {
             font-family: 'Great Vibes', cursive;
-            color: #4a0d18;
-            font-size: 48px;
+            color: #f7cad0; /* Soft Rose/Pink Gold */
+            font-size: 52px;
             font-weight: 400;
-            margin: 10px 0 5px 0;
+            margin: 10px 0 8px 0;
             text-align: center;
             letter-spacing: 2px;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         }
 
         /* 💌 Elegant Minimalist Message Banner */
         .message-sub {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
-            color: #5c1221;
-            font-size: 19px;
-            font-weight: 600;
-            max-width: 600px;
+            color: #f3d2d9; /* High contrast soft cream-pink */
+            font-size: 20px;
+            font-weight: 500;
+            max-width: 620px;
             text-align: center;
-            line-height: 1.5;
-            margin-bottom: 30px;
+            line-height: 1.6;
+            margin-bottom: 35px;
             letter-spacing: 0.5px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
         }
 
         .footer-title {
             font-family: 'Montserrat', sans-serif;
-            color: #4a3b3e;
-            font-size: 24px;
+            color: #ffb7c5;
+            font-size: 22px;
             font-weight: 600;
-            margin: 40px 0 20px 0;
+            margin: 45px 0 25px 0;
             text-align: center;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
 
         /* 📸 COLLAGE GRID STYLES */
         .collage-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
+            gap: 22px;
             width: 100%;
             max-width: 1000px;
             padding: 10px;
         }
 
         .polaroid-card {
-            background: #fffefb;
-            padding: 10px;
+            background: #fdfbf7; /* Off-white / Cream polaroid paper */
+            padding: 10px 10px 14px 10px;
             border-radius: 6px;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
@@ -97,8 +101,8 @@
         }
 
         .polaroid-card:hover {
-            transform: scale(1.05) rotate(0deg) !important;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+            transform: scale(1.06) rotate(0deg) !important;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
             z-index: 10;
         }
 
@@ -119,7 +123,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.88);
+            background-color: rgba(15, 4, 8, 0.92);
+            backdrop-filter: blur(5px);
             justify-content: center;
             align-items: center;
             flex-direction: column;
@@ -129,66 +134,77 @@
             max-width: 90%;
             max-height: 80vh;
             border-radius: 8px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 25px rgba(247, 202, 208, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .close-btn {
             position: absolute;
             top: 20px;
             right: 30px;
-            color: white;
-            font-size: 40px;
+            color: #f7cad0;
+            font-size: 42px;
             cursor: pointer;
             user-select: none;
+            transition: color 0.2s ease;
         }
 
+        .close-btn:hover {
+            color: #ffffff;
+        }
+
+        /* 🔘 NAVIGATION BUTTONS */
         .btn-container {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 10px;
+            margin-bottom: 20px;
         }
 
         .back-btn {
             padding: 12px 28px;
-            background-color: #ffffff;
-            color: #d81b60;
-            border: 2px solid #d81b60;
+            background-color: transparent;
+            color: #f7cad0;
+            border: 2px solid #f7cad0;
             border-radius: 25px;
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            transition: 0.3s;
+            transition: all 0.3s ease;
             letter-spacing: 1px;
             display: inline-block;
         }
 
         .back-btn:hover {
-            background-color: #d81b60;
-            color: white;
+            background-color: rgba(247, 202, 208, 0.15);
+            color: #ffffff;
+            border-color: #ffffff;
+            transform: translateY(-2deg);
         }
 
         .next-btn {
             padding: 12px 28px;
-            background-color: #d81b60;
-            color: white;
-            border: 2px solid #d81b60;
+            background-color: #ff80ab;
+            color: #1a060d;
+            border: 2px solid #ff80ab;
             border-radius: 25px;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
-            transition: 0.3s;
+            transition: all 0.3s ease;
             letter-spacing: 1px;
             display: inline-block;
-            box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 128, 171, 0.3);
         }
 
         .next-btn:hover {
-            background-color: #c2185b;
-            border-color: #c2185b;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(194, 24, 91, 0.4);
+            background-color: #ff4081;
+            border-color: #ff4081;
+            color: #ffffff;
+            transform: translateY(-2deg);
+            box-shadow: 0 6px 20px rgba(255, 64, 129, 0.4);
         }
     </style>
 </head>
