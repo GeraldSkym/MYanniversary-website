@@ -209,6 +209,24 @@
             border: 0;
         }
 
+        .yt-fallback-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #880e4f;
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(136, 14, 79, 0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .yt-fallback-btn:hover {
+            transform: scale(1.05);
+        }
+
         /* 🔘 CONTINUE BUTTON */
         .next-btn {
             display: inline-block;
@@ -345,22 +363,27 @@
         </div>
     </div>
 
-    <!-- MODAL 3: A SONG FOR YOU (YouTube Player Embed) -->
+    <!-- MODAL 3: A SONG FOR YOU (YouTube Player Embed + Direct Link) -->
     <div class="modal-overlay" id="modalSong" onclick="closeModal(event, 'modalSong')">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModalDirect('modalSong'); stopYtVideo();">&times;</span>
             <h3 class="modal-title">A Song For You</h3>
-            <p class="modal-text">"Tahanan" — Dedicated just for you. ❤️</p>
+            <p class="modal-text">"Tahanan" by El Manu — Dedicated just for you. ❤️</p>
             
-            <!-- Embedded YouTube Player for Tahanan by El Manu -->
+            <!-- Embedded YouTube Player -->
             <div class="youtube-container">
                 <iframe id="ytPlayer" 
-                        src="https://www.youtube.com/embed/14sD3I4HshA?enablejsapi=1" 
+                        src="https://www.youtube.com/embed/PLrd-rILKtc?enablejsapi=1" 
                         title="Tahanan - El Manu" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
                 </iframe>
             </div>
+
+            <!-- Direct YouTube Play Button to guarantee viewing if iframe blocks it -->
+            <a href="https://youtu.be/PLrd-rILKtc?si=oLzpAVYnpXSJMGha" target="_blank" class="yt-fallback-btn">
+                ▶ Pindutin dito kung ayaw mag-play sa loob
+            </a>
         </div>
     </div>
 
