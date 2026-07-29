@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowers For You - Cristy Limbago</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* Soft pink gradient background */
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #f48fb1 100%);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 🌸 PETALS AT SPARKLES ANIMATION CONTAINER */
+        .effect-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .petal, .sparkle {
+            position: absolute;
+            top: -10%;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* HEADER TEXTS */
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            color: #4a3b3e;
+            font-size: 32px;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            z-index: 2;
+        }
+
+        .subtitle {
+            color: #6d5257;
+            font-size: 15px;
+            text-align: center;
+            max-width: 500px;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        /* 💐 BOUQUET MAIN STYLES */
+        .bouquet-wrapper {
+            position: relative;
+            z-index: 5;
+            cursor: pointer;
+            margin: 20px 0;
+            /* Fade in & Sway animations */
+            animation: fadeIn 2s ease-in-out, sway 4s ease-in-out infinite alternate;
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Glow effect kapag hinover */
+        .bouquet-wrapper:hover {
+            filter: drop-shadow(0 0 25px rgba(255, 105, 180, 0.8));
+            transform: scale(1.05);
+        }
+
+        .bouquet-icon {
+            font-size: 120px;
+            display: block;
+            text-align: center;
+            user-select: none;
+        }
+
+        .click-hint {
+            text-align: center;
+            color: #d81b60;
+            font-size: 13px;
+            font-weight: 500;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite alternate;
+            z-index: 2;
+        }
+
+        /* 🌹 UNPACKED FLOWERS CONTAINER */
+        .flowers-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 450px;
+            z-index: 5;
+            margin-top: 10px;
+        }
+
+        .flower-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .flower-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .flower-card .emoji {
+            font-size: 30px;
+        }
+
+        .flower-card .message {
+            color: #4a3b3e;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* 🔘 CONTINUE BUTTON */
+        .next-btn {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 14px 32px;
+            background-color: #e36f88;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(227, 111, 136, 0.4);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.5s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .next-btn.show {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .next-btn:hover {
+            background-color: #d81b60;
+            transform: translateY(-3deg) scale(1.03);
+            box-shadow: 0 12px 25px rgba(216, 27, 96, 0.5);
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes sway {
+            0% { transform: rotate(-3deg); }
+            100% { transform: rotate(3deg); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🎵 BACKGROUND MUSIC -->
+    <audio id="bgMusic" loop>
+        <!-- Pwede mong palitan ang audio link na ito ng kahit anong romantic music file -->
+        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-view-1033.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- 🌸 FALLING PETALS & SPARKLES -->
+    <div class="effect-container" id="effects"></div>
+
+    <!-- 📌 HEADER -->
+    <h1 class="title">Flowers For You 🌸</h1>
+    <p class="subtitle">"These flowers are a small reminder of how much you mean to me." 💗</p>
+
+    <!-- 💐 INTERACTIVE BOUQUET -->
+    <div class="bouquet-wrapper" id="bouquetWrapper" onclick="openBouquet()">
+        <span class="bouquet-icon">💐</span>
+    </div>
+    <div class="click-hint" id="clickHint">(Click the bouquet to open 💌)</div>
+
+    <!-- 🌹 REVEALED FLOWERS -->
+    <div class="flowers-container">
+        <div class="flower-card" id="flower1">
+            <span class="emoji">🌹</span>
+            <span class="message">"You make every day brighter."</span>
+        </div>
+        <div class="flower-card" id="flower2">
+            <span class="emoji">🌷</span>
+            <span class="message">"Thank you for staying."</span>
+        </div>
+        <div class="flower-card" id="flower3">
+            <span class="emoji">🌸</span>
+            <span class="message">"I'm proud of you."</span>
+        </div>
+        <div class="flower-card" id="flower4">
+            <span class="emoji">💖</span>
+            <span class="message">"I love you more than yesterday."</span>
+        </div>
+    </div>
+
+    <!-- 🔘 CONTINUE BUTTON -->
+    <a href="story.html" class="next-btn" id="nextBtn">Continue Our Journey →</a>
+
+    <script>
+        // 1. Play Background Music on First Interaction
+        let musicStarted = false;
+        function playMusic() {
+            if (!musicStarted) {
+                document.getElementById('bgMusic').play().catch(() => {});
+                musicStarted = true;
+            }
+        }
+        window.addEventListener('click', playMusic);
+
+        // 2. Generate Falling Cherry Blossom Petals & Sparkles
+        const effectsContainer = document.getElementById('effects');
+        const items = ['🌸', '✨', '💖', '🌺', '✨'];
+
+        for (let i = 0; i < 30; i++) {
+            const el = document.createElement('div');
+            el.className = Math.random() > 0.5 ? 'petal' : 'sparkle';
+            el.innerText = items[Math.floor(Math.random() * items.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            el.style.animationDelay = (Math.random() * 5) + 's';
+            el.style.fontSize = (Math.random() * 10 + 15) + 'px';
+            effectsContainer.appendChild(el);
+        }
+
+        // 3. Bouquet Click Event - Reveal Flowers One by One
+        let isOpen = false;
+        function openBouquet() {
+            if (isOpen) return;
+            isOpen = true;
+
+            // Itago ang hint text
+            document.getElementById('clickHint').style.display = 'none';
+
+            // Isa-isang lalabas ang mga bulaklak na may interval
+            const flowers = [
+                document.getElementById('flower1'),
+                document.getElementById('flower2'),
+                document.getElementById('flower3'),
+                document.getElementById('flower4')
+            ];
+
+            flowers.forEach((flower, index) => {
+                setTimeout(() => {
+                    flower.classList.add('show');
+                }, (index + 1) * 700); // 0.7 second interval bawat bulaklak
+            });
+
+            // Pagkatapos lumabas ng lahat ng bulaklak, lalabas ang Continue Button
+            setTimeout(() => {
+                document.getElementById('nextBtn').classList.add('show');
+            }, (flowers.length + 1) * 700);
+        }
+    </script>
+
+</body>
+</html>
