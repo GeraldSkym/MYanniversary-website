@@ -266,10 +266,9 @@
         <div class="click-hint" style="margin-top: 10px;">(Click the gift box to open ✨)</div>
     </div>
 
-    <!-- 📸 REVEALED FIRST PHOTO -->
+    <!-- 📸 REVEALED PHOTO 43 -->
     <div class="photo-card" id="photoCard">
-        <!-- Automatic nitong gagamitin ang photo1.jpg mula sa image folder -->
-        <img id="firstPhoto" src="image/photo1.jpg.jpeg" alt="Our First Photo">
+        <img id="firstPhoto" src="image/photo43.jpg.jpeg" alt="Our Special Photo">
         <div class="photo-caption">"This is where our beautiful story began." ❤️</div>
     </div>
 
@@ -305,13 +304,15 @@
         }
         createPetals(20);
 
-        // Fallback check para sa Image Extension ng Photo 1
+        // Fallback check para sa Image Extension ng Photo 43
         const photoImg = document.getElementById('firstPhoto');
         photoImg.onerror = function() {
             if (this.src.endsWith('.jpg.jpeg')) {
-                this.src = 'image/photo1.jpg';
+                this.src = 'image/photo43.jpg';
             } else if (this.src.endsWith('.jpg')) {
-                this.src = 'image/photo1.jpeg';
+                this.src = 'image/photo43.jpeg';
+            } else if (this.src.endsWith('.jpeg')) {
+                this.src = 'image/photo43.PNG';
             }
         };
 
