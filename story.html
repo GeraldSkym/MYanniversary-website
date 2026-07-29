@@ -25,14 +25,14 @@
             font-family: 'Playfair Display', serif;
             position: relative;
             overflow-x: hidden;
-            /* Background picture and gradient preserved as requested */
+            /* Background picture preserved with soft pink-overlay (no maroon) */
             background: 
-                radial-gradient(circle at center, rgba(248, 187, 208, 0.45) 0%, rgba(24, 10, 17, 0.85) 100%), 
+                radial-gradient(circle at center, rgba(255, 222, 230, 0.5) 0%, rgba(60, 20, 35, 0.75) 100%), 
                 url('image/photo8.jpg.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 
-        /* Soft Ambient Glow */
+        /* Soft Light Glow */
         .ambient-light {
             position: fixed;
             top: 50%;
@@ -40,7 +40,7 @@
             transform: translate(-50%, -50%);
             width: 80vw;
             height: 80vh;
-            background: radial-gradient(circle, rgba(252, 228, 236, 0.25) 0%, rgba(0,0,0,0) 70%);
+            background: radial-gradient(circle, rgba(255, 235, 240, 0.3) 0%, rgba(0,0,0,0) 70%);
             pointer-events: none;
             z-index: 1;
         }
@@ -64,7 +64,7 @@
             margin-bottom: 25px;
             font-weight: 400;
             letter-spacing: 1px;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 12px rgba(255, 255, 255, 0.6);
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
@@ -75,18 +75,18 @@
             max-width: 440px;
             height: 280px;
             /* Soft Dusty Pink Envelope Body */
-            background-color: #f3c2c7;
+            background-color: #f7d2d7;
             border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             transition: transform 0.4s ease, height 0.6s ease;
             margin-top: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
         .envelope-wrapper.hoverable:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         /* Envelope Flap Top */
@@ -98,12 +98,12 @@
             height: 0;
             border-left: 220px solid transparent;
             border-right: 220px solid transparent;
-            /* Matching Dusty Pink Flap */
-            border-top: 150px solid #eab0b7;
+            /* Light Rose Flap */
+            border-top: 150px solid #f2bdc6;
             transform-origin: top;
             transition: transform 0.5s ease 0.2s, z-index 0.2s;
             z-index: 5;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
         }
 
         /* Envelope Base Sides & Bottom */
@@ -113,7 +113,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(243, 194, 199, 0) 40%, #e2a8b0 100%);
+            background: linear-gradient(180deg, rgba(247, 210, 215, 0) 40%, #eab0b9 100%);
             border-radius: 0 0 12px 12px;
             z-index: 4;
             pointer-events: none;
@@ -127,9 +127,9 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 220px solid #e2a8b0;
-            border-right: 220px solid #d89ba4;
-            border-bottom: 150px solid #ebb4bc;
+            border-left: 220px solid #eab0b9;
+            border-right: 220px solid #e2a2ac;
+            border-bottom: 150px solid #f2bdc6;
         }
 
         /* Rose Gold Wax Seal Badge */
@@ -140,14 +140,14 @@
             transform: translateX(-50%);
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #d48b97 0%, #b86271 100%);
-            border: 2px solid #fce4ec;
+            background: linear-gradient(135deg, #e5989b 0%, #b56576 100%);
+            border: 2px solid #ffffff;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 6;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
@@ -156,7 +156,7 @@
             color: #ffffff;
             font-size: 24px;
             font-weight: bold;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
         }
 
         .seal-hint {
@@ -170,11 +170,11 @@
             color: #ffffff;
             text-transform: uppercase;
             transition: opacity 0.3s;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
             font-weight: 500;
         }
 
-        /* Letter Card inside Envelope (Cream/Off-white Card Style) */
+        /* Letter Card inside Envelope (Cream Card Style) */
         .letter-card {
             position: absolute;
             bottom: 10px;
@@ -182,14 +182,14 @@
             transform: translateX(-50%);
             width: 92%;
             height: 85%;
-            background: rgba(255, 252, 248, 0.92);
+            background: rgba(255, 253, 250, 0.94);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 12px;
             padding: 30px 25px;
-            color: #5d4037;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            color: #4a3e3d;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
             z-index: 3;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), height 0.8s ease;
             overflow: hidden;
@@ -200,7 +200,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 14.5px;
             line-height: 1.8;
-            color: #5c3a42;
+            color: #543d42;
             text-align: left;
             white-space: pre-wrap;
             font-weight: 500;
@@ -247,15 +247,15 @@
             transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
         }
 
-        /* Minimalist Button */
+        /* Minimalist Light Pink Button */
         .btn {
             display: inline-block;
             opacity: 0;
             pointer-events: none;
             margin-top: 30px;
             padding: 13px 32px;
-            background-color: #8e244d;
-            color: #ffffff;
+            background-color: #ffffff;
+            color: #b56576;
             border: none;
             border-radius: 30px;
             font-family: 'Montserrat', sans-serif;
@@ -266,7 +266,7 @@
             cursor: pointer;
             text-decoration: none;
             transition: all 0.4s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
 
         .btn.show {
@@ -276,9 +276,9 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            background-color: #a32c5a;
-            color: #ffffff;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            background-color: #f7d2d7;
+            color: #6d2e3b;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
