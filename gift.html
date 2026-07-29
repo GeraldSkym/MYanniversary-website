@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Last Gift - For Cristy</title>
 
-    <!-- Google Fonts: Great Vibes (Romantic) + Cormorant Garamond (Elegant) + Poppins -->
+    <!-- Google Fonts: Inter (Clean Minimalist) + Great Vibes (Elegant Cursive Accent) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -18,19 +18,19 @@
         }
 
         body {
-            /* 🌙 Scene: Medyo dumidilim nang bahagya ang background */
-            background: linear-gradient(135deg, #2b111e 0%, #1a0812 50%, #12030a 100%);
+            /* Minimalist Dark Rose/Wine Aesthetic */
+            background: #180a11;
             min-height: 100vh;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
             color: #ffffff;
         }
 
-        /* Ambient background canvas para sa petals, hearts, at confetti */
+        /* Ambient Canvas para sa Subtle Soft Particles */
         canvas#ambientCanvas {
             position: absolute;
             top: 0;
@@ -46,152 +46,165 @@
             z-index: 10;
             text-align: center;
             padding: 20px;
-            max-width: 650px;
+            max-width: 520px;
             width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* 🌙 Scene Text */
+        /* Minimalist Header */
+        .intro-group {
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            margin-bottom: 30px;
+        }
+
         .intro-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 52px;
+            font-size: 48px;
             color: #f7cad0;
-            text-shadow: 0 0 15px rgba(247, 202, 208, 0.4);
-            margin-bottom: 10px;
-            animation: fadeIn 2s ease-in-out;
+            font-weight: 400;
+            margin-bottom: 6px;
         }
 
         .intro-subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 22px;
+            font-size: 13px;
+            font-weight: 300;
             color: #d8b4e2;
-            margin-bottom: 40px;
-            letter-spacing: 1px;
-            animation: fadeIn 2.5s ease-in-out;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        /* 🎀 ELEGANT GIFT BOX STYLES */
-        .gift-wrapper {
+        /* ✉️ INTERACTIVE ENVELOPE STYLES */
+        .envelope-wrapper {
             position: relative;
-            display: inline-block;
             cursor: pointer;
             margin: 20px 0;
-            transition: transform 0.3s ease;
+            perspective: 1000px;
         }
 
-        .gift-wrapper:hover {
-            transform: scale(1.05);
-        }
-
-        .gift-box {
+        .envelope {
             position: relative;
-            width: 140px;
-            height: 120px;
-            background: linear-gradient(135deg, #d81b60, #880e4f);
+            width: 280px;
+            height: 180px;
+            background: #2a121f;
             border-radius: 8px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(216, 27, 96, 0.4);
-            margin: 0 auto;
+            border: 1px solid rgba(247, 202, 208, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Ribbon Vertical */
-        .gift-box::before {
-            content: '';
-            position: absolute;
-            width: 26px;
-            height: 100%;
-            background: linear-gradient(135deg, #ffd700, #ffb300);
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        .envelope-wrapper:hover .envelope {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(247, 202, 208, 0.15);
         }
 
-        /* Ribbon Horizontal */
-        .gift-box::after {
-            content: '';
+        /* Envelope Top Flap */
+        .envelope-flap {
             position: absolute;
-            height: 26px;
-            width: 100%;
-            background: linear-gradient(135deg, #ffd700, #ffb300);
-            top: 50%;
-            transform: translateY(-50%);
+            top: 0;
             left: 0;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            width: 0;
+            height: 0;
+            border-left: 140px solid transparent;
+            border-right: 140px solid transparent;
+            border-top: 100px solid #3b192c;
+            transform-origin: top;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 4;
         }
 
-        /* Gift Lid (Takip) */
-        .gift-lid {
+        /* Envelope Side & Bottom Folds */
+        .envelope-pocket {
             position: absolute;
-            top: -20px;
-            left: -10px;
-            width: 160px;
-            height: 30px;
-            background: linear-gradient(135deg, #e91e63, #ad1457);
-            border-radius: 6px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-            z-index: 2;
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.8s ease;
-        }
-
-        .gift-lid::before {
-            content: '';
-            position: absolute;
-            width: 26px;
-            height: 100%;
-            background: linear-gradient(135deg, #ffd700, #ffb300);
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* Ribbon Bow (Sintas sa ibabaw) */
-        .gift-bow {
-            position: absolute;
-            top: -42px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 25px;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 140px solid #230d19;
+            border-right: 140px solid #230d19;
+            border-bottom: 95px solid #2e1423;
+            border-radius: 0 0 8px 8px;
             z-index: 3;
-            transition: transform 0.8s ease, opacity 0.8s ease;
         }
 
-        .gift-bow::before, .gift-bow::after {
-            content: '';
+        /* Wax Seal Accent */
+        .wax-seal {
             position: absolute;
-            width: 25px;
-            height: 25px;
-            border: 4px solid #ffd700;
-            border-radius: 50% 50% 0 50%;
-            transform: rotate(45deg);
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 36px;
+            height: 36px;
+            background: #880e4f;
+            border: 1.5px solid #ff80ab;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 16px;
+            z-index: 5;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
-        .gift-bow::after {
-            left: 20px;
-            border-radius: 50% 50% 50% 0;
-            transform: rotate(-45deg);
+        /* Letter Inside Envelope */
+        .letter-preview {
+            position: absolute;
+            bottom: 10px;
+            width: 240px;
+            height: 140px;
+            background: #fffefb;
+            border-radius: 6px;
+            z-index: 2;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
         }
 
         .click-hint {
-            font-size: 13px;
-            color: #f8bbd0;
-            margin-top: 15px;
+            font-size: 11px;
+            color: #f7cad0;
+            margin-top: 20px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            animation: pulse 1.8s infinite;
+            font-weight: 300;
+            animation: pulse 2s infinite;
         }
 
-        /* ❤️ FINAL MESSAGE CARD */
+        /* ✉️ OPENED ANIMATION STATE */
+        .envelope-wrapper.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .envelope-wrapper.open .wax-seal {
+            opacity: 0;
+            transform: translateX(-50%) scale(0.5);
+        }
+
+        .envelope-wrapper.open .letter-preview {
+            transform: translateY(-110px);
+            z-index: 5;
+        }
+
+        /* 📄 FINAL ELEGANT CARD */
         .final-card {
             display: none;
             opacity: 0;
-            background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(247, 202, 208, 0.2);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(247, 202, 208, 0.15);
             padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(247, 202, 208, 0.1);
-            margin-top: 20px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-top: 10px;
             transform: translateY(20px);
-            transition: opacity 1.5s ease, transform 1.5s ease;
+            transition: opacity 1.2s ease, transform 1.2s ease;
+            text-align: center;
         }
 
         .final-card.show {
@@ -202,104 +215,97 @@
 
         .final-card h2 {
             font-family: 'Great Vibes', cursive;
-            font-size: 44px;
+            font-size: 42px;
             color: #ff80ab;
+            font-weight: 400;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255, 128, 171, 0.3);
         }
 
         .final-card p {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 21px;
-            line-height: 1.7;
-            color: #f3e5f5;
-            font-weight: 500;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #e0d0cc;
+            font-weight: 300;
+            letter-spacing: 0.3px;
             margin-bottom: 25px;
         }
 
         .final-card .love-signature {
             font-family: 'Great Vibes', cursive;
-            font-size: 32px;
-            color: #ea80fc;
+            font-size: 28px;
+            color: #f7cad0;
         }
 
         /* ↺ RELIVE OUR JOURNEY BUTTON */
         .relive-btn {
             display: none;
             opacity: 0;
-            margin-top: 35px;
-            padding: 12px 30px;
+            margin-top: 30px;
+            padding: 10px 26px;
             background: transparent;
             color: #f7cad0;
-            border: 2px solid #f7cad0;
-            border-radius: 30px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 14px;
-            font-weight: 500;
+            border: 1px solid rgba(247, 202, 208, 0.4);
+            border-radius: 25px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
             letter-spacing: 1.5px;
+            text-transform: uppercase;
             cursor: pointer;
             text-decoration: none;
-            transition: all 0.4s ease;
-            box-shadow: 0 0 15px rgba(247, 202, 208, 0.2);
+            transition: all 0.3s ease;
         }
 
         .relive-btn.show {
             display: inline-block;
             opacity: 1;
-            animation: fadeIn 1.5s ease;
+            animation: fadeIn 1s ease;
         }
 
         .relive-btn:hover {
             background: #f7cad0;
-            color: #1a0812;
-            box-shadow: 0 0 25px rgba(247, 202, 208, 0.6);
-            transform: translateY(-3deg);
+            color: #180a11;
+            border-color: #f7cad0;
+            box-shadow: 0 0 15px rgba(247, 202, 208, 0.3);
         }
 
-        /* Keyframes Animations */
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        /* Animation class para sa pagbukas ng regalo */
-        .opened .gift-lid {
-            transform: translateY(-80px) rotate(-20deg);
-            opacity: 0;
-        }
-
-        .opened .gift-bow {
-            transform: translateX(-50%) translateY(-100px) scale(0.5);
-            opacity: 0;
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.9; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Canvas Background -->
+    <!-- Ambient Canvas -->
     <canvas id="ambientCanvas"></canvas>
 
     <div class="container">
-        <!-- Header Text -->
-        <div id="introGroup">
+        
+        <!-- Minimalist Header -->
+        <div class="intro-group" id="introGroup">
             <h1 class="intro-title">One Last Gift...</h1>
-            <p class="intro-subtitle">"Thank you for taking this journey with me."</p>
+            <p class="intro-subtitle">Thank you for taking this journey with me</p>
         </div>
 
-        <!-- 🎀 Gift Box Container -->
-        <div class="gift-wrapper" id="giftWrapper" onclick="openGift()">
-            <div class="gift-bow" id="giftBow"></div>
-            <div class="gift-lid" id="giftLid"></div>
-            <div class="gift-box"></div>
-            <p class="click-hint" id="clickHint">✦ Click to Open ✦</p>
+        <!-- ✉️ Interactive Envelope -->
+        <div class="envelope-wrapper" id="envelopeWrapper" onclick="openEnvelope()">
+            <div class="envelope">
+                <div class="envelope-flap"></div>
+                <div class="wax-seal">♥</div>
+                <div class="letter-preview"></div>
+                <div class="envelope-pocket"></div>
+            </div>
+            <p class="click-hint" id="clickHint">✦ Tap to open ✦</p>
         </div>
 
-        <!-- ❤️ Final Message Card -->
+        <!-- 📄 Final Minimalist Message Card -->
         <div class="final-card" id="finalCard">
             <h2>Happy 3rd Anniversary, My Love.</h2>
             <p>
@@ -312,9 +318,11 @@
         <div>
             <a href="index.html" class="relive-btn" id="reliveBtn">↺ Relive Our Journey</a>
         </div>
+
     </div>
 
     <script>
+        // Minimal Background Particles
         const canvas = document.getElementById('ambientCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -326,92 +334,62 @@
             height = canvas.height = window.innerHeight;
         });
 
-        // Particle System
         let particles = [];
-        let giftOpened = false;
-
-        // Visual states: 'petals_slow' -> 'burst' -> 'celebration'
-        let mode = 'petals_slow';
+        let envelopeOpened = false;
 
         class Particle {
             constructor(type) {
-                this.type = type; // 'petal', 'heart', 'confetti', 'sparkle'
+                this.type = type; // 'sparkle', 'heart', 'confetti'
                 this.reset();
             }
 
             reset() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height - height;
-                this.size = Math.random() * 8 + 4;
-                this.speedY = Math.random() * 1.5 + 0.8;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.opacity = Math.random() * 0.7 + 0.3;
-                this.rotation = Math.random() * 360;
-                this.rotSpeed = Math.random() * 2 - 1;
+                this.size = Math.random() * 3 + 1;
+                this.speedY = Math.random() * 0.8 + 0.3;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.opacity = Math.random() * 0.5 + 0.2;
 
-                if (this.type === 'confetti') {
-                    const colors = ['#f7cad0', '#ff80ab', '#ffd700', '#ea80fc', '#ffffff'];
+                if (this.type === 'heart') {
+                    this.size = Math.random() * 6 + 4;
+                    this.color = '#ff80ab';
+                } else if (this.type === 'confetti') {
+                    this.size = Math.random() * 5 + 3;
+                    const colors = ['#f7cad0', '#ff80ab', '#ffffff'];
                     this.color = colors[Math.floor(Math.random() * colors.length)];
-                    this.speedY = Math.random() * 3 + 2;
-                } else if (this.type === 'heart') {
-                    this.color = '#ff4081';
-                    this.size = Math.random() * 10 + 8;
-                } else if (this.type === 'petal') {
-                    this.color = '#ffb74d';
-                } else if (this.type === 'sparkle') {
-                    this.color = '#ffffff';
-                    this.size = Math.random() * 3 + 1;
-                    this.speedY = Math.random() * 0.5 + 0.2;
+                    this.speedY = Math.random() * 2 + 1;
+                } else {
+                    this.color = '#f7cad0';
                 }
             }
 
             update() {
                 this.y += this.speedY;
-                this.x += Math.sin(this.y * 0.01) + this.speedX;
-                this.rotation += this.rotSpeed;
-
-                // Unti-unting tumitigil ang mga lumang petals bago i-click ang gift
-                if (mode === 'petals_slow' && this.type === 'petal') {
-                    this.speedY *= 0.995; 
-                }
+                this.x += this.speedX;
 
                 if (this.y > height + 20) {
-                    if (mode === 'celebration') {
-                        this.reset();
-                        this.y = -10;
-                    } else {
-                        this.opacity -= 0.01;
-                    }
+                    this.reset();
+                    this.y = -10;
                 }
             }
 
             draw() {
                 ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate((this.rotation * Math.PI) / 180);
-                ctx.globalAlpha = Math.max(0, this.opacity);
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
 
                 if (this.type === 'heart') {
-                    ctx.fillStyle = this.color;
+                    ctx.translate(this.x, this.y);
                     ctx.beginPath();
                     ctx.arc(-this.size/4, -this.size/4, this.size/4, 0, Math.PI, true);
                     ctx.arc(this.size/4, -this.size/4, this.size/4, 0, Math.PI, true);
                     ctx.lineTo(0, this.size/2);
                     ctx.closePath();
                     ctx.fill();
-                } else if (this.type === 'confetti') {
-                    ctx.fillStyle = this.color;
-                    ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size/2);
-                } else if (this.type === 'sparkle') {
-                    ctx.fillStyle = this.color;
-                    ctx.beginPath();
-                    ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-                    ctx.fill();
                 } else {
-                    // Petals
-                    ctx.fillStyle = '#f8bbd0';
                     ctx.beginPath();
-                    ctx.ellipse(0, 0, this.size, this.size/2, 0, 0, Math.PI * 2);
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                     ctx.fill();
                 }
 
@@ -419,9 +397,8 @@
             }
         }
 
-        // Initialize slow initial petals & sparkles
-        for (let i = 0; i < 30; i++) {
-            particles.push(new Particle('petal'));
+        // Soft initial particles
+        for (let i = 0; i < 40; i++) {
             particles.push(new Particle('sparkle'));
         }
 
@@ -436,60 +413,52 @@
 
         animate();
 
-        // 🎀 CLICK EVENT FOR GIFT BOX
-        function openGift() {
-            if (giftOpened) return;
-            giftOpened = true;
+        // ✉️ ENVELOPE OPENING LOGIC
+        function openEnvelope() {
+            if (envelopeOpened) return;
+            envelopeOpened = true;
 
-            const giftWrapper = document.getElementById('giftWrapper');
+            const envelopeWrapper = document.getElementById('envelopeWrapper');
             const clickHint = document.getElementById('clickHint');
             const introGroup = document.getElementById('introGroup');
             const finalCard = document.getElementById('finalCard');
             const reliveBtn = document.getElementById('reliveBtn');
 
-            // 1. Trigger Gift opening visual animation
-            giftWrapper.classList.add('opened');
-            clickHint.style.display = 'none';
+            // 1. Open Envelope Animation
+            envelopeWrapper.classList.add('open');
+            clickHint.style.opacity = '0';
 
-            // 2. Mode transition: Burst of Confetti, Hearts & Sparkles
-            mode = 'celebration';
-            for (let i = 0; i < 60; i++) {
+            // 2. Add soft celebration particles
+            for (let i = 0; i < 30; i++) {
                 let pHeart = new Particle('heart');
-                pHeart.y = height / 2 + (Math.random() * 100 - 50);
+                pHeart.y = height / 2;
                 pHeart.x = width / 2 + (Math.random() * 100 - 50);
-                pHeart.speedY = Math.random() * -5 - 2; // Explosive upward movement
+                pHeart.speedY = Math.random() * -3 - 1;
                 particles.push(pHeart);
-
-                let pConfetti = new Particle('confetti');
-                pConfetti.y = height / 2;
-                pConfetti.x = width / 2;
-                pConfetti.speedY = Math.random() * -6 - 2;
-                particles.push(pConfetti);
             }
 
-            // 3. Fade out Gift Box & Intro Text gently
+            // 3. Fade out envelope & header gracefully
             setTimeout(() => {
-                giftWrapper.style.transition = 'opacity 1s ease, transform 1s ease';
-                giftWrapper.style.opacity = '0';
-                giftWrapper.style.transform = 'scale(0.8)';
-                
-                introGroup.style.transition = 'opacity 1s ease';
+                envelopeWrapper.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                envelopeWrapper.style.opacity = '0';
+                envelopeWrapper.style.transform = 'translateY(-20px)';
+
                 introGroup.style.opacity = '0';
 
                 setTimeout(() => {
-                    giftWrapper.style.display = 'none';
+                    envelopeWrapper.style.display = 'none';
                     introGroup.style.display = 'none';
 
-                    // 4. Fade in Final Message
+                    // 4. Reveal Final Card
                     finalCard.classList.add('show');
 
-                    // 5. Pagkatapos ng ilang segundo, lalabas ang "↺ Relive Our Journey" button
+                    // 5. Reveal Relive Button
                     setTimeout(() => {
                         reliveBtn.classList.add('show');
-                    }, 2500);
+                    }, 1800);
 
-                }, 1000);
-            }, 1000);
+                }, 800);
+            }, 1200);
         }
     </script>
 </body>
