@@ -25,18 +25,13 @@
             font-family: 'Playfair Display', serif;
             position: relative;
             overflow-x: hidden;
-            /* Updated background to match the image's pinkish hue */
-            background: #f5e0e1;
-            /* If you want to keep the image background: */
-            /*
             background: 
-                radial-gradient(circle at center, rgba(245, 224, 225, 0.75) 0%, rgba(240, 200, 205, 0.95) 100%), 
+                radial-gradient(circle at center, rgba(65, 12, 22, 0.75) 0%, rgba(20, 3, 6, 0.95) 100%), 
                 url('image/photo8.jpg.jpg') no-repeat center center fixed;
             background-size: cover;
-            */
         }
 
-        /* Ambient Glow Effect - keeping it subtle */
+        /* Ambient Glow Effect */
         .ambient-light {
             position: fixed;
             top: 50%;
@@ -44,7 +39,7 @@
             transform: translate(-50%, -50%);
             width: 80vw;
             height: 80vh;
-            background: radial-gradient(circle, rgba(245, 179, 182, 0.25) 0%, rgba(0,0,0,0) 70%);
+            background: radial-gradient(circle, rgba(227, 111, 136, 0.15) 0%, rgba(0,0,0,0) 70%);
             pointer-events: none;
             z-index: 1;
         }
@@ -59,16 +54,16 @@
             max-width: 520px;
         }
 
-        /* Main Page Title (Nasa Itaas ng Sobre) */
+        /* Main Page Title */
         .main-title {
             font-family: 'Great Vibes', cursive;
             font-size: 52px;
-            color: #333; /* Darker color for better contrast on pink */
+            color: #ffffff;
             text-align: center;
             margin-bottom: 25px;
             font-weight: 400;
             letter-spacing: 1px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.2);
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
@@ -78,9 +73,9 @@
             width: 100%;
             max-width: 440px;
             height: 280px;
-            background-color: #fcebe8; /* Light pink from image */
+            background-color: #3b0911;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             cursor: pointer;
             transition: transform 0.4s ease, height 0.6s ease;
             margin-top: 10px;
@@ -99,11 +94,11 @@
             height: 0;
             border-left: 220px solid transparent;
             border-right: 220px solid transparent;
-            border-top: 150px solid #f9d5d8; /* Slightly darker pink for the flap */
+            border-top: 150px solid #5a0f1d;
             transform-origin: top;
             transition: transform 0.5s ease 0.2s, z-index 0.2s;
             z-index: 5;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
         }
 
         /* Envelope Base Sides & Bottom */
@@ -113,7 +108,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(252, 235, 232, 0) 40%, #fbe1e3 100%);
+            background: linear-gradient(180deg, rgba(63, 10, 19, 0) 40%, #2e060d 100%);
             border-radius: 0 0 12px 12px;
             z-index: 4;
             pointer-events: none;
@@ -127,12 +122,12 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 220px solid #f9d5d8;
-            border-right: 220px solid #fcebe8;
-            border-bottom: 150px solid #fbe1e3;
+            border-left: 220px solid #4a0d17;
+            border-right: 220px solid #420b14;
+            border-bottom: 150px solid #360810;
         }
 
-        /* Wax Seal Badge - Using a similar pink as the envelope */
+        /* Wax Seal Badge */
         .wax-seal {
             position: absolute;
             top: 120px;
@@ -140,19 +135,19 @@
             transform: translateX(-50%);
             width: 60px;
             height: 60px;
-            background: radial-gradient(circle, #fcebe8 0%, #f9d5d8 100%);
+            background: radial-gradient(circle, #d4af37 0%, #aa820a 100%);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 6;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
         .wax-seal span {
             font-family: 'Great Vibes', cursive;
-            color: #d49a9f; /* A rose-gold like color */
+            color: #2e060d;
             font-size: 22px;
             font-weight: bold;
         }
@@ -165,7 +160,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 12px;
             letter-spacing: 2px;
-            color: rgba(51, 51, 51, 0.7); /* Darker color for hint */
+            color: rgba(255, 255, 255, 0.7);
             text-transform: uppercase;
             transition: opacity 0.3s;
         }
@@ -178,14 +173,14 @@
             transform: translateX(-50%);
             width: 90%;
             height: 85%;
-            background: rgba(255, 255, 255, 0.85); /* More opaque for readability */
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 12px;
             padding: 30px 25px;
-            color: #333; /* Darker text */
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             z-index: 3;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), height 0.8s ease;
             overflow: hidden;
@@ -196,9 +191,10 @@
             font-family: 'Playfair Display', serif;
             font-size: 14.5px;
             line-height: 1.8;
-            color: #555;
+            color: #f3f3f3;
             text-align: left;
             white-space: pre-wrap;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
         }
 
         /* OPEN STATE ANIMATIONS */
@@ -248,8 +244,8 @@
             pointer-events: none;
             margin-top: 30px;
             padding: 13px 32px;
-            background-color: #d49a9f; /* Rose gold color from seal */
-            color: #ffffff;
+            background-color: #ffffff;
+            color: #4a0e18;
             border: none;
             border-radius: 30px;
             font-family: 'Montserrat', sans-serif;
@@ -260,7 +256,7 @@
             cursor: pointer;
             text-decoration: none;
             transition: all 0.4s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
 
         .btn.show {
@@ -270,8 +266,9 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            background-color: #c98c92; /* Slightly darker rose gold */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background-color: #f8dfe5;
+            color: #370a12;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
