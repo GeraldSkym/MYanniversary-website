@@ -20,8 +20,9 @@
         }
 
         body {
-            /* 🌸 GAMIT ANG INILAGAY MONG BULAKLAK NA BACKGROUND IMAGE */
-            background-image: url('flower-bg.jpg');
+            /* 🌸 GAMIT ANG MISMONG INUPLOD MONG PICTURE (FALLBACK & LOCAL FILE) */
+            background-color: #fce4ec;
+            background-image: url('flower-bg.jpg'), url('flower-bg.jpeg'), url('flower-bg.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -35,8 +36,9 @@
         }
 
         .anniversary-card {
-            background: rgba(255, 255, 255, 0.92); /* Soft white card para maging malinaw ang text */
-            backdrop-filter: blur(4px); /* Subtle blur effect para sa aesthetic look */
+            background: rgba(255, 255, 255, 0.90); /* Transparent white para litaw ang background */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             padding: 35px 25px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
@@ -59,8 +61,8 @@
             color: #4a3b3e;
             font-weight: 600;
             line-height: 1.4;
-            text-transform: uppercase; /* ALL CAPS */
-            letter-spacing: 2px; /* Spacing para sa minimalist luxury feel */
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 8px;
         }
 
