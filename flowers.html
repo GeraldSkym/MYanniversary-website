@@ -221,9 +221,8 @@
             height: 0;
             overflow: hidden;
             border-radius: 12px;
-            margin-top: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            background: #000;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .youtube-container iframe {
@@ -235,256 +234,128 @@
             border: 0;
         }
 
-        .yt-fallback-btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #880e4f;
-            color: white;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-            box-shadow: 0 4px 10px rgba(136, 14, 79, 0.3);
-            transition: transform 0.2s ease;
-        }
-
-        .yt-fallback-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* 🔘 CONTINUE BUTTON */
-        .next-btn {
-            display: inline-block;
-            margin-top: 40px;
-            padding: 13px 36px;
-            background-color: transparent;
-            color: white;
-            border: 1.5px solid rgba(255, 255, 255, 0.8);
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            transition: all 0.4s ease;
-            z-index: 10;
-        }
-
-        .next-btn:hover {
-            background-color: white;
-            color: #4a1923;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255,255,255,0.25);
-        }
-
-        /* ANIMATIONS */
+        /* 🎈 FLOATING ANIMATION */
         @keyframes floatSway {
-            0% { transform: translateY(0) rotate(-2deg); }
-            100% { transform: translateY(-8px) rotate(2deg); }
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1.5deg); }
+            100% { transform: translateY(0) rotate(-1.5deg); }
         }
 
         @media (max-width: 600px) {
-            .option-icon-wrap { width: 95px; height: 95px; }
-            .title { font-size: 50px; }
+            .title { font-size: 48px; }
             .options-container { gap: 25px; }
+            .option-icon-wrap { width: 90px; height: 90px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 📌 HEADER -->
     <div class="title-wrapper">
-        <h1 class="title">Happy Anniversary, My Love!</h1>
-        <p class="subtitle">Another Year Down, A Lifetime to Go</p>
+        <h1 class="title">Happy Anniversary</h1>
+        <p class="subtitle">For My Dearest Cristy Limbago</p>
     </div>
 
     <!-- 🗂️ 3 CLICKABLE OPTIONS -->
     <div class="options-container">
-        
-        <!-- Option 1: Flowers -->
-        <div class="option-box" onclick="openModal('modalFlowers')">
+        <!-- Option 1: Love Letter -->
+        <div class="option-box" onclick="openModal('modal-letter')">
             <div class="option-icon-wrap">
-                <!-- SVG Bouquet Illustration -->
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M30 65 L50 95 L70 65 Z" fill="#e1bee7" stroke="#ce93d8" stroke-width="2"/>
-                    <path d="M25 50 Q50 60 75 50 L65 70 Q50 80 35 70 Z" fill="#f8bbd0"/>
-                    <circle cx="35" cy="40" r="12" fill="#ff80ab"/>
-                    <circle cx="35" cy="40" r="5" fill="#ffd54f"/>
-                    <circle cx="65" cy="40" r="12" fill="#ff80ab"/>
-                    <circle cx="65" cy="40" r="5" fill="#ffd54f"/>
-                    <circle cx="50" cy="30" r="15" fill="#ff4081"/>
-                    <circle cx="50" cy="30" r="6" fill="#ffe082"/>
-                    <path d="M42 68 Q50 72 58 68" stroke="#d81b60" stroke-width="3" fill="none"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fce4ec" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
             </div>
-            <div class="option-label">Flowers for you</div>
+            <span class="option-label">Love Letter</span>
         </div>
 
-        <!-- Option 2: Love Letter -->
-        <div class="option-box" onclick="openModal('modalLetter')">
+        <!-- Option 2: Our Memories -->
+        <div class="option-box" onclick="openModal('modal-photo')">
             <div class="option-icon-wrap">
-                <!-- SVG Envelope Illustration -->
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="15" y="30" width="70" height="50" rx="6" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
-                    <path d="M15 30 L50 58 L85 30" stroke="#fbc02d" stroke-width="2.5" fill="#fff59d"/>
-                    <path d="M15 80 L40 52" stroke="#fbc02d" stroke-width="2"/>
-                    <path d="M85 80 L60 52" stroke="#fbc02d" stroke-width="2"/>
-                    <path d="M50 56 C45 50 38 55 50 64 C62 55 55 50 50 56 Z" fill="#e91e63"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fce4ec" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
                 </svg>
             </div>
-            <div class="option-label">My love letter</div>
+            <span class="option-label">Memories</span>
         </div>
 
-        <!-- Option 3: Teddy Bear / Song -->
-        <div class="option-box" onclick="openModal('modalSong')">
+        <!-- Option 3: Our Song -->
+        <div class="option-box" onclick="openModal('modal-song')">
             <div class="option-icon-wrap">
-                <!-- SVG Bear Illustration -->
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="28" cy="28" r="10" fill="#d7ccc8"/>
-                    <circle cx="28" cy="28" r="5" fill="#bcaaa4"/>
-                    <circle cx="72" cy="28" r="10" fill="#d7ccc8"/>
-                    <circle cx="72" cy="28" r="5" fill="#bcaaa4"/>
-                    <circle cx="50" cy="65" r="24" fill="#d7ccc8"/>
-                    <circle cx="50" cy="40" r="20" fill="#d7ccc8"/>
-                    <ellipse cx="50" cy="44" rx="8" ry="6" fill="#efebe9"/>
-                    <ellipse cx="50" cy="42" rx="3" ry="2" fill="#4e342e"/>
-                    <circle cx="42" cy="36" r="2.5" fill="#3e2723"/>
-                    <circle cx="58" cy="36" r="2.5" fill="#3e2723"/>
-                    <path d="M44 54 L56 60 L56 48 Z" fill="#e53935"/>
-                    <path d="M56 54 L44 60 L44 48 Z" fill="#e53935"/>
-                    <circle cx="50" cy="54" r="2.5" fill="#c62828"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fce4ec" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18V5l12-2v13"></path>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <circle cx="18" cy="16" r="3"></circle>
                 </svg>
             </div>
-            <div class="option-label">A song for you</div>
-        </div>
-
-    </div>
-
-    <!-- 🔘 CONTINUE BUTTON -->
-    <a href="story.html" class="next-btn">Continue Our Journey →</a>
-
-
-    <!-- ================= MODALS (POPUPS) ================= -->
-
-    <!-- MODAL 1: FLOWERS (Photo Reveal) -->
-    <div class="modal-overlay" id="modalFlowers" onclick="closeModal(event, 'modalFlowers')">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModalDirect('modalFlowers')">&times;</span>
-            <div class="modal-photo">
-                <img id="revealPhoto" src="image/photo43.jpg.jpeg" alt="Our First Picture Together">
-            </div>
-            <h3 class="modal-title">Flowers For You</h3>
-            <p class="modal-text">Our very first picture together. 📸❤️</p>
+            <span class="option-label">Our Song</span>
         </div>
     </div>
 
-    <!-- MODAL 2: LOVE LETTER -->
-    <div class="modal-overlay" id="modalLetter" onclick="closeModal(event, 'modalLetter')">
+    <!-- 💌 MODAL 1: LOVE LETTER -->
+    <div class="modal-overlay" id="modal-letter" onclick="closeModalOnOverlay(event, 'modal-letter')">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModalDirect('modalLetter')">&times;</span>
-            <h3 class="modal-title">My Love Letter</h3>
-            
+            <span class="close-btn" onclick="closeModal('modal-letter')">&times;</span>
+            <h2 class="modal-title">My Dearest Cristy</h2>
             <div class="modal-letter-body">
-                <p><strong>Mi amor🤍,</strong></p><br>
-                <p>Happy 3rd Anniversary.</p><br>
-                <p>Three years na ta, love. Wala gyud ko nagdahom nga moabot ta ani nga point despite sa tanan natong naagian. Pero bisan unsa man ang nahitabo, nagpabilin gihapon nga kitang duha.</p><br>
-                <p>Dili man gyud perpekto atong relationship. Daghan ta'g away, misunderstandings, ug mga panahon nga murag wala na lang gyud. Makabati ta'g kapoy, laay, ug sumo sa usag usa. Usahay mag-away ta, makasulti ta og mga words nga wala nato tinuyo kay nadalas kapungot. Usahay sad, mas gipili nato ang maghilom kaysa magstorya.</p><br>
-                <p>I know daghan kog mga sayop nga nabuhat sa imoha. Naay mga panahon nga ako ang hinungdan nganong mag-away ta, hangtod sa moabot na lang sa walay tingogay. Naay mga time nga nakasulti ko og mga words nga nakapasakit nimo. Gusto ko mangayog pasaylo ana. Gusto pud ko magpasalamat kay bisan kapila ko nasayop, ginasabot gihapon ko nimo.</p><br>
-                <p>Thank you for staying. Thank you for loving me even when I wasn't easy to love. Salamat kay nakita gihapon nimo ang maayo sa akoa bisan sa mga panahon nga ako mismo wala na kabalo unsay makita sa akong kaugalingon.</p><br>
-                <p>Looking back, narealize nako nga ang atong mga away wala diay para magbulag ta. They were there to make us stronger, to teach us how to understand each other better, and to remind us that love isn't about being perfect it's about choosing each other, especially on the hardest days.</p><br>
-                <p>After three years, one thing has never changed.</p><br>
-                <p>Ikaw gihapon ang akong pahulay. Ikaw gihapon ang tao nga gusto nakong pilion og makauban sa mga sumu-sunod pa.</p><br>
-                <p>Happy 3rd Anniversary, my love.</p><br>
-                <p>Thank you for these three amazing years. Thank you for every smile, every lesson, every argument that helped us grow, and every moment you chose to stay.</p><br>
-                <p>I love you, and I always will.</p><br>
-                <p>Yours truly,<br><strong>Gerald</strong></p>
+                <p>Happy Anniversary, my love!</p><br>
+                <p>Thank you for bringing so much joy, light, and warmth into my life. Every single moment shared with you is a memory I treasure deeply.</p><br>
+                <p>I am continually grateful for your kindness, your sweet smile, and your constant support. Here’s to celebrating us today and creating many more wonderful memories together.</p><br>
+                <p style="text-align: right; font-weight: 500;">Forever Yours ❤️</p>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 3: A SONG FOR YOU (Message + YouTube Player Embed) -->
-    <div class="modal-overlay" id="modalSong" onclick="closeModal(event, 'modalSong')">
+    <!-- 🖼️ MODAL 2: MEMORIES -->
+    <div class="modal-overlay" id="modal-photo" onclick="closeModalOnOverlay(event, 'modal-photo')">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModalDirect('modalSong'); stopYtVideo();">&times;</span>
-            <h3 class="modal-title">A Song For You</h3>
-            
-            <!-- Custom Message Before Song -->
-            <div class="modal-message">
-                <p><strong>Tahanan</strong></p><br>
-                <p>I chose this song because it perfectly reflects how I feel about you. Every lyric reminds me of our journey together and the love we've built over the past three years.</p><br>
-                <p>To me, the word "Tahanan" is not a place—it's you. Thank you for being my comfort, my peace, and the person I always want to be.</p><br>
-                <p>Happy 3rd Anniversary, my love. Thank you for being my tahanan. I love you always. ❤️</p>
+            <span class="close-btn" onclick="closeModal('modal-photo')">&times;</span>
+            <h2 class="modal-title">Our Moments</h2>
+            <div class="modal-photo">
+                <img src="image/photo43.jpg.jpeg" alt="Cristy Limbago">
             </div>
-            
-            <!-- Embedded YouTube Player -->
-            <div class="youtube-container">
-                <iframe id="ytPlayer" 
-                        src="https://www.youtube.com/embed/PLrd-rILKtc?enablejsapi=1" 
-                        title="Tahanan - El Manu" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
-            </div>
-
-            <!-- Direct Link Button -->
-            <a href="https://youtu.be/PLrd-rILKtc?si=oLzpAVYnpXSJMGha" target="_blank" class="yt-fallback-btn">
-                ▶ Pindutin dito kung ayaw mag-play sa loob
-            </a>
+            <p class="modal-message">Every moment with you becomes my favorite memory.</p>
         </div>
     </div>
 
+    <!-- 🎵 MODAL 3: SONG -->
+    <div class="modal-overlay" id="modal-song" onclick="closeModalOnOverlay(event, 'modal-song')">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-song')">&times;</span>
+            <h2 class="modal-title">A Special Song</h2>
+            <p class="modal-text">A song that always reminds me of you and us.</p>
+            <div class="youtube-container">
+                <!-- Replace VIDEO_ID with your preferred YouTube video ID -->
+                <iframe id="youtube-player" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // 1. Background Image Extension Fallback
-        const body = document.body;
-        const testImg = new Image();
-        testImg.src = 'image/photo43.jpg.jpeg';
-        testImg.onerror = function() {
-            body.style.backgroundImage = "linear-gradient(rgba(74, 25, 35, 0.85), rgba(60, 20, 28, 0.90)), url('image/photo43.jpg')";
-        };
-
-        // 2. Modal Photo Extension Fallback
-        const photoImg = document.getElementById('revealPhoto');
-        photoImg.onerror = function() {
-            if (this.src.endsWith('.jpg.jpeg')) {
-                this.src = 'image/photo43.jpg';
-            } else if (this.src.endsWith('.jpg')) {
-                this.src = 'image/photo43.jpeg';
-            } else if (this.src.endsWith('.jpeg')) {
-                this.src = 'image/photo43.PNG';
-            }
-        };
-
-        // 3. Modal Control Logic
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.add('active');
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
         }
 
-        function closeModalDirect(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-            if (modalId === 'modalSong') {
-                stopYtVideo();
-            }
-        }
-
-        function closeModal(event, modalId) {
-            if (event.target.id === modalId) {
-                document.getElementById(modalId).classList.remove('active');
-                if (modalId === 'modalSong') {
-                    stopYtVideo();
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('active');
+            
+            // Stop YouTube video when closing modal
+            if(id === 'modal-song') {
+                const iframe = document.getElementById('youtube-player');
+                if (iframe) {
+                    const iframeSrc = iframe.src;
+                    iframe.src = iframeSrc; // resets iframe to pause video
                 }
             }
         }
 
-        // 4. Function para tumigil ang YouTube audio kapag isinarat/isinara ang modal
-        function stopYtVideo() {
-            const iframe = document.getElementById('ytPlayer');
-            if (iframe) {
-                const iframeSrc = iframe.src;
-                iframe.src = iframeSrc; // Reset src to pause playback
+        function closeModalOnOverlay(event, id) {
+            if (event.target.classList.contains('modal-overlay')) {
+                closeModal(id);
             }
         }
     </script>
-
 </body>
 </html>
