@@ -4,53 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Story - Cristy Limbago</title>
-    <!-- Google Fonts: Lora (Classic & Highly Readable) & Cinzel (Elegant Headers/Buttons) -->
+    <!-- Google Fonts: Playfair Display (Romantic Typewriter Style) & Montserrat (Clean Button) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: #f8dfe5;
-            font-family: 'Lora', serif;
+            /* Minimalist Soft Pink Gradient Background */
+            background: linear-gradient(135deg, #fbe8ed 0%, #f3d5dd 50%, #eae0e6 100%);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
             padding: 20px;
-            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            overflow-x: hidden;
         }
 
+        /* Minimalist Background Pattern (Soft Floating Hearts & Sparkles) */
+        .bg-decorations {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-symbol {
+            position: absolute;
+            color: rgba(227, 111, 136, 0.25);
+            font-size: 20px;
+            animation: floatUp 8s infinite ease-in-out;
+        }
+
+        .s1 { top: 80%; left: 10%; animation-delay: 0s; font-size: 24px; }
+        .s2 { top: 70%; left: 85%; animation-delay: 2s; font-size: 18px; }
+        .s3 { top: 90%; left: 75%; animation-delay: 4s; font-size: 28px; }
+        .s4 { top: 75%; left: 20%; animation-delay: 1s; font-size: 16px; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(20deg); opacity: 0; }
+        }
+
+        /* Card Container (Minimalist Glass Effect) */
         .card {
-            background: #ffffff;
-            padding: 45px 35px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(214, 140, 158, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             max-width: 620px;
             width: 100%;
             text-align: center;
         }
 
+        /* Minimalist Heart Accent at the top */
+        .heart-icon {
+            font-size: 32px;
+            color: #e36f88;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Typewriter Text - Classic Romantic Font */
         .typewriter-text {
-            font-family: 'Lora', serif;
-            font-size: 24px;
+            font-family: 'Playfair Display', serif;
+            font-size: 21px;
             font-weight: 500;
-            color: #22181c;
+            color: #3d2b30;
             line-height: 1.8;
-            min-height: 100px;
+            min-height: 120px;
             white-space: pre-wrap;
             text-align: left;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.3px;
         }
 
         .cursor {
             display: inline-block;
-            width: 3px;
-            height: 24px;
+            width: 2px;
+            height: 22px;
             background-color: #e36f88;
             animation: blink 0.7s infinite;
             vertical-align: middle;
+            margin-left: 2px;
         }
 
         @keyframes blink {
@@ -58,39 +116,50 @@
             50% { opacity: 0; }
         }
 
+        /* Aesthetic Minimalist Button */
         .btn {
-            display: none; /* Nakatago sa simula */
-            margin-top: 30px;
-            padding: 14px 32px;
-            background-color: #e36f88;
-            color: white;
+            display: none;
+            margin-top: 35px;
+            padding: 14px 36px;
+            background: linear-gradient(135deg, #e36f88 0%, #d15671 100%);
+            color: #ffffff;
             border: none;
             border-radius: 30px;
-            font-family: 'Cinzel', serif;
-            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             cursor: pointer;
             text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(227, 111, 136, 0.3);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(227, 111, 136, 0.25);
         }
 
         .btn:hover {
-            background-color: #d15671;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(227, 111, 136, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(227, 111, 136, 0.35);
+            background: linear-gradient(135deg, #d15671 0%, #bd435e 100%);
         }
     </style>
 </head>
 <body>
 
+    <!-- Subtle Background Accents -->
+    <div class="bg-decorations">
+        <span class="floating-symbol s1">♥</span>
+        <span class="floating-symbol s2">✨</span>
+        <span class="floating-symbol s3">♡</span>
+        <span class="floating-symbol s4">✨</span>
+    </div>
+
+    <!-- Main Card -->
     <div class="card">
-        <div style="font-size: 36px; color: #e36f88; margin-bottom: 10px;">♥</div>
+        <div class="heart-icon">♥</div>
         
         <div class="typewriter-text"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
 
-        <!-- Link Redirection -->
+        <!-- Link Redirection Button -->
         <a id="openBtn" href="gallery.html" class="btn">Open Our Memories ✨</a>
     </div>
 
@@ -127,7 +196,7 @@ Relive every moment. ♡`;
             if (charIndex < textToType.length) {
                 container.textContent += textToType.charAt(charIndex);
                 charIndex++;
-                setTimeout(runTypewriter, 30);
+                setTimeout(runTypewriter, 32);
             } else {
                 if (btn) {
                     btn.style.display = "inline-block";
