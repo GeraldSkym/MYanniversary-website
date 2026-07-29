@@ -21,41 +21,35 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 30px 20px;
             font-family: 'Playfair Display', serif;
             position: relative;
             overflow-x: hidden;
             
-            /* Background Photo with Dark Transparent Maroon Overlay */
+            /* Background Photo with Transparent Maroon Overlay */
             background: 
-                linear-gradient(rgba(74, 14, 26, 0.65), rgba(74, 14, 26, 0.65)), 
+                linear-gradient(rgba(55, 10, 18, 0.75), rgba(55, 10, 18, 0.75)), 
                 url('photo8.jpg.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 
-        /* Card Container (Minimalist Glass Effect) */
-        .card {
+        /* Direct Container Without Card Background */
+        .content-container {
             position: relative;
             z-index: 2;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 50px 40px;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            max-width: 620px;
+            max-width: 650px;
             width: 100%;
             text-align: center;
         }
 
         /* Minimalist Heart Accent */
         .heart-icon {
-            font-size: 32px;
-            color: #800020; /* Deep Burgundy / Maroon */
-            margin-bottom: 20px;
+            font-size: 34px;
+            color: #ffffff;
+            margin-bottom: 25px;
             display: inline-block;
             animation: pulse 2s infinite ease-in-out;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes pulse {
@@ -63,27 +57,29 @@
             50% { transform: scale(1.1); }
         }
 
-        /* Typewriter Text */
+        /* Typewriter Text - Clean White Style */
         .typewriter-text {
             font-family: 'Playfair Display', serif;
-            font-size: 21px;
+            font-size: 22px;
             font-weight: 500;
-            color: #2b1216; /* Dark readable tone */
+            color: #ffffff;
             line-height: 1.8;
             min-height: 120px;
             white-space: pre-wrap;
             text-align: left;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.4px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Text shadow para super visible */
         }
 
         .cursor {
             display: inline-block;
             width: 2px;
             height: 22px;
-            background-color: #800020;
+            background-color: #ffffff;
             animation: blink 0.7s infinite;
             vertical-align: middle;
             margin-left: 2px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
 
         @keyframes blink {
@@ -91,13 +87,13 @@
             50% { opacity: 0; }
         }
 
-        /* Aesthetic Minimalist Maroon Button */
+        /* Aesthetic Minimalist White & Maroon Button */
         .btn {
             display: none;
-            margin-top: 35px;
-            padding: 14px 36px;
-            background: linear-gradient(135deg, #800020 0%, #580016 100%);
-            color: #ffffff;
+            margin-top: 40px;
+            padding: 14px 38px;
+            background-color: #ffffff;
+            color: #4a0e18;
             border: none;
             border-radius: 30px;
             font-family: 'Montserrat', sans-serif;
@@ -108,20 +104,21 @@
             cursor: pointer;
             text-decoration: none;
             transition: all 0.4s ease;
-            box-shadow: 0 8px 20px rgba(128, 0, 32, 0.35);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(128, 0, 32, 0.45);
-            background: linear-gradient(135deg, #6b001b 0%, #420010 100%);
+            background-color: #f8dfe5;
+            color: #370a12;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Card -->
-    <div class="card">
+    <!-- Main Container -->
+    <div class="content-container">
         <div class="heart-icon">♥</div>
         
         <div class="typewriter-text"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
