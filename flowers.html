@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flowers For You - Cristy Limbago</title>
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Great Vibes (Cursive) & Montserrat/Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -18,8 +18,9 @@
         }
 
         body {
-            /* Soft pink gradient background */
-            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #f48fb1 100%);
+            /* 🖼️ BACKGROUND PHOTO WITH DARK MAROON OVERLAY */
+            background: linear-gradient(rgba(74, 25, 35, 0.82), rgba(60, 20, 28, 0.88)), 
+                        url('image/photo43.jpg.jpeg') center/cover no-repeat fixed;
             font-family: 'Poppins', sans-serif;
             min-height: 100vh;
             display: flex;
@@ -29,79 +30,58 @@
             padding: 20px;
             overflow-x: hidden;
             position: relative;
-        }
-
-        /* 🌸 PETALS AT SPARKLES ANIMATION CONTAINER */
-        .effect-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .petal, .sparkle {
-            position: absolute;
-            top: -10%;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0.9;
-            }
-            100% {
-                transform: translateY(105vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* HEADER TEXTS */
-        .title {
-            font-family: 'Montserrat', sans-serif;
-            color: #4a3b3e;
-            font-size: 30px;
-            font-weight: 600;
+            color: #ffffff;
             text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
+        }
+
+        /* ✍️ CURSIVE HEADER TITLE */
+        .title {
+            font-family: 'Great Vibes', cursive;
+            color: #ffffff;
+            font-size: 65px;
+            font-weight: 400;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 5px;
             z-index: 2;
+            letter-spacing: 1px;
         }
 
         .subtitle {
-            color: #6d5257;
-            font-size: 15px;
-            text-align: center;
-            max-width: 500px;
+            color: #f3d0d7;
+            font-size: 14px;
+            max-width: 450px;
             margin-bottom: 25px;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             z-index: 2;
+            font-weight: 300;
         }
 
-        /* 💐 BOUQUET MAIN STYLES */
+        /* 💐 REALISTIC BOUQUET STYLES */
         .bouquet-wrapper {
             position: relative;
             z-index: 5;
             cursor: pointer;
-            margin: 10px 0;
-            animation: sway 4s ease-in-out infinite alternate;
+            margin: 15px 0;
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            animation: floatSway 4s ease-in-out infinite alternate;
         }
 
-        .bouquet-wrapper:hover {
-            filter: drop-shadow(0 0 25px rgba(255, 105, 180, 0.8));
+        .bouquet-img {
+            width: 240px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .bouquet-wrapper:hover .bouquet-img {
             transform: scale(1.08);
+            filter: drop-shadow(0 15px 30px rgba(255, 182, 193, 0.5));
         }
 
-        /* Zoom in + Opening animation kapag kinlick */
+        /* Zoom animation kapag kinlick */
         .bouquet-wrapper.zoom-open {
-            transform: scale(1.4) translateY(-10px) !important;
+            transform: scale(1.3) translateY(-15px) !important;
             animation: none !important;
-            filter: drop-shadow(0 0 35px rgba(255, 105, 180, 0.9));
         }
 
         .bouquet-wrapper.fade-out {
@@ -110,21 +90,16 @@
             pointer-events: none;
         }
 
-        .bouquet-icon {
-            font-size: 120px;
-            display: block;
-            text-align: center;
-            user-select: none;
-        }
-
         .click-hint {
-            text-align: center;
-            color: #d81b60;
-            font-size: 13px;
-            font-weight: 500;
-            margin-bottom: 15px;
-            animation: pulse 1.5s infinite alternate;
+            color: #fce4ec;
+            font-size: 14px;
+            font-weight: 400;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1.5px;
+            margin-top: 10px;
+            animation: pulse 1.8s infinite alternate;
             z-index: 2;
+            text-transform: lowercase;
         }
 
         /* 🎁 GIFT BOX STYLES */
@@ -150,22 +125,23 @@
             font-size: 90px;
             display: block;
             user-select: none;
-            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
         }
 
-        /* 📸 REVEALED FIRST PHOTO CONTAINER */
+        /* 📸 REVEALED PHOTO CONTAINER */
         .photo-card {
             display: none;
             background: #fffefb;
             padding: 15px;
             border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            max-width: 320px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            max-width: 310px;
             text-align: center;
             z-index: 10;
             opacity: 0;
             transform: translateY(30px) scale(0.9);
             transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #333;
         }
 
         .photo-card.show {
@@ -176,14 +152,14 @@
 
         .photo-card img {
             width: 100%;
-            height: 280px;
+            height: 270px;
             object-fit: cover;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .photo-caption {
-            color: #d81b60;
+            color: #880e4f;
             font-size: 15px;
             font-weight: 600;
             margin-top: 15px;
@@ -194,20 +170,21 @@
         .next-btn {
             display: inline-block;
             margin-top: 25px;
-            padding: 13px 30px;
-            background-color: #e36f88;
+            padding: 13px 32px;
+            background-color: #d81b60;
             color: white;
             border-radius: 30px;
             text-decoration: none;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 500;
             letter-spacing: 1px;
-            box-shadow: 0 8px 20px rgba(227, 111, 136, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             opacity: 0;
             transform: scale(0.8);
             transition: all 0.5s ease;
             pointer-events: none;
             z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .next-btn.show {
@@ -217,26 +194,26 @@
         }
 
         .next-btn:hover {
-            background-color: #d81b60;
-            transform: translateY(-3deg) scale(1.03);
-            box-shadow: 0 12px 25px rgba(216, 27, 96, 0.5);
+            background-color: #c2185b;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
         }
 
-        /* KEYFRAME ANIMATIONS */
-        @keyframes sway {
-            0% { transform: rotate(-3deg); }
-            100% { transform: rotate(3deg); }
+        /* ANIMATIONS */
+        @keyframes floatSway {
+            0% { transform: translateY(0) rotate(-1.5deg); }
+            100% { transform: translateY(-10px) rotate(1.5deg); }
         }
 
         @keyframes pulse {
-            0% { opacity: 0.5; }
+            0% { opacity: 0.6; }
             100% { opacity: 1; }
         }
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-7px); }
+            40% { transform: translateY(-12px); }
+            60% { transform: translateY(-6px); }
         }
     </style>
 </head>
@@ -247,23 +224,21 @@
         <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-view-1033.mp3" type="audio/mp3">
     </audio>
 
-    <!-- 🌸 FALLING PETALS & SPARKLES -->
-    <div class="effect-container" id="effects"></div>
-
     <!-- 📌 HEADER -->
-    <h1 class="title">Flowers For You 🌸</h1>
-    <p class="subtitle" id="subText">"These flowers are a small reminder of how much you mean to me." 💗</p>
+    <h1 class="title">Flowers for you</h1>
+    <p class="subtitle" id="subText">A simple gift for my favorite person in the world ❤️</p>
 
-    <!-- 💐 INTERACTIVE BOUQUET -->
+    <!-- 💐 REALISTIC BOUQUET IMAGE -->
     <div class="bouquet-wrapper" id="bouquetWrapper" onclick="clickBouquet()">
-        <span class="bouquet-icon">💐</span>
+        <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=600&auto=format&fit=crop" 
+             alt="Flowers for you" class="bouquet-img">
+        <div class="click-hint" id="bouquetHint">( click the bouquet 🌸 )</div>
     </div>
-    <div class="click-hint" id="bouquetHint">(Click the bouquet to open 💌)</div>
 
     <!-- 🎁 GIFT BOX -->
     <div class="gift-wrapper" id="giftWrapper" onclick="clickGift()">
         <span class="gift-icon">🎁</span>
-        <div class="click-hint" style="margin-top: 10px;">(Click the gift box to open ✨)</div>
+        <div class="click-hint" style="margin-top: 10px;">( click the gift box to open ✨ )</div>
     </div>
 
     <!-- 📸 REVEALED PHOTO 43 -->
@@ -286,25 +261,15 @@
         }
         window.addEventListener('click', playMusic);
 
-        // 2. Generate Floating Petals & Sparkles
-        const effectsContainer = document.getElementById('effects');
-        const items = ['🌸', '✨', '💖', '🌺', '🍃'];
+        // Background Image Fallback
+        const body = document.body;
+        const testImg = new Image();
+        testImg.src = 'image/photo43.jpg.jpeg';
+        testImg.onerror = function() {
+            body.style.backgroundImage = "linear-gradient(rgba(74, 25, 35, 0.82), rgba(60, 20, 28, 0.88)), url('image/photo43.jpg')";
+        };
 
-        function createPetals(count) {
-            for (let i = 0; i < count; i++) {
-                const el = document.createElement('div');
-                el.className = 'petal';
-                el.innerText = items[Math.floor(Math.random() * items.length)];
-                el.style.left = Math.random() * 100 + 'vw';
-                el.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                el.style.animationDelay = (Math.random() * 2) + 's';
-                el.style.fontSize = (Math.random() * 12 + 16) + 'px';
-                effectsContainer.appendChild(el);
-            }
-        }
-        createPetals(20);
-
-        // Fallback check para sa Image Extension ng Photo 43
+        // Revealed Photo Extension Fallback
         const photoImg = document.getElementById('firstPhoto');
         photoImg.onerror = function() {
             if (this.src.endsWith('.jpg.jpeg')) {
@@ -316,22 +281,17 @@
             }
         };
 
-        // 3. STEP 1: Click Bouquet
+        // 2. STEP 1: Click Bouquet
         let bouquetClicked = false;
         function clickBouquet() {
             if (bouquetClicked) return;
             bouquetClicked = true;
 
             const bouquet = document.getElementById('bouquetWrapper');
-            const hint = document.getElementById('bouquetHint');
+            document.getElementById('bouquetHint').style.display = 'none';
 
-            hint.style.display = 'none';
-
-            // Animation 1: Zoom in at lalakas ang laglag ng petals
             bouquet.classList.add('zoom-open');
-            createPetals(30); // Extra burst of petals!
 
-            // Animation 2: Pagkatapos mag-zoom, magfa-fade out ang bouquet at lalabas ang Gift Box
             setTimeout(() => {
                 bouquet.classList.add('fade-out');
                 setTimeout(() => {
@@ -339,10 +299,10 @@
                     const gift = document.getElementById('giftWrapper');
                     gift.classList.add('show');
                 }, 600);
-            }, 1200);
+            }, 1000);
         }
 
-        // 4. STEP 2: Click Gift Box
+        // 3. STEP 2: Click Gift Box
         let giftClicked = false;
         function clickGift() {
             if (giftClicked) return;
@@ -355,17 +315,12 @@
             setTimeout(() => {
                 gift.style.display = 'none';
 
-                // Reveal Photo Card
                 const photoCard = document.getElementById('photoCard');
                 photoCard.classList.add('show');
 
-                // Burst ng Sparkles
-                createPetals(25);
-
-                // Reveal Next Button
                 setTimeout(() => {
                     document.getElementById('nextBtn').classList.add('show');
-                }, 1000);
+                }, 800);
             }, 500);
         }
     </script>
