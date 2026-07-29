@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Read Me First - Cristy Limbago</title>
-    <!-- Google Fonts: Great Vibes (Title) & Playfair Display / Montserrat (Text & Button) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -21,14 +21,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
             font-family: 'Playfair Display', serif;
             position: relative;
             overflow-x: hidden;
-            
-            /* Background Photo with Soft Vignette Maroon Blend */
             background: 
-                radial-gradient(circle at center, rgba(65, 12, 22, 0.70) 0%, rgba(30, 5, 10, 0.90) 100%), 
+                radial-gradient(circle at center, rgba(65, 12, 22, 0.75) 0%, rgba(20, 3, 6, 0.95) 100%), 
                 url('image/photo8.jpg.jpg') no-repeat center center fixed;
             background-size: cover;
         }
@@ -41,86 +39,232 @@
             transform: translate(-50%, -50%);
             width: 80vw;
             height: 80vh;
-            background: radial-gradient(circle, rgba(227, 111, 136, 0.12) 0%, rgba(0,0,0,0) 70%);
+            background: radial-gradient(circle, rgba(227, 111, 136, 0.15) 0%, rgba(0,0,0,0) 70%);
             pointer-events: none;
             z-index: 1;
         }
 
-        /* Main Container */
-        .content-container {
+        .main-wrapper {
             position: relative;
             z-index: 2;
-            max-width: 540px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 520px;
+        }
+
+        /* Envelope Container */
+        .envelope-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            height: 280px;
+            background-color: #3b0911;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+            transition: transform 0.4s ease, height 0.6s ease;
+            margin-top: 50px;
+        }
+
+        .envelope-wrapper.hoverable:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Envelope Flap Top */
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 220px solid transparent;
+            border-right: 220px solid transparent;
+            border-top: 150px solid #5a0f1d;
+            transform-origin: top;
+            transition: transform 0.5s ease 0.2s, z-index 0.2s;
+            z-index: 5;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        /* Envelope Base Sides & Bottom */
+        .envelope-pocket {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(63, 10, 19, 0) 40%, #2e060d 100%);
+            border-radius: 0 0 12px 12px;
+            z-index: 4;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .envelope-pocket::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 220px solid #4a0d17;
+            border-right: 220px solid #420b14;
+            border-bottom: 150px solid #360810;
+        }
+
+        /* Wax Seal Badge */
+        .wax-seal {
+            position: absolute;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #d4af37 0%, #aa820a 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 6;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .wax-seal span {
+            font-family: 'Great Vibes', cursive;
+            color: #2e060d;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .seal-hint {
+            position: absolute;
+            bottom: -35px;
             width: 100%;
             text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            transition: opacity 0.3s;
         }
 
-        /* Romantic Aesthetic Title */
-        .main-title {
+        /* Letter Card inside Envelope */
+        .letter-card {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 85%;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            padding: 30px 25px;
+            color: #ffffff;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            z-index: 3;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), height 0.8s ease;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        .letter-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 48px;
+            font-size: 42px;
             color: #ffffff;
-            margin-bottom: 25px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        /* Typewriter Text - Mas maliit ang font size para mas malinis */
-        .typewriter-text {
+        .letter-body {
             font-family: 'Playfair Display', serif;
-            font-size: 15.5px; /* Slightly smaller font size */
-            font-weight: 400;
-            color: #ffffff;
+            font-size: 14.5px;
             line-height: 1.8;
-            min-height: 120px;
-            white-space: pre-wrap;
+            color: #f3f3f3;
             text-align: left;
-            letter-spacing: 0.3px;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+            white-space: pre-wrap;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
         }
 
-        .cursor {
-            display: inline-block;
-            width: 2px;
-            height: 16px;
-            background-color: #ffffff;
-            animation: blink 0.7s infinite;
-            vertical-align: middle;
-            margin-left: 2px;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        /* OPEN STATE ANIMATIONS */
+        .envelope-wrapper.open {
+            height: auto;
+            background-color: transparent;
+            box-shadow: none;
+            margin-top: 0;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        .envelope-wrapper.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
         }
 
-        /* Aesthetic Minimalist White Button */
+        .envelope-wrapper.open .wax-seal {
+            opacity: 0;
+            transform: translateX(-50%) scale(0.5);
+            pointer-events: none;
+        }
+
+        .envelope-wrapper.open .seal-hint {
+            opacity: 0;
+        }
+
+        .envelope-wrapper.open .envelope-pocket {
+            opacity: 0;
+            transition: opacity 0.5s ease 0.4s;
+        }
+
+        .envelope-wrapper.open .letter-card {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            transform: none;
+            width: 100%;
+            height: auto;
+            opacity: 1;
+            z-index: 10;
+            transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+        }
+
+        /* Minimalist Button */
         .btn {
-            display: none;
-            margin-top: 35px;
-            padding: 12px 28px;
+            display: inline-block;
+            opacity: 0;
+            pointer-events: none;
+            margin-top: 30px;
+            padding: 13px 32px;
             background-color: #ffffff;
             color: #4a0e18;
             border: none;
             border-radius: 30px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 12.5px;
+            font-size: 12px;
             font-weight: 600;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.4s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn.show {
+            opacity: 1;
+            pointer-events: auto;
         }
 
         .btn:hover {
             transform: translateY(-2px);
             background-color: #f8dfe5;
             color: #370a12;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
@@ -129,20 +273,22 @@
     <!-- Ambient Lighting Effect -->
     <div class="ambient-light"></div>
 
-    <!-- Main Container -->
-    <div class="content-container">
-        <!-- Title -->
-        <h1 class="main-title">Read Me First</h1>
+    <div class="main-wrapper">
         
-        <!-- Letter Body -->
-        <div class="typewriter-text"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
+        <!-- Envelope Interactive Container -->
+        <div class="envelope-wrapper hoverable" id="envelope" onclick="openEnvelope()">
+            
+            <!-- Flap & Wax Seal -->
+            <div class="envelope-flap" id="flap"></div>
+            <div class="wax-seal">
+                <span>CL</span>
+            </div>
+            <div class="seal-hint">Tap to open</div>
 
-        <!-- Redirection Button -->
-        <a id="openBtn" href="gallery.html" class="btn">Open Our Memories ✨</a>
-    </div>
-
-    <script>
-        const textToType = `Hi, Cristy... Mi amor. ♡
+            <!-- Letter Inside -->
+            <div class="letter-card">
+                <h1 class="letter-title">Read Me First</h1>
+                <div class="letter-body">Hi, Cristy... Mi amor. ♡
 
 If you're reading this, then you've already found the little surprise I've been keeping just for you.
 
@@ -163,28 +309,33 @@ A reminder of how "you and me" became us.
 So, take your time.
 Smile.
 Enjoy.
-Relive every moment. ♡`;
-        
-        let charIndex = 0;
+Relive every moment. ♡</div>
+            </div>
 
-        function runTypewriter() {
-            const container = document.getElementById("typed");
+            <!-- Envelope Front Pocket -->
+            <div class="envelope-pocket"></div>
+        </div>
+
+        <!-- Redirection Button -->
+        <a id="openBtn" href="gallery.html" class="btn">Open Our Memories ✨</a>
+
+    </div>
+
+    <script>
+        function openEnvelope() {
+            const envelope = document.getElementById("envelope");
             const btn = document.getElementById("openBtn");
 
-            if (charIndex < textToType.length) {
-                container.textContent += textToType.charAt(charIndex);
-                charIndex++;
-                setTimeout(runTypewriter, 32);
-            } else {
-                if (btn) {
-                    btn.style.display = "inline-block";
-                }
+            if (!envelope.classList.contains("open")) {
+                envelope.classList.remove("hoverable");
+                envelope.classList.add("open");
+
+                // Ipakita ang button pagkatapos magbukas ng sobre
+                setTimeout(() => {
+                    btn.classList.add("show");
+                }, 700);
             }
         }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            runTypewriter();
-        });
     </script>
 
 </body>
